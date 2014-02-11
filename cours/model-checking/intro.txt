@@ -6,7 +6,9 @@ Voir les articles sur http://www.lrde.epita.fr/~adl/ens/mc/2014/
 => Moyenne des QCM == Note du semestre
 
 ## Plan des cours
------------------------------------------------------------------------------
+
+| Date    | Cours                                                           |
+|---------|-----------------------------------------------------------------|
 | 11 fév  | Introduction                                                    |
 | 18 fév  | Diagrammes de décision binaires (BDD)                           |
 | 25 fév  | Vérification CTL avec BDD                                       |
@@ -14,4 +16,111 @@ Voir les articles sur http://www.lrde.epita.fr/~adl/ens/mc/2014/
 | 10 mars | Operations sur les automates de Büchi                           |
 | 17 mars | PSL, automates alternants                                       |
 | 24 mars | ?                                                               |
------------------------------------------------------------------------------
+
+## Intro
+
+On fait des test, mais jamais exhaustifs.
+Une manière pratique de faire des tests, c'est la **modélisation** et les **spécifications**
+
+                   ,->  système                           propriété
+                  /        |                                  |
+                 /         |                                  |
+           synthèse   modélisation                      spécification
+                \          |                                  |
+                 \         v          vérif formelle          v
+                  \_     modèle   <===================>     modèle
+                       du système    /             \    des propriétés
+                                    /               \
+                                   /                 \
+                                  v                   v
+                               preuve           model checking
+                           de théorèmes
+
+### Preuve de théorèmes
+
+- Décrire le système sous une forme qui permette de raisonner.
+- Prouver les propriétés par déductions logiques.
+
+Peut être manuel, ou plus ou moins automatisé.
+Il existe des outils d’aide à l’automatisation des preuves (p.ex. Coq) mais rien n’est entièrement automatique. Difficile d’obtenir un contre-exemple quand le théorème est faux.
+Les travaux : développement de systèmes de preuves, étude des puissance d’expression des logiques, etc.
+
+### Model checking
+
+Approche automatique de la vérification formelle.
+Vérification exhaustive de tous les comportements du modèle.
+
+L’arnaque : le modèle doit être suffisamment abstrait pour que son exploration soit réalisable.
+
+Deux grandes approches :
+- **ensembliste** (symbolique)
+- **automate** (explicite)
+
+#### Ex: Algorithme d'exclusion mutuelle
+
+Variables globales: reqP et reqQ.
+
+**Processus P (boucle infinie)**
+
+    /*1*/ reqP = 1
+    /*2*/ wait(reqQ == 0)
+    /*3*/ section critique
+    /*4*/ reqP = 0
+
+**Processus Q (boucle infinie)**
+
+    /*1*/ reqQ = 1
+    /*2*/ wait(reqP == 0)
+    /*3*/ section critique
+    /*4*/ reqQ = 0
+
+On veut vérifier 3 propriétés :
+1. À tout moment il y a au plus un processus en section critique.
+2. Tout processus demandant l’entrée en section critique finit par y entrer. Faux
+3. L’ordre des entrées dans la section critique respecte l’ordre des demandes. Faux
+
+### Types de propriété
+
+| Type      | Description                                   | Propriété de l'exemple  |
+|-----------|-----------------------------------------------|:-----------------------:|
+| Sûreté    | Quelque chose de mauvais ne se produit pas    | 1                       |
+| Vivacité  | Quelque chose de bon se produira              | 2                       |
+| Équité    | Types particuliers de propriétés de vivacité  | 3                       |
+
+Toute propriété est une conjonction d'une propriété de sûreté et de vivacité.
+
+### Comportements
+
+| Comportement    | Description                                                                                                                                                             |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action          | Une étape est une action.<br />Un comportement est une séquence d’actions.                                                                                              |
+| État            | Une étape est une paire (s, d) d’états.<br />Un comportement est une séquence s1 -> s2 -> s3 -> ...  d’états                                                            |
+| Action / État   | Une étape est un triplet (s, &, d) où s et d sont des états et & une action.<br />Un comportement est une séquence s1 -&1-> s2 -&2-> s3 -&3-> ... d’états et d’actions. |
+
+Les comportements peuvent être finis ou infinis.
+L’état final d’un comportement fini peut être appelé « deadlock » selon qu’on l’aime ou pas.
+Certains comportements infinis (qu’on n’aime pas non plus) sont dit « divergents » (livelock)
+
+### Propositions atomiques et notations
+
+AP = {a, b, c}
+2^(AP) = {{a, b, c}, {a, b} {a, c}, {a}, {b, c}, {b}, {c}, {ø}}
+
+### Structures de Kripke
+
+Des machines à états étuqyetées par des valuations de toutes les variables propositionelles.
+
+### TODO
+
+Lire Diagrammes de Décision Binaire
+Un truc intéressant est la factorisation du graphe.
+
+        a + (b & c)
+
+          a                      a
+         / \                   /  |
+        b   1     becomes     b   |
+       / \                   |  \ |
+      0   c                  0    c
+         / \                      |
+        0   1                     1

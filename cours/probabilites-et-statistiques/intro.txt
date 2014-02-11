@@ -1,0 +1,39 @@
+# Probabilités et Statistiques
+
+**Herbert GROSCOT**
+Le support de cours sera distribué sous la forme de `PDF` avec des formules.
+
+## Introduction
+
+### Historique
+
+Branche des mathématiques depuis moins d'un siècle.
+Était avant considérée comme un amusement.
+
+Notion d'incertitude historique, rencontrée auparavant dans le commerce international. (Prise de risques)
+  => Dès le `XVIè` siècle : Assurances maritimes
+
+Des grandes figures :
+- **Pascal** et **Fermat** : *1654*
+  Ont commencé sur des problèmes de combinatoire de théorie des jeux pour la noblesse.
+- **Gauss** : 1897
+- **Kolmogorof** : ~1930
+
+La théorie moderne n'est apparue qu'au `XIXè` siècle avec **Gauss** et **Laplace**.
+La courbe de Gauss vient des erreurs d'observation de position des étoiles.
+
+### Applications
+
+- Théorie des jeux
+- Applications de **Monte-Carlo**
+- Physique quantique
+- pH de l'eau
+- Météorologie
+- Finance & Assurances
+- Algorithmique : Solutions probabilistes convergeant plus rapidement
+- Médecine
+- Circulation automobile
+
+### Aspect empirique
+
+

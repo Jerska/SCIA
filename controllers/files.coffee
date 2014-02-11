@@ -2,8 +2,14 @@ _ = require 'lodash'
 fs = require 'fs'
 async = require 'async'
 marked = require 'marked'
+renderer = new marked.Renderer()
 
-marked.setOptions gfm: true, tables: true, breaks: true, smartLists: true, smartypants: true
+exTableRenderer = renderer.table
+tableRenderer = (i, j) ->
+  exTableRenderer(i, j).replace('<table>', '<table class="table table-striped table-bordered">')
+renderer.table = tableRenderer
+
+marked.setOptions gfm: true, tables: true, breaks: true, smartLists: true, smartypants: true, renderer: renderer
 
 exports.getAllFiles = (directory, cb) ->
   files = []
