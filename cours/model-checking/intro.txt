@@ -1,0 +1,17 @@
+# Introduction au model-checking
+
+Voir les articles sur http://www.lrde.epita.fr/~adl/ens/mc/2014/
+
+**QCM à chaque début de cours**.
+=> Moyenne des QCM == Note du semestre
+
+## Plan des cours
+-----------------------------------------------------------------------------
+| 11 fév  | Introduction                                                    |
+| 18 fév  | Diagrammes de décision binaires (BDD)                           |
+| 25 fév  | Vérification CTL avec BDD                                       |
+| 4 mars  | Logique temporelle à temps linéaire (LTL), Automates de Büchi   |
+| 10 mars | Operations sur les automates de Büchi                           |
+| 17 mars | PSL, automates alternants                                       |
+| 24 mars | ?                                                               |
+-----------------------------------------------------------------------------
