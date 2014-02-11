@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "classes",
+  "dependencies": {
+    "coffee-script": "1.4.x",
+    "jade": "0.27.x",
+    "stylus": "0.42.x",
+    "express": "3.4.x",
+    "marked": "0.3.x",
+    "coffee-middleware": "0.2.x",
+    "async": "0.2.x",
+    "lodash": "2.4.x"
+  }
+}

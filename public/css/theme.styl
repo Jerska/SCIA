@@ -1,0 +1,35 @@
+$background-color     = #343838
+$content-color        = #FFFFFF
+$outside-title-color  = #00DFFC
+$inside-title-color   = #008C9E
+$border-color         = #00B4CC
+// Others -> 005F6B
+
+body
+  background-color $background-color
+
+  &> h1
+    text-align center
+    color $outside-title-color
+
+h1, h2, h3, h4, h5, h6
+  color $inside-title-color
+
+.container
+  background-color $content-color
+  padding 15px 30px
+  border 1px solid $border-color
+
+  .files
+    ul
+      list-style-type none
+      padding-left 20px
+
+      a[data-toggle="collapse"]
+        cursor pointer
+
+      i
+        margin-right 5px
+
+.glyphicon-folder-open, .glyphicon-folder-close
+  color #f4c261

@@ -1,0 +1,23 @@
+# Semainte Inter-Promo 2014
+
+## Ateliers
+
+- *Matlab*: Très utilisé en général
+- *OpenGL*: Synthèse d'image
+- *Robotique*
+- *Système Multi-Agents*
+- *Réseaux de neurones*
+
+## PFE
+
+Mi-mars 2014 -> Janvier 2015
+
+## Infos
+
+scia2015@googlegroups.com
+
+## Todo
+
+    mailto  : matthieu.bournat.epita@gmail.com
+    cc      : reda@lrde.epita.fr
+    subject : [RN] Atelier : dumont_h

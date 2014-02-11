@@ -1,0 +1,12 @@
+!!!
+html
+  head
+    title= file.name + ' - SCIA'
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/theme.css')
+    link(rel='stylesheet', href='/highlightjs/styles/solarized_dark.css')
+  body
+    h1= file.name
+    .container!= file.content
+    script(type='text/javascript', src='/highlightjs/highlight.pack.js')
+    script(type='text/javascript', src='/js/show.js')

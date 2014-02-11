@@ -1,0 +1,45 @@
+# Optimisation Convexe
+
+*Cours du 10 février 2014*
+
+## Présentation du prof
+**Ruiz Manuel**
+
+Thèse dans l'optimisation de la bouffe pour le bétail
+
+Consultant en optimisation chez Arthelys
+E-mail: manuel.ruiz@artelys.com
+Skype: manuel.ruiz.artelys
+
+## Objectifs
+
+Comprendre les enjeux de l'**optimisation non linéaire** (théoriques et pratiques)
+
+## Evaluation des compétences
+
+- Soutenance par trinômes
+- Développement d'une idée maeure du cours
+- Ecriture d'une présentation permettant de convaincre qu'on a compris (Dessins, images, etc. mais **PAS DE FORMULE**)
+
+## Deux outils utilisés
+
+**AMPL** & **KNITRO**
+
+## Introduction
+
+5 questions :
+- Optimisation ?
+- Convexe ?
+- Différentiable ?
+- Conditions d'optimalité ?
+- Théorie et application ?
+
+Qu'est-ce qu'une fonction ?
+Qu'est-ce que l'optimisation ?
+Qu'est-ce que l'optimisation linéaire ?
+Ex : Minimiser un problème qui répond à des critère.
+- Contraintes :
+  - Linéaires
+
+Un problème d'optimisation connexe différentiable est un problème de minimisation d'une fonction convexe différentiable
+sous contraintes définissant un domaine convexe exprimé à l'aide de.

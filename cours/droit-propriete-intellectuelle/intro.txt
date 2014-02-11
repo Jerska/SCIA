@@ -1,0 +1,92 @@
+# Droit de la propriété intellectuelle
+
+Flou juridique étant une *URGENCE* depuis 20 ans.
+
+Difficultés :
+- Domaine immatériel
+- Concepts très subjectifs
+
+=> Décision d'un tribunal pas sûre, toujours relative au tribunal
+
+*Ex: Apple vs Samsung -> iPhone vs Galaxy S4*
+Des pays où l'un a gagné, d'autres où c'est l'autre.
+
+Domaine avec beaucoup de négociations.
+
+Le fait qu'il y ait des incertitudes n'empêche pas le droit. Elles sont juste à prendre en compte au début.
+*Ex: Trop de procès pour des reprises. Solution : Eviter le procès en faisant co-signer l'auteur.*
+
+On a des droits *ex-orbitants du droit commun*.
+Dans la conception française du droit d'auteur, on lui accorde une place très importante, et qui sont difficiles à concilier avec des exploitations quasi-industrielles des oeuvres.
+*Ex: On donne à des auteurs un droit apparenté à celui de la personnalité à l'auteur sur une oeuvre. On ne pourra jamais totalement couper le lien liant l'auteur à son oeuvre.*
+
+**Un logiciel est une oeuvre.**
+
+                       *Pas de dépôt*
+
+                      PPT Litt et Art.
+                      /            \
+                     /              \
+          Droit d'auteur          Droits connexes
+                                  /            \
+                                 /              \
+                         Droits voisins       Droit sui generis
+                         (interprètes)  (producteur de la base de données)
+
+
+                          *Dépôt*
+
+                    PPT Institutionnelles
+                    /   /      |      \
+                   /   /       |       \
+              Brevets /     Dessins    Marques
+                     /    et modèles
+                   COV
+      (Certificat Obtention Végétale)
+
+
+Le dépôt n'est pas nécessaire pour le droit d'auteur.
+C'est la création qui est créatice du droit.
+
+Le dépôt permet de dater une création.
+
+Nom de domaine régi différemment :
+- Droit particulier Telécoms
+- Droit des marques
+
+**Un même object peut se voir appliquer plusieurs droits.**
+*Ex: La voiture => 2 marques (fabrique & commerciale)*
+
+Problèmes notamment avec le devoir d'unicité de l'art. Malgré la fin du dépôt du modèle au bout de 25 ans max., le droit d'auteur de 70 ans s'applique toujours.
+
+L'obectif de ce droit est la recherche du progrès.
+Philosophiquement, économiquement, doctrinairement deux moyens d'y arriver:
+- Certains disent que pour arriver à cet idéal, il faut donner la possibilité de vivre aux créateurs. Implique aussi l'indépendance dans la création.
+  Appât du gain favorisant la création.
+- D'autres au contraire ont toujours pensé que la libre circulation de la culture était nécessaire. On ne peut plus accéder à la culture autant d'il faut payer.
+
+On ne protège cependant pas tout, entre autres l'idée est de libre parcours.
+*Ex: La découverte scientifique appartient au domaine de l'idée. Le génome humain n'est pas protégé.*
+
+Le droit d'auteur est un domaine où il y a eu **beaucoup d'exceptions** à cause des deux thèses opposées.
+
+**/!\ Idée vs Forme**
+
+Un brevet ne peut être accordé que s'il y a une publication.
+
+Dans un système d'économie libérale, les propriétés intellectuelles sont contraires à ce principe, car elles confèrent un monopole, ce qui génére à son tour d'autres séries d'exceptions.
+
+#### Convention de Berne (Union de Berne)
+Assimilation de l'unioniste au national.
+Dans un état de la convention, un auteur, quelque soit sa nationalité, il est protégé comme les nationaux.
+
+## Plan
+
+- Conditions de la protection
+- Droits conférés (moraux & patrimoniaux)
+- Titulaire des droits d'auteur
+- Exploitation (contrats) des oeuvres
+
+On ne traitera pas de la contrefaçon de masse.
+
+Les sanctions civiles n'ont pas de plafond. Par conséquent, on peut atteindre des sommes astronomiques.

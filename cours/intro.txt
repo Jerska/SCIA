@@ -1,0 +1,82 @@
+# SCIA
+### Sciences Cognitives et Informatique Avancée
+
+Plutôt axé Intelligence Artificielle
+
+## Objectifs
+
+### Technique
+
+- Reconnaissance des formes
+- Aide à la décision- Raisonnement et Apprentissage automatique
+- Extraction des connaissances
+- Extraction des connaissances
+- IA distribuée & Systèmes Multi-Agents
+
+### Pédagogie
+
+=> Double diplôme
+=> Thèse
+
+## Débouchés
+
+### Métiers R&D
+
+- Extraction de connaissance et Aide à la décision
+  *Criteo, 24/7 Real Media, Société Générale, Cétélem, BNP Paribas*
+- Reconnaissance de formes
+  *Thalès, General Electric, Siemens, EADS, Peugeot, Renault*
+- Traitement du langage
+  *AFP, Syllab, Exalead, Systran*
+- Recherche
+  *Institut Pasteur, LIP6, LRI-Paris XI, Siemens*
+
+### Domaines
+
+- Analyse de données
+- Aide à la décision
+- Extraction de connaissances
+- Traitement d'images (vidéos-radars-satellites-médical)
+- Navigation automatiue
+- Robotique-Traitement audio
+- Simulation
+
+## Formation
+
+- Approches Symboliques
+- Approches Numériques
+
+Ce qu'on fait vraiment :
+- Bases mathématiques
+- Probas, Stats
+- Optimisation et Recherche
+- Opérationnelle
+
+## Unités d'Enseignement
+
+### Global
+
+S4
+- CE4 :   Connaissance de l'entreprise
+- LCI4 :  Langue et Culture de L'ingénieur
+- SG4 :   Sciences Générales
+- TOIA4 : Techniques et Outils pour l'IA
+- PMKR4 : Pattern Matching & Knowledge Representation
+
+### Détail
+
+UE la plus dure : SG4.  
+On commence par les probas histoire de pouvoir suivre par la suite.
+
+## Lab SCIA
+
+A VJ
+
+Plus d'activité autour des projets :
+- Biométrie
+- Vision et reconnaissances des formes
+- Apprentissage numérique
+- Traitement automatique des langages
+- Robotique en collaboration avec GISTR
+
+

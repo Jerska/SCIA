@@ -1,0 +1,25 @@
+{
+  "name": "classes",
+  "version": "0.0.0",
+  "authors": [
+    "Matthieu Dumont <jerska@live.fr>"
+  ],
+  "description": "My classes online",
+  "main": "server.coffee",
+  "keywords": [
+    "classes"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.1.x",
+    "highlightjs": "8.0.x"
+  }
+}

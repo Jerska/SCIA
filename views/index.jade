@@ -1,0 +1,27 @@
+!!!
+html
+  head
+    title SCIA
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/theme.css')
+  body
+    h1 Liste des cours
+    .container
+      .col-md-6.files
+        ul
+          mixin displayFiles(pwd, formatted, folder_name, files, level)
+            li
+              a(data-toggle="collapse", data-target='#' + formatted)
+                i.glyphicon.glyphicon-folder-open
+                span= folder_name
+            ul.collapse(id=formatted, class=(level < 1) ? 'in' : undefined)
+              each folder in files.folders
+                mixin displayFiles(pwd + folder + '/', formatted + '-' + folder.replace(/\W/, '-'), folder, files.directories[folder], level + 1)
+              each file in files.files
+                li
+                  a(href='/show/' + pwd + file)
+                    i.glyphicon.glyphicon-file
+                    span= file
+          mixin displayFiles('', 'root', 'SCIA', files, 0)
+    script(type='text/javascript', src='/jquery/jquery.min.js')
+    script(type='text/javascript', src='/bootstrap/dist/js/bootstrap.min.js')
