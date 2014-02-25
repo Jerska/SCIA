@@ -1,0 +1,19 @@
+Règle d’exploration
+  Si je ne porte rien
+  Et je ne perçois rien
+  Alors je marche random en laissant des phéromones
+
+Règle trouver
+  Si je ne porte rien
+  Et je perçois du minerai
+  J'en prends
+
+Règle rapporter
+  Si je porte du minerai
+  Et je ne suis pas à la base
+  Je retourne a la base en lachant des phéromones
+
+Règle déposer
+  Si je porte du minerai
+  Et je suis à la base
+  Alors je le dépose

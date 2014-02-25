@@ -1,0 +1,37 @@
+## Fonctions booleennes
+
+     n
+    B  --> B
+
+L'idée des (RO)BDD :
+
+    1. Utiliser des arbres de décision binaires => Ordre sur variables \
+                                                                        > Forme canonique => Toute fonction booléenne a 1 représentation unique
+    2. Identifier des sous-arbres identiques    => Table d'unicité     /
+
+    3. Cache de calcul
+
+
+    F1 = a ^ b      F2 = b ^ !c      F3 = !a v c
+
+       a              b                  a
+       |`            ' \                /'
+       | `           '  \              / '
+       |  b          '   c            c  '
+       | /`          ' /  `          ' \ '
+       |/  `         '/    `        '   \'
+       0    1        0      1      0     1
+
+
+### Fonctions
+
+#### Apply(op, f, g)
+
+    if (op, f, g) € cache
+      return cache[(op, f, g)]
+    if (var(f) == var(g))
+      res <- Mk(var(f), Apply(op, low(f), low(g)), Apply(op, high(f), high(g)))
+    else if var(f) < var(g)
+      res <- Mk(var(f), Apply(op, low(f), g), Apply(op, high(f), g)))
+    else
+      res <- Mk(var(g), Applg(op, f, low(g)), Applg(op, f, hifh(g))))

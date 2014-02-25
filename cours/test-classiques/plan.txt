@@ -1,0 +1,19 @@
+# Tests classiques
+
+## Plan
+
+### Rappels de la loi gamma et la loi gaussienne
+### Fonctions caractéristiques
+### Convergence de statistiques
+#### C.V. en probas.
+#### CV en moyenne quadratique
+#### CV en loi
+### Approximation de la loi B(n, p) par la loi gaussienne
+### Approximation de Poisson par la loi gaussienne
+### Mhn central-limite
+### Vecteurs aléatoires
+#### Loi conjointe
+#### Lois marginales
+#### Lois conditionnelles
+#### Corrélation linéaire
+

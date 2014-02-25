@@ -1,0 +1,236 @@
+# Probabilités et Statistiques
+
+**Herbert GROSCOT**
+Le support de cours sera distribué sous la forme de `PDF` avec des formules.
+
+## Introduction
+
+### Historique
+
+Branche des mathématiques depuis moins d'un siècle.
+Était avant considérée comme un amusement.
+
+Notion d'incertitude historique, rencontrée auparavant dans le commerce international. (Prise de risques)
+  => Dès le `XVIè` siècle : Assurances maritimes
+
+Des grandes figures :
+- **Pascal** et **Fermat** : *1654*
+  Ont commencé sur des problèmes de combinatoire de théorie des jeux pour la noblesse.
+- **Gauss** : 1897
+- **Kolmogorof** : ~1930
+
+La théorie moderne n'est apparue qu'au `XIXè` siècle avec **Gauss** et **Laplace**.
+La courbe de Gauss vient des erreurs d'observation de position des étoiles.
+
+### Applications
+
+- Théorie des jeux
+- Applications de **Monte-Carlo**
+- Physique quantique
+- pH de l'eau
+- Météorologie
+- Finance & Assurances
+- Algorithmique : Solutions probabilistes convergeant plus rapidement
+- Médecine
+- Circulation automobile
+
+### Aspect empirique
+
+Ensemble d'évènements élémenttaires noté `Ω`.
+Un évènement élémentaire est noté *ω ∈ Ω.*
+Des évènenements *A ⊂ Ω ℙ(A)*
+
+*℘(Ω)* : les sous-ensembles de `Ω`.
+
+              X
+        ω --------> X(ω)
+    patient     résultat
+              de l'analyse
+
+              X
+        Ω --------> X(ℝ)
+    ω ∈ Ω --------> X(ω) ∈ ℝ
+
+### Loi des grands nombres
+
+Si on observe une suite d'évènements indépendants - une répétition à l'infini d'expériences ω<sub>1</sub>, ω<sub>2</sub>, ... , ω<sub>i</sub>, ...
+Pour chaque n, on pose
+
+          card ({ωₖ ∈ A | 1 ≤ k ≤ n})
+    Pn =  ---------------------------
+                       n
+
+"On observe" (dans des conditions à préciser)
+
+    lim Pₙ = p
+      n→∞
+
+### Statistiques vs Probabilités
+
+Les probabilités consistent à créer un modèle.
+Les statistiques consistent à valider ce modèle et décide.
+
+## Un cas simple : Loi de Bernouilli
+### Définition
+
+          X
+    Ω --------> {0, 1}
+
+Caractérisé par un seul nombre `p ∈ [0, 1]`
+
+    p = ℙ(X = 1)
+    ℙ(X = 0) = 1 - p
+
+"En moyenne", quand on prend beaucoup (`n`) d'observations :
+
+    p.n       ≈ 1
+    (1-p).n   ≈ 0
+
+#### Espérance :
+
+    E(X) = p
+
+#### "Écart / Moyenne" -> Variance
+
+    (X - E(X))²
+    E((X - E(X))²)
+
+| X | X - E(X) | (X - E(X))² | Proba | Proba * (X - E(X))² |
+|---|:--------:|:-----------:|:-----:|:-------------------:|
+| 0 | -p       | p²          | 1 - p | p².(1 - p)          |
+| 1 | 1 - p    | (1 - p)²    | p     | p.(1 - p)²          |
+
+    Var(X) = p².(1 - p) + p.(1 - p)²  = p(1 - p) {p + 1 - p}
+                                      = p.(1 - p)
+
+#### Écart-type
+
+          ______     ________
+    s = \/Var(X) = \/p.(1 - p)
+
+## Les V.A Discrètes
+### Définition
+
+
+    Ω ------> ℤ
+        ou
+    Ω ------> ℕ
+        ou
+    Ω ------> Ensemble dénombrable {n₁, n₂, n₃, ...}
+
+### La loi de probabilité
+
+    Si n € Z    pn = ℙ(X) = n
+    Si n € N
+    Si E = {x1, x2, ..., xn, ...} pn = ℙ(X = xn)
+      n € I
+      où 1 I = {1, ... , N}
+      2 I = N*
+
+### Fonction de répartition
+#### Définition
+
+Soit X : Ω -> R une V.A. quelconque, on appelle fonction de répartition la fonction
+
+  F(X) = ℙ(X <= x)
+
+    ^
+    |                                        _
+    |                       P4 {   _________|
+    |            P3 {    _________|
+    |     P2{  _________|
+    |P1{
+    ------------------------------------------>
+              ^         ^         ^         ^
+              x1       x2         x3        x4
+
+On suppose x1 <= x2 <= x3 <= ...
+
+### Espérance, Variance, Ecart-type
+#### Définition
+
+##### Espérance
+
+E(X) = E    n.pn - loi dans Z
+      n∈Z
+
+     = E    n.pn - loi dans N
+      n∈N
+
+Pour une loi
+
+    X
+Ω ----> E = {x1, ..., xn, ...; n € I et xn ∈ R}
+
+E(X) = Σ  pn.xn
+      n∈I
+
+Remarque: Σ    pn = 1
+        n € I
+
+Exemple :
+Sur {1, ..., n, ...} = N*
+
+               6
+ℙ(X = n) = ---------
+             π².n²
+
+##### Théorème:
+
+     ∞   1     π²
+     Σ  --- = ---
+    n=1  n²    6
+
+     ∞     6
+     Σ  ------ = 1
+    n=1  π².n²
+
+D'où :
+
+                         6
+    E(X) = E n.pₙ = E ------- = +∞
+                        π².n
+
+Il existe des **V.A. sans espérance**.
+
+##### Variance
+
+    Var(X) = E ((X - E(X))²)
+
+##### Ecart-type
+
+             _______
+    σ(x) = \/ Var(X)
+
+Il existe des VA avec Espérance mais Variance infinie
+
+#### Exemple
+##### Loi Binomiale
+
+X1, ... , Xn n lois de Bernouilli "indépendantes"
+
+A et B *indépendants* : ℙ(A∩B) = ℙ(A).ℙ(B)
+
+On reste sur le lancer de pièces :
+
+    ℙ(X = k)  = ℙ("k fois 1")
+              = ℙ("n-k fois 0")
+
+                _
+               / k
+    ℙ(X = k) = \_n p^k (1 - p)^(n - k)
+
+Les variances s'additionnent pour des lois indépendantes.
+
+         n
+Var(Z) = E  Var(X )
+        k=1      k
+       = n.p.(1 - p)
+
+             __________   ___
+sigma(Z) = \/ p.(1 - p) \/ n
+
+#### Cas d'une VA continue
+
+Ω ---> R à **densité**
+"le truc" c'est la densité `f(x)`

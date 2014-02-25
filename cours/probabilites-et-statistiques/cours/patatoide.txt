@@ -1,0 +1,161 @@
+Est-ce que l'abcisse est entre -1 et 1
+
+$$ X = cos(\Theta) $$
+$$ \Theta : [0, \pi]$$
+$$ \theta : d\theta$$
+$$ P(\Theta \in I) = {1 \over x} \int\_I d\theta$$
+$$ x = cos(\theta) $$
+$$ dx = -sin(\theta) . d \theta $$
+$$ d \theta = {dx \over -sin \theta} $$
+$$ P(\theta \in J) = \int\_{x \in I'} {dx \over \sqrt{1 - x²}} $$
+
+En X la densité est de \\( dx \over \sqrt{1 - x²} \\)
+
+### Couple de variables aléatoires
+
+- Un espace \\( \Omega \\)
+- 2 V.A. \\( X \\) et \\( Y \\)
+
+#### Exemple 1
+
+\\( X \\) : Loi de Bernouilli \\( p \\)
+\\( Y \\) : Loi de Bernouilli \\( p \\)
+
+\\( X \\) et \\( Y \\) indépendantes
+
+| \\( _Y \backslash ^X\\) | 0                | 1                 |
+|:------------:|:----------------:|:-----------------:|
+| 0            | \\( (1 - p)² \\) | \\( p(1 - p) \\)  |
+| 1            | \\( p(1 - p) \\) | \\( p² \\)        |
+
+#### Exemple 2
+
+2 dés entre 1 et 6
+- \\( S \\) : Somme des faces
+- \\( D \\) : Différence en valeur absolue
+- Les deux dés sont indépendants
+
+
+\\(_S \backslash ^P\\) |0  |1  |2  |3  |4  |5
+:---------------------:|:-:|:-:|:-:|:-:|:-:|:-:
+**2 **                 |1  |   |   |   |   |
+**3 **                 |   |2  |   |   |   |
+**4 **                 |1  |   |2  |   |   |
+**5 **                 |   |2  |   |2  |   |
+**6 **                 |1  |   |2  |   |2  |
+**7 **                 |   |2  |   |2  |   |2
+**8 **                 |1  |   |2  |   |2  |
+**9 **                 |   |2  |   |2  |   |
+**10**                 |1  |   |2  |   |   |
+**11**                 |   |2  |   |   |   |
+**12**                 |1  |   |   |   |   |
+
+### Loi conjointe
+
+2 lois \\( X, Y \\)
+\\( F\_{x, y}(x, y) = \mathbb{P}(X \leq x, Y \leq Y) \\)
+
+** Cas discret ** :
+
+\\( X: \\\{x_1, ... x_n\\\} \\)
+\\( Y: \\\{y_1, ... y_n\\\} \\)
+
+$$ P\_kl = P(X = x\_k, Y = y\_k)$$
+
+** Cas continu ** :
+
+La loi des conjointes a une densité \\( f \\)
+$$ P((X, Y) \in A) = \iint\_{(x,y) \in A} f(u, v) . du . dv $$
+
+### Loi marginale
+
+** Cas discret ** :
+
+- *Loi de X* :
+  $$ P(X = x\_k) = \sum\_l P\_{kl} $$
+- *Loi de Y* :
+  $$ P(Y = y\_l) = \sum\_k P\_{kl} $$
+
+** Cas continu ** :
+
+\\( X \\) et \\( Y \\) ont aussi une densité
+
+- *Pour X* :
+  $$ f\_X(x) = \int\_{y \in \mathbb{R}} f(x, y) . dy $$
+- *Pour Y* :
+  $$ f\_Y(y) = \int\_{x \in \mathbb{R}} f(x, y) . dx $$
+
+### Loi conditionnelle
+
+** Cas discret ** :
+
+- *Pour X* :
+  $$ P(X = x\_k | Y = y\_l) = {P\_{kl} \over P(Y = y\_l)} $$
+
+- *Pour X* :
+  $$ P(Y = y\_l | X = x\_k) = {P\_{kl} \over P(X = x\_k)} $$
+
+** Cas continu ** :
+
+$$ f\_{Y = y} (x) = {f(x,y) \over f\_Y(y)} $$
+
+
+### Covariance
+
+Coefficient de corrélation
+
+- \\( X, Y \\)
+- \\( E(X) = m\_x \\)
+- \\( E(Y) = m\_y \\)
+
+$$ Cov(X, Y) = E((X - m\_x)(Y - m\_y)) $$
+
+On note \\( \sigma(x) = \sigma\_x \\) et \\( \sigma(y) = \sigma\_y \\)
+
+** Coefficient de corrélation ** :
+
+$$ p = {Cov(X, Y) \over \sigma\_x . \sigma\_y} $$
+
+** Propriétés ** :
+1. Toujours : \\( -1 \leq p \leq 1 \\)
+2. Si \\( X \\) et \\( Y \\) sont indépendantes, \\( p = 0 \\).
+
+** Remarque sur les lois indépendantes ** :
+On a \\( X, Y \\) et \\( f\\)
+$$ f(x, y) = f\_x(x) f\_y(y) $$
+
+** Covariance de corrélation ** :
+$$ E(Y | X = x) = {{\int y . f(x, y) . dy} \over {\int f(x, y) . dy}} $$
+
+** Espérance conditionnelle ** :
+$$ E(X | Y = y) = {\int x f\_{Y = y}(x) . dx} \\ = {{\int x . f(x, y) . dx} \over {\int f(x, y) . dx}}$$
+
+** Une dernière formule [Impossible de savoir ce que c'est] ** :
+- \\( X \\) : V.A.
+- Densité : \\( g : X \implies \mathbb{R} \\)
+- \\( Z = g(X) \\)
+
+Densité de \\( X \\) : \\( f(x) . dx \\)
+Densité de \\( Z \\) : \\( Z = g(X) \\)
+$$ dZ = g'(X).dX $$
+$$ dX = {dZ \over g'(X)}$$
+$$ f(x) . dx = {{f(x) \over g'(x)} . dz} $$
+$$ x = g'(Z) $$
+
+*Exemple* :
+
+\\( U \\) uniforme sur \\( [0, 1] \\)
+\\( x \\) de densité \\( 1 \\) sur \\( [0, 1] \\)
+\\( Z = -lgU \\)
+Sur \\( [0, 1] \\) : \\( f(x) = 1 \\)
+
+$$ f(x).dx = dx $$
+$$ Z = -lg (x) $$
+$$ x = e^{-Z} $$
+$$ dx = -e^{-Z}.dZ $$
+
+Densité en \\( Z \\) : \\( h(Z) = e^{-Z}\\)
+
+** La Der des Ders **
+
+$$ E(Z) = \int g(x) . f(x) . dx $$

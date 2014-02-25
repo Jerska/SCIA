@@ -1,0 +1,23 @@
+### Loi exponentielle, loi de Poisson, loi uniforme
+
+##### Exemple de l'arrêt de bus
+
+- **Voyageur** Attends un temps T ?
+- **Général** Combien de bus N passent sur [t1, t2]
+
+      P(pas de tic pendant ðt)
+    = P(Pas de tic de 0 à ðt)
+    = 1 - P(tic entre 0 et ðt)
+    = 1 - P(T <= ðt)
+    = 1 - F(ðt)
+
+`F` étant la fonction de répartition
+
+### Inégalité de Bienaymé-Tchebychev
+
+X ~ a
+E(X) = m
+s(X) = s
+                    s²
+P(|X - m| >= a) <= ----
+                    a²

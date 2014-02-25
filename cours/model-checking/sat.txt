@@ -1,0 +1,8 @@
+# SAT Solving
+
+**Suède - 2008**
+*Koen Claessen - Niklas Een - Mary Sheeran - Niklas Sörensson*
+
+### Résoudre un problème de satisfiabilité
+
+- Début de la recherche : **1990s**

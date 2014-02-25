@@ -28,8 +28,9 @@ Comprendre les enjeux de l'**optimisation non linéaire** (théoriques et pratiq
 ## Introduction
 
 5 questions :
-- Optimisation ?
-- Convexe ?
+- **Optimisation ?**
+  Branche des mathématiques cherchant à analyser et à résoudre analytiquement ou numériquement les problèmes qui consistent à déterminer le meilleur élément d'un ensemble, au sens d'un critère quantitatif donné.
+- **Convexe ?**
 - Différentiable ?
 - Conditions d'optimalité ?
 - Théorie et application ?
@@ -43,3 +44,166 @@ Ex : Minimiser un problème qui répond à des critère.
 
 Un problème d'optimisation connexe différentiable est un problème de minimisation d'une fonction convexe différentiable
 sous contraintes définissant un domaine convexe exprimé à l'aide de.
+
+
+## Espace vectoriel
+
+
+Deux notations pour un vecteur colonne :
+
+
+         _      _
+        |   x    |
+        |    1   |
+        |        |
+    x = |  ...   | = [xi]
+        |        |      1 - n
+        |  x     |
+        |   n    |
+        |_      _|
+
+    _
+    x . x = |x|²
+
+Le produit scalaire usuel défini sur `E` est noté :
+
+                        T     n
+    < x, y > = x * y = x  y = E  x  . y
+                             i=1  i    i
+
+Un ensemble convexe satisfait :
+
+    Vx € E, Vy € E, Vl € [0,1], lx + (1 - l) y € E
+
+## Fonctions
+
+Application de `E` dans R qui, à tout élément x € E associe une unique valeur f(x)
+
+- **Forme linéaire**, cas particulier où
+
+    f(x) = a . x
+
+- **Forme affine**, cas particulier où :
+
+    f(x) = a . x + b
+
+                 | x0 € E tq A . x0 = b
+    A x = b  => <
+                 | v € Ker(E) tq xi = x0 + vi
+
+- **Forme quadratique**, cas particulieroù :
+
+    f(x) = x . A . x + b . x + c
+
+         = < x, A . x > + b . x + x
+
+- `f` est **convexe** si elle est en dessous de ses cordes :
+
+## Les formes quadratiques
+
+- À une transformation affine près, dans ce cours, les formes quadratiques seron de la forme :
+
+              T
+      q(x) = x . M . x = <x, Mx>
+
+  Il existe une matrice symétrique M.
+
+- Toute matrice **_symétrique réelle_** admet :
+
+  - Des valeurs propres et des vecteurs propres
+  - Une base de vecteurs propres
+  - Une expression de la forme
+
+         T
+        P . DP avec D = diag(Sp(M))
+
+  **Remarques**:
+
+            T
+       M + M
+      -------  = Symétrique
+         2
+
+            T
+       M - M
+      ------- = Anti-symétrique
+         2
+
+                        T          T
+       T      T /  M + M      M - M   \
+      x Mx = x  | -------- + -------  | . x                  // S = Symétrique (M)
+                \    2          2     /
+
+                               T
+              T      T /  M - M  \
+           = x Sx + x  | ------- | . x
+                       \    2    /
+
+              T      1  /  T        T  T   \
+           = x Sx + --- | x . M x - x  M  x |
+                     2  \                  /
+
+              T        1
+           = x . Sx + --- (<x, Mx> - <Mx, x>)
+                       2
+              T
+           = x . Sx
+
+- En notant `y = Px`, l'expression de `x` dans la nouvelle base
+
+    q(x) = E        l . y²
+          l € Sp(M)  i   i
+          i
+
+
+- Une forme quadratiques est définie si et seulement si
+
+      q(x) = 0 <=> x = 0
+
+  NB : `x = O => q(x) = 0` toujours vrai
+
+
+- Si q est définie, alors M est inversible
+
+- Une forme quadratique définie est définie positive ou définie négative
+  - Preuve par l'absurde : `q(x+) > 0` et `q(x-) < 0`
+  - Utiliser `ø: t € [0, 1] -> ø(t) = (1 - t) . x- + t . x+`
+  - `ø(0) < 0, ø(1) > 0`, ø continue donc ... ?
+
+- Le rang d'une forme quadratique est `n - dim(ker(q))`
+  - `n` est la dimension de l'espace
+
+- Pour étudier une forme quadratique, on étudie le spectre de la matrice associée.
+  - Si \\( \exists (x, y) \; tq \; q(x)q(y) < 0 \\), alors `q` n'est pas définie
+  - Valeurs propres / Vecteurs propres
+  - Racines du polynôme caractéristique : $x\_M (\lambda) = det(M - \lambda I)$
+
+- Caractériser les formes quadratiques suivantes
+  - \\( Q(x, y, z) = 2x² - 2y² - 6z² + 3xy - 4xz + 7yz \\)
+    $$ M = \begin{pmatrix} 2 & \frac{3}{2} & -2 \\\\ \frac{3}{2} & -2 & \frac{7}{2} \\\\ -2 & \frac{7}{2} & 6 \end{pmatrix} $$
+
+  - \\( Q(x, y, z) = 3x² + 3y² + 3z² + 2xy - 2xz + 2yz \\)
+    $$ M = \begin{pmatrix}3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \end{pmatrix} $$
+
+              /  3  1 -1  \
+          M = |  1  3  1  |
+              \ -1  1  3  /
+
+  - \\( Q(x, y, z, t) = xy + yz + zt + tx \\)
+
+             / 0 1 0 1 \
+        2M = | 1 0 1 0 |
+             | 0 1 0 1 |
+             \ 1 0 1 0 /
+
+  **Remarque**: \\( q(e\_i) = m\_{i,i} \\)
+
+### Dérivées
+
+- Le **gradient** est un vecteur formé de dérivées partielles
+- Pour montrer qu'une application est différentiable, montrer qu'elle est de classe \\(C^1\\)
+  - Déterminer l'expression de son gradient
+  - Monter que le gradient est continu
+- Exemples
+  - Fonction linéaire
+  - Forme quadratique, polynomiale

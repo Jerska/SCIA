@@ -1,0 +1,50 @@
+Exercice 1
+==========
+
+2 dés non truqués.
+Somme des tirages (2 -> 12) : une V.A. discrète : `S` (Somme des deux faces)
+
+Questions :
+1. Sans calcul : Déterminer l'espérance de S
+2. Présentation du calcul de Var(S)
+
+Résultats :
+1. Par symétrie, c'est juste la moyenne => 7
+2. On applique la formule (voir feuille excel)
+
+Exercice 2
+==========
+
+Soit X une V.A. dont la densité vaut:
+
+    f(x) = 1/2 * e^(-|x|)
+
+Questions:
+1. Graphe de f
+2. E(X)
+3. Var(X) et sigma(x)
+
+Résultats:
+1. Graphe
+               ^
+               | 1/2
+              /|\
+       ____,-' | '-,___
+    --------------------->
+2. E(X) = 0 (Prouvé par la parité et la convergence de l'intégrale)
+3. Var(X) = 2   ___
+   sigma(X) = \/ 2
+   (Utilisation de l'intégration par partie pour dégager l'exponentielle, et utilisation de la parité pour uniquement intégrer sur 0 -> +∞)
+
+Exercice 3
+==========
+
+Attente d'un bus d'un passager A
+On prend `P(B₁ = 1) = p` et `P(B₁ = 0) = 1 - p`
+
+Si `B₁ = 1` : A prend le bus
+Si `B₁ = 0` : A attend
+
+On continue avec B₂, ..., Bₙ
+
+On cherche T = le moment où A prend le bus

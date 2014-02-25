@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "bootstrap": "3.1.x",
-    "highlightjs": "8.0.x"
+    "highlightjs": "8.0.x",
+    "MathJax": ""
   }
 }

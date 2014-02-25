@@ -1,0 +1,64 @@
+# Rappels sur la loi Gamma et la loi Gaussienne
+
+## Loi gaussienne
+### Définition
+On dit qu'une V.A. positive X sait une loi gamma de paramètre r, noté Yr.
+Sa densité est donnée par
+
+             1      -X    r - 1
+    f(x) = ----- . e   . X        Vx > 0
+             Γ
+              r
+
+`f` est la fonction de densité
+
+- `f(x) >= 0`
+- `∫f(x).dx = 1`
+
+où la fonction Γ(x) est définie par
+            _
+           |  -t    x - 1
+    Γ(x) = | e   . t      . dt
+          _|
+
+Fonction décroissante pour `x < 0`
+
+### Propriétés
+
+    1) Γ(X + 1) = x . Γ (x)
+    2) Γ(1) = 1
+    3) Γ(n + 1) = n! V n € N
+                  1 * 3 * 5 ... (2k - 1)
+    4) Γ(k + ½) = ----------------------- . Γ(1/2)
+                            k
+                           2
+                  ____ 2k
+    5) Γ(1/2) = \/ pi
+
+Γ prolonge la loi factorielle sur les Réels positifs
+
+### Espérance
+
+             _
+            |
+    E(X)  = |    x . f(x) . dx           X suit Yr.
+           _| R
+
+             _ +oo                               _
+            |    1      -x    r          1      |   -x    r         Γ(r + 1)
+          = |  ----- . e   . x  . dx = ----- .  |  e   . x   . dx = -------- = r
+          0_|   Γr                      Γr     _|                     Γ(r)
+
+
+### Variance
+
+
+
+    V(X) = E(X²) - E²(X)
+             _ +oo                             _ +oo
+            |                       1         |   -x    r + 1        Γ(r + 2)
+    E(X²) = |   x² . f(x) . dx = --------  .  |  e  . x      . dx = ----------
+         0 _|                      Γ(r)   0  _|                       Γ(r)
+
+
+

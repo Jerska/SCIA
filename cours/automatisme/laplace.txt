@@ -1,0 +1,79 @@
+### Transformée de Laplace
+
+           _ +oo
+          |         -pt
+L(f)(p) = | f(t) . e    . dt
+       0 _|
+
+#### Propriété
+
+L est linéaire.
+L(af + g) = a . L(f) + L(g)
+
+#### Transformées usuelles
+
+    n          n!
+L(id )(p) = -------
+               n+1
+              p
+
+Comme elle est linéraire, on peut représenter les polynômespar linéarité.
+   a.id                1
+L(e     . 1  )(p) = -------
+           R+        a - p
+
+                1
+L(sin)(p) = -------
+             p² + 1
+
+               p
+L(cos)(p) = -------
+             p² + 1
+
+               1
+L(exp)(p) = -------
+             p - 1
+
+            p
+L(sh) = --------
+         p² - 1
+
+            1
+L(ch) = --------
+         p² - 1
+
+             1      -ap    -bp
+L(1     ) = --- . (e    - e   )
+   [a, b]    p
+
+                   -pa
+L(f . 1       ) = e    . L(f * (id + a) . u)(p)
+       [a +oo[
+
+Pour celui-ci, via changement de variables s = t - a, ds = d(t - a)
+
+** Remarques **
+
+              it    -it
+             e   - e
+    sin(t) = -----------
+                 2i
+
+               it    -it
+              e   + e
+    cos(t) = ------------
+                  2
+
+     it
+    e   = cos(t) + i sin(t)
+
+     t
+    e = sh(t) + ch(t)
+
+
+### Exercice
+
+                                                            p                        -p                                   p² - 2p + 2
+L(id² . 1       )(p) = L(id² . (1         - 1         )) = e . L(t->(t - 1)² . u) - e   . L(t->(t + 1)² . u) =4 . sh(p) - -------------
+         [-1, 1]                 [-1, +oo]   [1, +oo]                                                                            3
+                                                                                                                                p
