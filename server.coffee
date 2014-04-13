@@ -1,6 +1,5 @@
 express = require 'express'
 stylus = require 'stylus'
-coffeescript = require 'coffee-middleware'
 routes = require './routes'
 api = require './routes/api'
 
@@ -17,8 +16,7 @@ app.configure ->
   app.set 'view engine', 'jade'
   app.use express.bodyParser()
   app.use express.methodOverride()
-  app.use stylus.middleware src: __dirname + '/public'
-  app.use coffeescript src: __dirname + '/public'
+  app.use require('connect-assets')(paths: ['public/js', 'public/css'])
   app.use express.static(__dirname + '/public')
   app.use express.static(__dirname + '/bower_components')
   app.use app.router

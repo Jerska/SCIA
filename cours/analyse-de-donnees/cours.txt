@@ -6,11 +6,12 @@ Ainsi, on cherchera à estimer par exemple la moyenne $m$ de la population à pa
 Ceci n'est possible que si l'échantillon a été tiré selon des règles rigoureuses destinées à en assurer la représentativité. (Tirages équiprobables et indépendants)
 
 #### Définition
->Une statistique $T$ est une vatriable aléatoire mesurable de $X\_1, X\_2, ..., X\_n$
+>Une statistique $T$ est une variable aléatoire mesurable de $X\_1, X\_2, ..., X\_n$
 >$$ T = f(X\_1, X\_2, ..., X\_n)$$
 
 #### Définition
->La statistique $\overline{X}$ en moyenne empirique de l'échantillon $(X\_1, X\_2, ... , X\_n)$ et $\overline{X} = {1 \over n} \sum\limits\_{i = 1}^n X\_i$.
+>La statistique $\overline{X}$ en moyenne empirique de l'échantillon $(X\_1, X\_2, ... , X\_n)$ est
+>$$ \overline{X} = {1 \over n} \sum\limits\_{i = 1}^n X\_i $$
 
 #### Espérance
 >L'espérance de $(X\_1, X\_2, ... , X\_n)$ échantillon de $X$ s'exprime sous cette forme :
@@ -135,48 +136,42 @@ $$ X \sim \mathcal{P}(\theta)$$
 Loi de Poisson de paramètre inconnu $\theta$.
 $(X\_1, ..., X\_n)$ un echantillon de $X$.
 La vraisemblance de $(X\_1, ... , X\_n)$ est :
-$$L(x\_1, ... , x\_n, \theta) = P\left[(X\_1 = x\_1) \cap ... \cap (X\_n = x\_n) \right]$$
-$$ = \prod\limits\_{i = 1}^{n} P[X\_i = x\_i]$$
-$$ = \prod\limits\_{i = 1}^{n} e^{-\theta} {\theta^{x\_i} \over x\_i!}$$
-$$ L(X\_1, ..., x\_n, \theta) = {e^{-n\theta} \theta^{\sum\limits\_{i = 1}^{n} x\_i} \over \prod\limits\_{i = 1}^{n} x\_i!} $$
+$$\begin{array}{rl}
+L(x\_1, ... , x\_n, \theta) = & P\left[(X\_1 = x\_1) \cap ... \cap (X\_n = x\_n) \right] \\\\
+= & \prod\limits\_{i = 1}^{n} P[X\_i = x\_i] \\\\
+= & \prod\limits\_{i = 1}^{n} e^{-\theta} {\theta^{x\_i} \over x\_i!} \\\\
+= & {e^{-n\theta} \theta^{\sum\limits\_{i = 1}^{n} x\_i} \over \prod\limits\_{i = 1}^{n} x\_i!}
+\end{array}$$
 
 ## L'information de Fisher
 
 #### Définition
-On appelle quantité d'information de Fisher $I\_n(\theta)$ apportée par un échantillon $(X\_1, ..., X\_n)$ sur le paramètre $\theta$ :
-
-$$ I\_n(\theta) = E\left( \left( {\partial{\ln L} \over \partial{\theta}} \right)^2\right) $$
+> On appelle quantité d'information de Fisher $I\_n(\theta)$ apportée par un échantillon $(X\_1, ..., X\_n)$ sur le paramètre $\theta$ :
+> $$ I\_n(\theta) = E\left( \left( {\partial{\ln L} \over \partial{\theta}} \right)^2\right) $$
 
 #### Théorème
-Si le domaine de définition de $X$ ne dépend pas de $\theta$, alors :
-$$ I\_n(\theta) = E\left({\partial^2{\ln L} \over \partial{\theta^2}}\right) $$
+> Si le domaine de définition de $X$ ne dépend pas de $\theta$, alors :
+> $$ I\_n(\theta) = E\left({\partial^2{\ln L} \over \partial{\theta^2}}\right) $$
 
 # L'estimation sans biais de variance minimale
 
 #### Théorème
 
-S'il existe un estimateur de $\theta$ **sans biais**, alors il est **unique**.
+> S'il existe un estimateur de $\theta$ **sans biais**, alors il est **unique**.
 
 ** Preuve **
-Supposons $\exists T\_1$ et $T\_2$ sans biais de $\theta$ de variance minimale $V$.
+Supposons $\exists \; T\_1, T\_2$ sans biais de $\theta$ de variance minimale $V$.
 Soit $T\_3 = {T\_1 + T\_2 \over 2}$
 $$ E(T\_3) = {E(T\_1) + E(T\_2) \over 2} = {2 \theta \over 2} = \theta$$
 $T\_3$ est sans biais.
-$$V(T\_3) = {1 \over 4} V(T\_1 + T\_2) = {1 \over 4}(V(T\_1) + V(T\_2) + 2\cov(T\_1, T\_2))$$
 
-** Covariance **
 
-$$ \cov(T\_1, T\_2) = \rho \sigma\_1 \sigma\_2 $$
-$$ \rho = {\cov (T\_1, T\_2) \over \sigma\_1 \sigma\_2} $$
-
-** Retour à la preuve **
-
-$$ V(T\_3) = {1 \over 4} \left( V(T\_1) + V(T\_2) + 2 \rho \sigma\_1 \sigma\_2 \right) = {1 \over 4} (V + V + 2\rho V)$$
-$$ V(T\_3) = {V \over 2}(1 + \rho) $$
-
-Si $f < 1$, on a $V(T\_3) < V$ *impossible*.
-$$\implies f = 1$$
-$$\implies T\_1 - E(T\_1) = \lambda(T\_2 - E(T\_2))$$
-$$ T\_1 - \theta = \lambda(T\_2 - \theta) $$
-$$ T\_1 - \theta = \lambda (T\_2 - \theta) $$ et $$ V(T\_1) = V(T\_2) = V$$
-$$ \implies \lambda = 1 \implies T\_1 = T\_2 $$
+$$\begin{array}{rl}
+V(T\_3) = & {1 \over 4} V(T\_1 + T\_2) = {1 \over 4}\Big(V(T\_1) + V(T\_2) + 2\mathrm{Cov}(T\_1, T\_2)\Big) \;\;\; \left[ \text{N.B. : Covariance : }\mathrm{Cov}(T\_1, T\_2) = \rho \sigma\_1 \sigma\_2 \iff \rho = {\mathrm{Cov} (T\_1, T\_2) \over \sigma\_1 \sigma\_2} \right] \\\\
+= & {1 \over 4} \left( V(T\_1) + V(T\_2) + 2 \rho \sigma\_1 \sigma\_2 \right) = {1 \over 4} (V + V + 2\rho V) \\\\
+= & {V \over 2}(1 + \rho) \;\;\;\; \Big[ \text{Si } \rho < 1 \text{, on a } V(T\_3) < V \text{ impossible !} \implies \rho = 1 \Big] \\\\
+\implies & T\_1 - E(T\_1) = \lambda\Big(T\_2 - E(T\_2)\Big) \\\\
+\iff & T\_1 - \theta = \lambda(T\_2 - \theta) \;\;\;\; \Big[ \text{Or } \;\; V(T\_1) = V(T\_2) = V \Big] \\\\
+\implies & \lambda = 1 \\\\
+\implies & T\_1 = T\_2
+\end{array}$$
