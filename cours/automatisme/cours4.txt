@@ -1,0 +1,97 @@
+## Produit de convolution
+
+### Définition
+
+$$ f * g : t \rightarrow \int\_{-\infty}^{+\infty} f(x) . g(t - x) . dx $$
+
+### Exemple
+
+Calculer $ \mathbb{1}\_{\left\[ 0, 2 \right\]} * \mathbb{1}\_{\left\[ -1, 1 \right\]} $
+$$ t \rightarrow \int\_{-\infty}^{+\infty} \mathbb{1}\_{\left\[ 0, 2 \right\]} (x) . \mathbb{1}\_{\left\[ -1, 1 \right\]}(t - x) . dx $$
+$$ t \rightarrow \int\_{0}^{2} \mathbb{1}\_{\left\[ -1, 1 \right\]} (t - x) . dx $$
+
+Deux options de résolutions :
+1. Changement de variable $u = t - x$
+2. Résolution de $ t - x \in \left\[ -1, 1 \right\]$
+
+Prenons la deuxième méthode : $-1 \leq t - x \leq 1$
+$$ \implies 1 \geq x - t \geq -1 $$
+$$ \implies t + 1 \geq x \geq t - 1 $$
+$$ \mathbb{1}\_{\left\[ 0, 2 \right\]} * \mathbb{1}\_{\left\[ -1, 1 \right\]} = \int\_0^2 \mathbb{1}\_{\left\[ t - 1, t + 1 \right\]}(x) . dx $$
+
+- Si $ t + 1 \leq 0$ alors $\phi(t) = 0 $
+- Sinon si $ t + 1 \leq 2 $ alors $ \phi(t) = t + 1 $
+- Sinon si $ t - 1 \leq 2 $ alors $ \phi(t) = 2 - (t - 1) = 3 - t $
+- Sinon $ \phi(t) = 0 $
+
+$$ \implies \phi(t) = \left\\\{
+\begin{array}{rl}
+0 & \text{ si } t \leq -1 \\\\
+t + 1 & \text{ si } -1 < t \leq 1 \\\\
+3 - t & \text{ si } 1 < t \leq 3 \\\\
+0 & \text{ sinon}
+\end{array}
+\right. $$
+
+MAIS ON PEUT FAIRE PLUS JOOOOULI !
+
+$t \rightarrow (t + 1)\mathbb{1}\_{\left\[ -1, 1 \right\]}(t) + (3 - t)\mathbb{1}\_{\left\[ 1, 3 \right\]}(t)$
+
+### Propriétés
+
+$*$ est une loi de composition vérifiant :
+- Commutativité $ f \* g = g \* f $
+- Associativité $ f \* (g \* h) = (f \* g) \* h $
+- Il a un élément neutre
+
+**Démonstration de la commutativité :**
+$$ g \* f : t \rightarrow \int\_{-\infty}^{+\infty} g(x) . f(t - x) . dx $$
+On fait un changement de variable :
+$$ \left\\\{
+\begin{array}{}
+u = t - x \\\\
+du = -dx
+\end{array}\right. $$
+$$ = \int\_{+\infty}^{-\infty} g(t - u) . f(u) . (-du) =\int\_{-\infty}^{+\infty} g(t - u) . f(u) . du $$
+$$ = \int\_{-\infty}^{+\infty} g(t - x) . f(t) . dx $$
+
+** Recherche de l'élément neutre : $$
+$\epsilon$ fonction telle que :
+$$ \forall t \in \mathbb{R} \; (\epsilon \* f)(t) = f(t) \implies f(t) = \int\_{-\infty}^{+\infty} \epsilon(x) . f(t - x) . dx $$
+
+Notons que :
+$$ (\delta \* f)(t) = \int\_{-\infty}{+\infty} \delta(x) . f(t - x) . dx = \int\_{\mathbb{R}^\*} \delta(x) . f(t - x) . dx + \int\_{\\\{0\\\}} $$
+$$ 0 + \int\_{\\\{0\\\}} f(t) . \delta(x) . dx = f(t) . \int\_{\\\{0\\\}} \delta{x} . dx$$
+$$ = f(t) \left\[ \int\_{\\\{0\\\}} f(t) . \delta(x) . dx + \int\_{\mathbb{R}^\*} \delta(x) . dx \right\] $$
+$$ = f(t) \* \int\_{\mathbb{R}} \delta(x) . dx $$
+$$ = f(t) . 1 = f(t) $$
+
+*Notation* : $ \delta\_a : t \rightarrow \delta(t - a)$
+
+Calculer $ \delta\_a  \* \delta\_b$ avec $a \in \mathbb{R}, b \in \mathbb{R}$
+$$ \delta\_a  \* \delta\_b : t \rightarrow \int\_{-\infty}^{+\infty} \delta\_a(x) . \delta\_b(t - x) . dx $$
+Si $ t \neq 0 $ :
+$$ (\delta\_a \* \delta\_b)(t) = \int\_{\mathbb{R \ \\\{ a; t - b\\\}}} \delta\_a(x) . \delta\_b (t - x) . dx + \int\_{\\\{a\\\}} ? \delta\_{a}(x) \delta\_b (t - x) . dx + \int\_{\\\{t-b\\\}} \delta\_a(x) . \delta\_b (t - x) . dx $$
+$$ = 0^x + \int\_{\\\{a\\\}} \delta\_{a}(x) . 0 (t - x) . dx + \int\_{\\\{t-b\\\}} 0(x) . \delta\_b (t - x) . dx $$
+Comme $\delta\_a|\_I = 0$ si $ a \notin I $
+$$ = 0 $$
+
+*Conjecture* $\delta\_a \* \delta\_b = \delta{a + b}$
+
+*Calculons* $ \int\_{-\infty}^{+\infty} (\delta\_a \* \delta\_b)(t) . dt =? 1$
+$$ = \int\_{-\infty}^{+\infty}\int\_{-\infty}^{+\infty} \delta\_a(x) . \delta\_b(t - x) . dx . dt$$
+$$ = \int\_{\mathbb{R}} \int\_{\mathbb{R}} \delta\_a(x) . \delta\_b(t - x) . dt . dx $$
+$$ = \int\_{\mathbb{R}} \delta\_a \int\_{\mathbb{R}} \delta\_b (t - x) . dt . dx$$
+$$ = \int\_{\mathbb{R}} \delta\_a(x) . 1 . dx $$
+$$ = 1 $$
+
+*Calculons* $ \phi = \delta\_a \* H : t \rightarrow \int\_{-\infty}^{+\infty} \delta\_a(x) . H(t - x) . dx $
+Or $ H(t - x) = 1 \iff t - x \geq 0 \iff t \geq x $
+Donc $ \phi(t) = \int\_{-\infty}^{t} \delta\_a(x) . dx $
+$ = 1 $
+
+### Convolution des fonctions causales
+Si $f$ et $g$ sont causales, alors :
+$$ f \* g : t \rightarrow \int\_0^t f(x) ; g(t - x) . dx $$
+
+** Démonstration **

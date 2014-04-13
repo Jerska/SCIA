@@ -3,167 +3,135 @@
 
 Soit `f` fonction (temporelle) on définit la transformée de Laplace par :
 
-               _+oo
-              |       -pt
-    L(f)(p) = | f(t).e    .dt
-          -oo_|
+$$ L(f)(p) = \int\_{-\infty}^{+\infty} f(t) . e^{-pt} . dt $$
 
 ### Vocabulaire
 
-`f` est dite causale si f est définie sur `R` et
+$f$ est dite causale si f est définie sur $\mathbb{R}$ et
 
-    f / R- = 0
-    <=> Vx € R-, f(x) = 0
+$$f\_{/ R^-} = 0 \iff \forall x \in R^-, f(x) = 0 $$
 
 ### Exercice
 
-         _ 1
-        |           -2x
-    I = | (x² + 1).e   .dx
-     0 _|
+$$ I = \int\_0^1 (x² + 1) . e^{-2x} . dx $$
 
 Posons :
-            - x² + 1 si t € [0, 1]
-           |
-    f(t) = |
-           |
-            - 0 sinon
 
-I = L(f)(2)
+$$ f(t) = \left\\\{
+  \begin{array}{}
+    x² + 1 & \text{ si } t \in [0, 1] \\\\
+    0 & \text{ sinon}
+  \end{array}
+  \right.
+$$
+
+On a $I = L(f)(2)$
 
 ### Définition
 
-Soit `A C R`
+Soit $A \subset R$
 
-On définit :
+On définit $
+\mathbb{1}\_A = \left\\\{
+  \begin{array}{}
+  1 & \text{ si } x \in A \\\\
+  0 & \text{ sinon}
+  \end{array}
+\right.
+$
 
-              _ 1 si x € A
-     /||     |
-      ||  =  |
-      ||A    |_ 0 sinon
+### Représentez les signaux suivants
 
-#### Représentez les signaux suivants
-
-1.
-
-    s (t) = 1        (t) + 2 * 1      (t)
-     1       [-1, 1]            [0, 2]
+1. $ s\_1(t) = \mathbb{1}\_{\left[-1, 1\right]} (t) + 2 \times \mathbb{1}\_{\left[0, 2\right]} (t) $
 
   On ajoute les signaux, et ça marche bien :
 
-             ^
-             |____
-             |    |
-          ___|    |____
-         |   |         |
-         |   |         |
-    -------------------------->
-        -1   0    1    2
+                 ^
+                 |____
+                 |    |
+              ___|    |____
+             |   |         |
+             |   |         |
+        -------------------------->
+            -1   0    1    2
 
-2.
+2. $s\_2(t) = \mathbb{1}\_{\left[0, 2\right]}(t) \times \mathbb{1}\_{\left[-1, 2\right]}(t) $
 
-    s (t) = 1       (t) * 1       (t)
-     2       [0, 2]        [-1, 2]
+   C'est l'intersection des deux signaux :
 
+                 ^
+                 |
+                 |
+                 |_________
+                 |         |
+                 |         |
+        -------------------------->
+            -1   0    1    2
 
-  C'est l'intersection des deux signaux
+3. $s\_{3}(t) = t \times \mathbb{1}\_{\left[0, 1\right]}(t) - \mathbb{1}\_{\left[\frac{1}{2}, \frac{3}{2}\right]}$
+   Fonction linéaire. On ajoute les signaux :
 
-
-             ^
-             |
-             |
-             |_________
-             |         |
-             |         |
-    -------------------------->
-        -1   0    1    2
-
-3.
-
-    s (t) = t * 1       (t) - 1          (t)
-     3           [0, 1]        [1/2, 3/2]
-
-  Fonction linéaire. On ajoute les signaux :
-
-      ^
-      |
-    1 |   c
-      |  /
-      | /
-      |/     2
-    ------------------->
-      |   1 /
-      |    /
-      |   /
+          ^
+          |
+        1 |   c
+          |  /
+          | /
+          |/     2
+        ------------------->
+          |   1 /
+          |    /
+          |   /
 
 
-### Cas particuliers :
+### Cas particuliers
 
-         _ u(t) Echelon : Théorie du signal
-    1   /_ H(t) fonction de Heavinide
-     R  \_ Y(t)
+$\mathbb{1}\_{\mathbb{R}} \left\\\{
+  \begin{array}{}
+    u(t) & \text{Échelon : Théorie du signal} \\\\
+    H(t) & \text{Fonction de Heavinide} \\\\
+    Y(t) & 
+   \end{array}
+\right.$
 
+### En pratique
 
-En pratique :
+$$ f \text{causale} \iff f \text {factorisable par } \mathbb{1}\_{R^+} \iff f = f . \mathbb{1}\_{\mathbb{R}^+} $$
 
-        f causale
+Avec $f$ causale :
+$$ L(f)(p) = \int f(t) . e^{-pt} . dt $$
 
-    <=> f factorisable par 1
-                            R+
-    <=> f = f. 1
-                R+
+#### Calculer :
+$$ L(x)(p) = \int e^{-pt} . dt = \left[ {e^{-pt} \over -p} \right] $$
 
-    f causale
-               _
-              |         -pt
-    L(f)(p) = | f(t) . e    . dt
-             _|
-                         _            _   -pt  _
-                        |  -pt       |   e      |
-    Calculer L(x)(p) =  | e   . dt = |  ------  |
-                       _|            |_   -p   _|
+##### Si $p > 0$
 
-Si `p > 0`, `-pt > 0` car `t € [0, +oo[`
-D'où :
+$-pt > 0$ car $t \in [0, +\infty]$, d'où $\lim\limits\_{t \to +\infty} e^{-pt} = 0$
+Ainsi $L(u)(p) = 1$
 
-               -pt
-    lim       e     = 0
-      t->+oo
+##### $p < 0$
+$pt > 0$, d'où $\lim\limits\_{t \to +\infty} e^{-pt} = +\infty$
 
-Ainsi : `L(u)(p) = 1`
+##### Et si $p \in \mathbb{C}$ ?
 
-Si `p < 0`, `pt > 0`
-D'où :
+Dans le domaine complexe de $L(u)$
 
-               -pt
-    lim       e     = +oo
-      t->+oo
+Posons $p = x + iy$
 
+$$ \begin{array}{}
+e^{-pt} & = e^{-(x + iy)t} \\\\
+ & = e^{-xt} . e^{-iyt}
+\end{array}$$
 
-**Et si `p € C` ?**
+On a un découpage en module et argument.
 
-Dans le domaine complexe de `L(u)`
-
-Posez `p = x + iy`
-
-     -pt    -(x + iy)t
-    e    = e
-
-            -xt    -iyt
-         = e    . e
-          ___     _____
-         module argument
-
-Si `x > 0`, ça fait une spirale convergeant vers 0
-Si `x < 0`, ça fait une spirale divergeant
-Si `x = 0`, ça fait le cercle trigo
+Si $x > 0$, ça fait une spirale convergeant vers 0
+Si $x < 0$, ça fait une spirale divergeant
+Si $x = 0$, ça fait le cercle trigo
 
 #### Conclusion
-                                         1
-    Si Re(p) > 0, L(u)(p) converge vers ---
-                                         p
 
-    Si Re(p) <= 0, L(u)(p) diverge.
+Si $Re(p) > 0$, $L(u)(p)$ converge vers $1 \over p$
+Si $Re(p) \leq 0$, $L(u)(p)$ diverge.
 
 ## Zoologie de fonctions
 
@@ -175,47 +143,33 @@ Plusieurs types de fonctions :
   - Circulaires
   - Hyperboliques
   - Réciproques
-- `Exp` et `ln`
+- $e$ et $ln$
 - Indicatrices
 
-#### Fonction partie entière
+### Fonction partie entière
 
 La fonction partie entière est simplement une combinaison de fonctions indicatrices :
 
+$$ E(x) = \sum^{+\infty}\_{k=1} \mathbb{1}\_{\left[k, +\infty \right]} $$
 
-           +oo
-    E(X) =  E  1
-           k=1  [k, +oo]
+ou encore
 
-           +oo
-    E(X) =  E  k . 1
-           k=0      [k, k + 1]
+$$ E(x) = \sum^{+\infty}\_{k=0} \mathbb{1}\_{\left[k, k + 1 \right]} $$
 
-#### Intégration des fractions rationnelles
+### Intégration des fractions rationnelles
 
-##### Exercice
+#### Exercice
 
-         _
-        |    x² + 2x + 2
-    I = |   ------------- . dx
-       _|       x - 1
+$$\begin{array}{}
+I &= \int{x² + 2x + 2 \over x - 1} . dx \\\\
+J &= \int{4x^3 + 2x - 1 \over x² - 4} . dx \\\\
+K &= \int{2x + 1 \over x² + 1} .dx
+\end{array}$$
 
-         _    3
-        |   4x  + 2x -1
-    J = |  ------------- . dx
-       _|     x² - 4
+Si le numérateur a un degré supérieur à ce celui du dénominateur, on fait la division, et on intègre le reste.
 
-         _
-        |   2x + 1
-    K = |  --------- . dx
-       _|   x² + 1
+##### Pour I
 
-
-Si le numérateur a un degré supérieur à ce celui du dénomiateur, on fait la division, et on intègre le reste.
-
-**Pour I**
-
-                  |
       x² + 2x + 2 | x - 1
     - x² -  x     |______
     =      3x + 2 |
@@ -224,12 +178,10 @@ Si le numérateur a un degré supérieur à ce celui du dénomiateur, on fait la
 
 D'où:
 
-         _                              _
-        |  (x - 1)(x + 3) + 5          |            5        x²                        k
-    I = | -------------------- . dx =  | x + 3 + ------- = ----- + 3x + 5.ln|x - 1| + C
-       _|       (x - 1)               _|          x - 1      2
+$$ I = \int {(x - 1)(x + 3) + 5 \over x - 1} . dx = \int x + 3 + {5 \over x - 1} = {x² \over 2} + 4x + 5.ln(|x - 1|) + C^k $$
 
-**Pour J**
+
+##### Pour J
 
                    |
       4x³ + 2x - 1 | x² - 4
@@ -259,7 +211,7 @@ On cherche
    x + 2      x - 2     x + 2
 
 
-**Pour K**
+##### Pour K
 
       _                    _                                        _
      |    2x + 1          |    2x           1                      |     1

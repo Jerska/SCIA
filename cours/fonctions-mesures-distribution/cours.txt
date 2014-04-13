@@ -1,0 +1,307 @@
+# Topologie
+
+=> "Étude des voisinages"
+
+## Définition
+
+Une ** topologie ** sur $E$ est un ensemble $\mathcal{T}$ contenant des parties de $E$ vérifiant :
+* *Éléments distincts* : $\varnothing \in \mathcal{T}$ et $E \in \mathcal{T}$
+* *Stabilité par unions quelconques* : $\forall u\_i \in \mathcal{T}$ et $\bigcup\limits\_{i \in \mathcal{T}} u\_i \in \mathcal{T}$
+* *Stabilité par intersections finies* : $ \forall(u\_i)\_{i \leq n} \in \mathcal{T}^n\text{, }\bigcap\limits^n\_{i = 1}u\_i \in \mathcal{T}$
+
+### Vocabulaire
+Les éléments de $\mathcal{T}$ sont appelés *ouverts*.
+
+
+### Définition
+Un *fermé* est tout complementaire d'un *ouvert*.
+
+### Définition
+Soit $A \subset E$ quelconque. On définit $\text{int }A$ (intérieur de $A$) comme le plus grand ouvert dans $A$.
+
+**Remarque**
+$\varnothing \notin \varnothing$ mais $\varnothing \subset \varnothing$
+
+#### Propriété
+Il existe toujours un intérieur topologique à tout ensemble.
+
+#### Démonstation
+
+Posons $\mathcal{O} = \bigcup\limits\_{\mathcal{F}\left\\\{
+\begin{array}{}
+  u\text{ ouvert} \\\\
+  u \subset A
+\end{array}\right.}u$
+
+**$\mathcal{F}$ est non vide** car il contient le vide.
+Considérons $\omega$ un ouvert inclus dans $A$.
+$\omega \in \mathcal{F} \implies \omega \subset \bigcup\limits\_{\mathcal{F}} u$
+Ainsi, $\theta$ est bien l'élément maximum de $\mathcal{F}$ donc $$\theta = \text{int }A$$
+
+**Notation** : $\text{int }A = A°$
+
+#### Définition
+L'**adhérenceùù (/ **fermeture**) de $A$ notée $\overline{A}$ (/!\ pas le complémentaire de $A$) est le plus petit fermé contenant $A$.
+
+#### Démonstation
+$F = \bigcap\limits\_{\begin{array}{}
+G \text{ fermé} \\\\
+G \supset A
+\end{array}} G$
+
+#### Lemme
+
+Fermés sont stables par interactions quelconques et par unions finies. (Passage au complément et Algo de Bool)
+
+**Remarque**
+
+$$ \varnothing\text{ : ouvert} \implies \varnothing^c = E \text{ fermé} \\\\
+E \text{ : ouvert} \implies E^c = \varnothing \text{ fermé}$$
+
+**/!\ Cadre d'étude** : L'espace considéré est toujous de fait ouvert et fermé.
+
+#### Définition
+
+Soit $A$ quelconque dans $E$. $\delta A$ aussi noté $Fr A$ appelé frontière ou bordure est définit comme $\delta A = \overline{A} \backslash \overset{o}A$
+
+#### Propriété
+
+$Fr A$ est un fermé d'intérieur vide
+
+### Démonstration
+
+$$
+\begin{array}{rl}
+FrA & = \overline{A} \backslash \overset{o}{A} \\\\
+& = \overline{A} \cap (\overset{o}{A})^c
+\end{array}$$
+
+Réaliser que $\text{int }A$ est "le plus grand des"
+Aboutir à une contradiction.
+Avec $\text{int }A \cup \theta$ où $\theta = \text{int }(FrA)$ (non vide)
+
+#### Propriété caractéristique
+
+$\mathcal{U}$ ouvert ssi il existe un ouvert $\mathcal{U}\_x \subset \mathcal{U}$ contenant $x \in \mathcal{U}$. (Récursif)
+
+#### Vocabulaire
+
+$\text{ext }A = (\overline{A})^c$
+
+#### Propriété
+
+$\text{ext }A$ est un ouvertt (Le plus grand inclus dans $A^c$)
+
+#### Propriété
+
+$A$ est (ouvert et fermé) $\iff FrA = \varnothing$
+
+#### Démonstration
+
+$A$ est ouvert est fermé :
+
+$$\begin{array}{rl}
+FrA & = \overline{A} \backslash \overset{o}{A} \\\\
+& = \overline{A} \backslash A \text{ car } A \text{ est ouvert}\\\\
+& = A \backslash A \text{ car } A \text{ est fermé}\\\\
+& = \varnothing
+\end{array}$$
+
+#### Propriété
+
+$A = \overline{A} \iff A$ fermé
+$A = \overset{o}{A} \iff A$ ouvert
+
+Si $FrA = \varnothing$
+Alors $\overline{A} \backslash \overset{o}{A} = \varnothing$
+Donc $\overset{o}{A} \supset \overline{A}$
+Mais $\overset{o}{A} \subset A \subset \overline{A}$ par définition
+D'où $\overline{A} = \overset{o}{A} = A$
+$A$ est bien ouvert et fermé.
+
+#### Prenons un exemple de topologie
+
+$E = \mathbb{R}²$
+$\mathcal{T} = \left\\\{ D(0; r); r \geq 0 \right\\\}$ avec $D(0; +\infty) = \mathbb{R}²$
+$D(0; r) = \\\{ x² + y² < r²\\\}$
+
+1. Vérifions que $\mathcal{T}$ est une topologie :
+   $\varnothing = D(0; 0)$
+   $\mathbb{R}² = D(0; +\infty)$
+   Soit $(D\_i)\_{i \in I}$ une famille de $\mathcal{T}$ avec $I \subset \overline{\mathbb{R}\_+} = \left\[0; +\infty \right\] $
+   $\bigcup\limits\_{i \in I} = D\_{\text{sup }I}$ si $I \neq \varnothing$
+
+   Si $(D\_1,\text{ ... }, D\_n)$ ouvert, avec $n$ éléments de $\mathcal{T}$
+   Alors $\bigcap\limits\_{i = 1}^n D\_r = D\_{\text{min}r\_1,\text{ ...}, r\_n)} \in \mathcal{T}$
+   Donc $\mathcal{T}$ est une topologie.
+
+2. Déterminer $\overline{A}$, $\overset{o}{A}$, et $\delta A$ pour
+   a. $A = D(O; 1)$
+      - $\overset{o}{A} = A$ car $A \in \mathcal{T}$
+      - $\overline{A} = \mathbb{R}²$
+        En effet : $O \in A$ Mais $O \notin [D(0; r)]^c; \left\\\{ \begin{array}{}r \neq +\infty\\\\
+        r \neq 0\end{array}\right.$
+        Il faut $O \in D(0; +\infty) \implies (D(0, 0))^c$
+        **Remarque** :
+        > On peut généraliser à tout disque : $\text{int }D(0; r) = D(0; r)$
+        > $\overline{D(0; r)} = \mathbb{R}²$
+        > Sauf $\overline{\varnothing} = \varnothing$
+      - $\delta A = \overline{A} \backslash \overset{o}{A} = \mathbb{R}² / D(0; 1) = [D(0; 1)]^c$
+
+   b. $A =$ Carré de centre 0 et côté 2.
+      $text{int }A \subset A = D(0; r)$
+      $D(0;r)$ inscrit dans $A$.
+      $O \in A \implies \overline{A} = \mathbb{R}²$
+      $\delta A = \overline{A} / \text{int }A = \mathbb{R²} / D(0; 1) = (D(0;1))^c$
+   c. $A = \\\{x \text{ tq } x \rightarrow x\\\}$
+      $\overline{A} = \mathbb{R}²$ car $O \in A$
+      $\text{int }A = \varnothing$
+      $FrA = \overline{A} \backslash \varnothing = \mathbb{R}²$
+
+### Définition
+
+Soit $\mathcal{G}$ une famille de $\mathcal{P}(E)$.
+La topologie engendrée par $\mathcal{G}$ est la plus petite topologieqio contient $\mathcal{G}$.
+
+**A démontrer** : Existence. Utiliser $
+\mathcal{T} = \bigcap\limits\_{
+\begin{array}{}
+\mathcal{T}' \text{ topo} \\\\
+\mathcal{T}' \supset \mathcal{G}
+\end{array}}\mathcal{T}'$
+
+### Exemple
+
+$ \mathcal{T} = \left< \Big\\\{ \\\{a; b\\\}; \\\{a\\\} \Big\\\} \right>$ avec $E = {a; b; c}$
+$\mathcal{T} = \Big\\\{\varnothing; E; \\\{a\\\}; \\\{ a; b\\\} \Big\\\}$
+$\mathcal{T\_2} = \Big\\\{ \varnothing; E; \\\{ a\\\}; \\\{ b \\\}; \\\{ a; b\\\} \Big\\\}$
+
+#### Exemple (topo usuelle de $\mathbb{R}$)
+
+$I = \Big\\\{ \\\{ x \in \mathbb{R} / a < x < b\\\} \text{ avec } a \in \mathbb{R}, b \in \mathbb{R} \Big\\\}$
+$\mathcal{T}\_{\mathbb{R}} = < \mathcal{T} >$
+
+Montrer que $\] a; +\infty \[$ est ouvert :
+$\begin{array}{rl}
+\] a; +\infty \[ & = \bigcup\limits\_{\begin{array}{} n \in \mathbb{N} \\\\ n > a \begin{array}} \] a; n \[ \\\\
+& = \bigcup\limits\_{\text{qq}} \text{ ouvert} = \text{ouvert}
+\end{array}$
+
+Statut de $\[ a; +\infty \[$ :
+$ = (\]-\infty; a[)^c$
+$ = \bigcup\limits\_{x < a} x $
+
+Status de $\[a; b\]$ fermé :
+$ = (\]-\infty; a\[ \cup \]b; +\infty[)^c$
+$ = (\text{ouvert})^c$
+
+Statut de $\mathbb{Z}$ :
+$\mathbb{Z} = \bigcup\limits\_{k \in \mathbb{Z}} \\\{ k \\\}$
+$\mathbb{Z}^c = \bigcup\limits\_{k \in \mathbb{Z}} \] k; k + 1 \[$
+$ = \bigcup \text{ ouvert}$
+$ = \text{ouvert}$
+$\implies \mathbb{Z}$ fermé.
+
+Existe-t-il un intervalle $\] a; b \[$ inclus dans \mathbb{Z} ?
+Non, donc $\text{int }\mathbb{Z} = \varnothing$
+$\implies \mathbb{Z} $ n'est pas ouvert;
+
+### Théorème
+$\theta$ est un ouvert de $\mathbb{R}$ pour sa topologie usuelle.
+$\implies \theta = \bigcup\limits\_{n \in \mathbb{N}} I\_n$ où $I\_n$ est un générateur.
+
+$\theta$ est un ouvert de $\mathbb{R}$ seulement si il contient unintervale ouvert.
+
+### Généralisation
+
+Soit $(E, <)$ la topologie de l'ordre sur $E$ notée $\mathcal{T}\_{<}$ est définie comme :
+$\begin{array}{rl}
+I(a; b) & = \\\{ a < x < b; x \in E \\\} \\\\
+S(a) & = \\\{ x > a; x \in E \\\} \\\\
+M(b) & = \\\{ x < a; x \in E \\\}
+\end{array}$
+
+$\mathcal{T} = < I S M >\_{(a, b) \in E²}$
+
+## Natures topologiques
+
+### Définition
+
+$A$ est dit connexe dans $E$ lorsque $A$ ne peut pas être partitionné en deux ouverts non triviaux ir $A \in \mathcal{T}$.
+
+#### Exemple
+$ A = \] 0; 1 \[ \cup \] 2; 3 \[$
+En posant $u\_1 = \] 0; 1 \[$ et $u\_2 = \] 2; 3 \[$, on peut dire qu'$u\_1$ et $u\_2$ sont ouverts et que $(u\_1, u\_2)$ partitionne $A$
+**Partition triviale** : $A$ et $\varnothing$
+**Pour $A$ quelconque** : $A$ est connexe lorsqu'il ne peut exister deux ouverts $u\_1$ et $u\_2$ tels que $\left\\\{ \begin{array}{} u\_1 \cup u\_2 \supset A \\\\ u\_1 \cap u\_2 = \varnothing \end{array}\right.$
+
+#### Vocabulaire
+
+Soit $A$ non connexe.
+On appelle composante connexe tout élément *maximal connexe* (locaux) inclus dans $A$.
+$A = \[ 0; 1 \] \cup \] 2; 3 \]$
+Deux composantes connexes
+
+#### Exemple
+
+$\mathbb{Z} n'est pas connexe$.
+
+### Théorème
+
+$E$ lui-même est connexe *ssi* $E$ et $\varnothing$ sont les seuls ouverts et fermés de l'espace.
+
+### Démonstration
+
+Supposons $u\_1$ et $u\_2$ partition non triviale de $E$
+On a $\left\\\{ \begin{array}{} u\_1 \text{ ouvert } \implies u\_1^c \subset u\_2 \\\\ u\_2 \text{ fermé donc } u\_2 \text{ ouvert et fermé.} \end{array} \right.$
+
+Mais $u\_2 \neq 0$ et $u\_2 \neq E$
+
+(Hypothèse : $E$ non connexe) $\implies$ ( $u\_2$ ouvert et fermé non trivial)
+$E$ et $\varnothing$ sont les seuls ouverts et fermés $\implies E$ connexe.
+
+**Remarque**
+L'existence d'un object sans dontières (autre que $E$ ou $\varnothing$) est caractéristique d'un espace non connexe.
+
+### Définition
+
+$K$ est dit compact lorsque :
+i. $K$ vérifie : "De tout recouvrement par des ouverts, ils existe un sous recouvrement fini". (Propriété de *Bonel-Lebesgues*)
+ii. $K$ vérifie : "Tout couple de points distincts est séparable par des ouverts". (Propriété de séparation)
+
+#### Exemple
+$\\\{ x\_0 \\\} \forall x \in \mathbb{R}$
+Soit $\theta$ ouvert non vide contenant $x\_0$.
+Tout recouvrement de $\\\{ x\_0 \\\}$ contient un tel élément. A lui seul, il forme un sous-rec fini.
+
+### Définition
+
+**Séparation** : $E$ est *séparé* lorque $\forall x \neq y \exists u\_x \text{ ouvert} \text{ et } u\_y \text{ ouvert}$
+
+Ex: $\mathbb{R}$ est séparé.
+$x \neq y$
+$\epsilon = | y - x |$
+$I\_x = \] x - {\epsilon \over 2}; x + {\epsilon \over 2} \[ $
+$I\_y = \] y - {\epsilon \over 2}; y + {\epsilon \over 2} \[ $
+
+### Définition
+
+Soit $(x\_n)\_{n \in \mathbb{N}}$ une suite d'éléments de $E$.
+On dit que $(x\_n)$ **converge** vers $x \in E$ lorsque :
+
+$$\forall x > 0 \;\; \exists N \in \mathbb{N} \;\; \forall n \geq N \;\; | x\_n - x | < \epsilon $$
+$$\iff \forall u \text{ ouvert contenant } x \text{ : } \exists N \in \mathbb{N} \;\; \forall n \geq N \;\; x\_n \in u$$
+
+### Propriété
+
+**Si $E$ est séparé**, alors $(x\_n)$ a au plus une limite.
+
+### Démonstration
+Par l'absurde
+
+Si $x \neq y$ sont deux limites.
+Soient $u\_x \ni x$ et $u\_y \ni y$ (voir définition de la séparation)
+
+$\forall n \geq N \;\; \left\\\{ \begin{array}{} x\_n \in u\_x \\\\ y\_n \in u\_y \end{array} \right.$
+
+Donc $x\_n \in u\_x \cap u\_y$ qui est vide ... ABSURDE !

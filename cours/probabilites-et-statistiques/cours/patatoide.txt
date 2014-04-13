@@ -159,3 +159,51 @@ Densité en \\( Z \\) : \\( h(Z) = e^{-Z}\\)
 ** La Der des Ders **
 
 $$ E(Z) = \int g(x) . f(x) . dx $$
+
+### Somme de deux V.A. indépendantes.
+
+** Cas discret ** :
+\\( X, Y \\) valeurs entières (éventuellement négatives)
+
+- \\( P\_k = P(X = k) \\)
+- \\( P\_l = P(Y = l) \\)
+- \\( Z = X + Y \\)
+
+** On cherche \\( P(Z = n)\\) **
+
+Si \\( X = k \\), \\(Y = n - k \\)
+
+D'où $$ P(Z = n) = \sum\_k P(X = k).P(Y = n - k) = \sum\_k p\_k . q\_{n - k} $$
+
+*Exemple* :
+\\( X \\) : Loi de poisson de paramètre \\( \lambda \\)
+\\( Y \\) : Loi de poisson de paramètre \\( \mu \\)
+
+$$ P(X = k) = {e^{-\lambda} ({\lambda^k \over k!})}$$
+$$ P(Y = l) = {e^{-\mu} ({\mu^l \over l!})}$$
+
+D'où :
+$$ E(X) = \lambda $$
+$$ E(Y) = \mu $$
+
+---
+
+$$ P(Z = n) = \sum\_{k = 0} p\_kq\_{n - k} = \sum\_{k = 0}^{n} e^{-\lambda} . \bigg({\lambda^k \over k!}\bigg) . e^{-\mu}\bigg({\mu^{n - k} \over (n - k)!}\bigg) $$
+$$ = {e^{-(\lambda + \mu)} \over n!} . \sum\_{k=0}^{n} {n! \over k!(n - k)!} . \lambda^{k} \mu^{n-k}$$
+$$ = {e^{-(\lambda + \mu)} \over n!} . \sum\_{k=0}^{n} {k \choose n} \lambda^k \mu^{n - k} $$
+$$ = e^{-(\lambda + \mu)} . {(\lambda + \mu)^n \over n!} $$
+
+On reconnait une loi de poisson de paramètre \\( \lambda + \mu \\)
+
+D'où
+
+### Somme de deux V.A. continues
+
+- \\( X \\) densité \\( f \\)
+- \\( Y \\) densité \\( g \\)
+- \\( Z = X + Y \\)
+- \\( Z \\) densité \\( h \\)
+
+\\( X \\) et \\( Y \\) indépendantes.
+
+$$ h(z) = \int f(x) . g(z - x) . dx $$

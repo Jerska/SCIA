@@ -1,0 +1,6 @@
+# OLENA
+
+## Topological drainage divide
+by *Alexandre Abraham*<div style="display:inline-block; float: right; margin-top: -30px;">*June 25<sup>th</sup>, 14h00, amphi 4*</div>
+
+Splitting an image consists in extracting the sections of interest, e.g. for separating cancerous cells in medical imagery. The approach by the drainage divide (DD) tranformation or *Watershed Transform* allows us to get such a segmentation. There exists many definitions and many implementations, some of which are both efficient and producing a result with good properties, as the *Topological Watershed*. In this exposé we will be presenting the implementation of an algorithm calculating this DD in Milena, the generic C++ library of image processing of the Olena platform, developped by the LRDE. We will first focus on the "classic" image formats, then on the generalisation to more unusual image formats (images with support of generic graphs, etc.).

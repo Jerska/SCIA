@@ -1,0 +1,106 @@
+$$L\[\lambda t . e^{-ut} . u(t)\](p) = {1 \over p + a}$$
+$$\begin{array}{rl}
+{1 \over (p + a)^n} & = L \left( {id^{n-1} \over (n - 1)!}.u\right)(p + a) \\\\
+& = L\left\[ \lambda t . {e^{-at} . t ^{n - 1} \over (n-1)!} . u \right\](p) \\\\
+\text{Par la formule du retard :} & = \int\_0^{+\infty} e^{-at}.{t^{n-1} \over (n-1)!} . e^{-pt}.dt \\\\
+& = \int\_0^{+\infty} {t^{n-1} \over (n-1)!} . e^{-(p + a).t} . dt \\\\
+& = L\left\[{id^{n-1} \over (n-1)!}.u \right\](p + a) \\\\
+& = {1 \over (p +a)^{n}}
+\end{array}$$
+
+$$\begin{array}{rl}
+L(\lambda t . e^{it} . u(t))(p) & = {1 \over p - i} \\\\
+\text{Calculons} L(\lambda . t . e^{i \sqrt{\alpha} t} . u(t))(p) & {1 \over p - (i\sqrt{\alpha})} \\\\
+& = {p + i \sqrt{\alpha} \over p² + \alpha} \\\\
+& = {p \over p² + \alpha} + i {\sqrt{\alpha} \over p² + \alpha} \\\\
+\end{array}$$
+
+On identifie $Re$ et $Im$ :
+
+$$\begin{array}{rl}
+L(\lambda t).\cos(\sqrt{\alpha}t).u(t))(p) & = {p\over p² + \alpha} \\\\
+L(\lambda t).\sin(\sqrt{\alpha}t).u(t))(p) & = {\sqrt{\alpha} \over p² + \alpha} \\\\
+L\left(\lambda t {\sin(\sqrt{\alpha}t) \over \sqrt{\alpha}} . u(t) \right)(p) & = {1 \over p² + \alpha}
+\end{array}$$
+
+#### Vocabulaire
+
+On nomme originale de $F$ une fonction $f$ tq $L(f) = F$.
+**N'existe pas toujours.**
+On admet son unicité.
+
+*Cherchons une originale de $F(P) = {1 \over p² + p + 1}$*
+
+$$\begin{array}{rl}
+F(p) & = {1 \over p² + p + 1} \\\\
+& = C^k {1 \over ( ??? )² + \alpha} \\\\
+& = {1 \over \left( p + \frac{1}{2}\right)^{2} + \frac{3}{4}} \\\\
+\end{array}$$
+
+On propose :
+
+$$\begin{array}{rl}
+f(t) & = {\sin \left( \sqrt{\frac{3}{4}} . t \right) \over \frac{3}{4}} . u(t) . e^{-\frac{1}{2}t} \\\\
+& = {2 \sin \left( {\sqrt{3} \over 2} t \right) . e^{-\frac{1}{2}t} \over \sqrt{3}} . u(t)
+\end{array}$$
+
+On généralise :
+$$\begin{array}{rl}
+L(f . \exp(a . id))(p) & = \int\_0^{+\infty} f(t) e^{-(p + a) t} . dt \\\\
+& = L(f)(p + a)
+\end{array}$$
+
+** Exercice **
+
+On cherche l'originale de
+
+$$\begin{array}{rl}
+F(p) & = {2p + 1 \over (p + 1)(p² + \frac 1 2  p + 2)} \\\\
+& = {a \over p+1} +  {bp + c \over p² + \frac 1 2 p + 2}
+\end{array}$$
+
+    * (p + 1); p := 1
+    * p; p -> +oo
+    p := 0
+
+Originale finale :
+
+$$ \left[ -\frac 2 5 e^{-t} + \frac 2 5 . \cos (\frac{\sqrt{31}}{4} t) . e^{-\frac 1 2 t} + \frac{34}{5\sqrt{31} } \sin (\frac{\sqrt{31}}{4} t )e^{-\frac{1}{2}t} \right\] $$
+
+
+### Fonction de Zêta de Riemann
+
+$$ \zeta(z) = \sum\_{k=1}^{+\infty}{1 \over k^z} $$
+
+### Définitionde $\alpha!$ avec $\alpha \in \mathbb{R}$
+
+On pose fonction Gamma :
+
+$$ \Gamma(s) = \int\_0^{+\infty} e^{-t} . t^{s-1} . dt $$
+
+1. Démontrer que $\forall n \in \mathbb{N}, \, \Gamma[n+1] = n!$
+   - Prouver que
+     - Initialisation : $\Gamma(1) = 1$
+       $$\begin{array}{rl}
+         \Gamma(1) & = \int\_0^{+\infty} e^{-t} . t^{1 - 1} . dt \\\\
+         & = \int\_0^{+\infty} e^{-t} . dt \\\\
+         & = \frac{1}{1} \\\\
+         & = 1
+       \end{array} $$
+     - Récurrence : $\Gamma(n + 1) = n. \Gamma (n)$
+       $$\begin{array}{rl}
+         \Gamma(s + 1) & = \int\_0^{+\infty} e^{-t} . t^s . dt \\\\
+         & = L(id^s . u)(1) \\\\
+         & = {s! \over 1^{s + 1}} \text{ avec } s \in \mathbb{N} \\\\
+         \text{Avec l'IPP } \int\_0^{+\infty} e^{-t} . t^s . dt & = \left\[-t^s . e^{-t} \right\]\_0^{+\infty} - (-1) \int\_0^{+\infty} s . t^{s-1} . e^{-t} . dt \\\\
+         & = 0 - 0 + s \int\_0^{+\infty} t^{s - 1} . e^{-t} . dt \\\
+         & = s . \Gamma(s) \\\\
+         \text{Vérifions que } L(id^s u)(p) & = {\Gamma(s + 1) \over p^{s + 1}} \\\\
+         \text{On a } L(id^s u)(p) & = \int\_0^{+\infty} t^{s} . e^{-pt} . dt \\\\
+         \text{et } {\Gamma(s + 1) \over p^{s + 1}} & = {1 \over p^{s + 1}} .\int\_0^{+\infty} t^{s} . e^{-t} . dt \\\\
+         \text{Par changement de variable } & x = pt \rightarrow dx = d(pt) = p.dt \rightarrow dt = {dx \over p} \\\\
+         \int t^s . e^{-pt} . dt & = \int\_0^{+\infty} ({x \over p})^s . e^{-x} . {dx \over p} \\\\
+         & = {\Gamma(s + 1) \over p^{s + 1}}
+       \end{array}$$
+2. Justifier que $L(\lambda t . t^{\alpha})(p) = {\Gamma(\alpha + 1) \over p^{\alpha + 1}}$
+

@@ -31,5 +31,5 @@ app.get '/api/name', api.name
 
 app.get '*', routes.index
 
-app.listen process.env.PORT || 3000, ->
+app.listen process.env.PORT || 4000, ->
   console.log "Express server listening on port %d in %s mode", this.address().port, app.settings.env
