@@ -1,0 +1,87 @@
+# Exercice 2
+
+## 1<sup>ère</sup>
+
+On étudie ici la réponse temporelle d'une fonction de transfert du premier ordre.
+
+$$\begin{array}{rrll}
+ \text{On a} & G(p) = & {K \over 1 + T\_1 p} & \text{ avec } T\_1 = 5 \text { et } K = 10 \\\\
+ \iff & G(p) = & {10 \over 1 + 5p} & \\\\
+ \text{Or } & G(p) = & {Y(p) \over U(p)} \;\; \text{ et } \;\;  U(p) = {1 \over p} & \\\\
+ \iff & Y(p) = & G(p) . U(p) = {G(p) \over p} & \\\\
+ \iff & Y(p) = & {10 \over p(1 + 5p)} & \text{ On fait une décomposition en éléments simples} \\\\
+ & = & {a \over p} + {b \over 1 + 5p} = {10 \over p} - {50 \over 1 + 5p} & \\\\
+ & = & 10 . \left( {1 \over p} + 5 . {1 \over 1 + 5p}\right) = 10 . \left( {1 \over p}  + {1 \over {\frac{1}{5} + p}} \right) & \text{ On utilise les transformées inverses de Laplace}\\\\
+ \iff & y(t) = & 10 . \left( u(t) + e^{-\dfrac{t}{5}}\right)
+\end{array}$$
+
+> ** Réponses : **
+> $$\begin{array}{rll}
+> y(0^+) = & 10 . (1 - 1) & = \mathbf{0} \\\\
+> y(+\infty) = & 10 . (1 - 0) & = \mathbf{10} \\\\
+> T\_{R5\%} = & 3 \times T\_1 & = \mathbf{15} \\\\
+> y(T\_{R5\%}) = & y(15) =  10 . (1 - e^{-3}) & \simeq \mathbf{9,50}
+> \end{array}$$
+
+![Figure 1](img/fig1.jpg)
+
+## 2<sup>ème</sup>
+
+On étudie ici la réponse temporelle d'une fonction de transfert du second ordre.
+
+$$\begin{array}{rll}
+G(p) = & K . {1 + T\_2p \over 1 + T\_1 p} & \text{ avec } K = 10 \text{, } T\_1 = 4 \text{ et } T\_2 = 6 \\\\
+\iff G(p) = & {10 + 60p \over 1 + 4p} & \\\\
+\iff Y(p) = & {10 + 60 p \over p(1 + 4p)} & \text{Décomposition en éléments simples} \\\\
+= & {a \over p} + {b \over 1 + 4p} = {10 \over p} + {20 \over 1 + 4p} & \\\\
+= & 10 . \left( {1 \over p} + {2 \over 1 + 4p} \right) = 10 . \left( {1 \over p} + \frac{1}{2} . {1 \over \frac{1}{4} + p} \right) & \text{Transformées inverses de Laplace} \\\\
+\iff y(t) = & 10 . \left( u(t) + \frac{1}{2} e^{-\dfrac{t}{4}} \right) &
+\end{array}$$
+
+>** Réponses : **
+>$$\begin{array}{rll}
+> y(0^+) = & 10 . (1 + \frac{1}{2} . 1) & = \mathbf{15} \\\\
+> y(+\infty) = & 10 . (1 + \frac{1}{2} . 0) & = \mathbf{10} \\\\
+> y(T\_{R5\%}) = & 10 . 105\% & = \mathbf{10,5} \\\\
+> \iff & u(T\_{R5\%}) + \frac{1}{2} \left( e^{-\frac{T\_{R5\%}}{4}} \right) & = 1,05 \\\\
+> \iff & e^{-\frac{T\_{R5\%}}{4}} & = 0,1 \\\\
+> \iff & T\_{R5\%} = -4\ln{(0,1)} & \simeq \mathbf{9,21}
+>\end{array}$$
+
+![Figure 2](img/fig2.jpg)
+
+## 3<sup>ème</sup>
+
+On étudie ici la réponse temporelle d'une fonction de transfert du second ordre.
+Elle est semblable en tous points à la deuxième fonction de transfert, sauf $T\_2$ qui passe de $6$ à $2$
+Le seul changement sur la formule finale est de changer $b$ de la décomposition en éléments simples de $+20$ à $-20$.
+D'où :
+$$y(t) = 10 . \left[ u(t) - \frac{1}{2} \left( e^{-\frac{t}{4}} \right) \right]$$
+
+> ** Réponse : **
+>$$\begin{array}{rll}
+> y(0^+) = & 10 . (1 + \frac{1}{2} . 0) & = \mathbf{10} \\\\
+> y(+\infty) = & 10 . (1 + \frac{1}{2} . 1) & = \mathbf{15}
+>\end{array}$$
+> Le changement de signe implique trivialement que le signal est symétrique au précedent signal étudié par rapport à l'axe $y = 10 . u(t)$, d'où :
+>$$\begin{array}{rll}
+> y(T\_{R5\%}) & & = \mathbf{9,95} \\\\
+> T\_{R5\%} & & \simeq \mathbf{9,21}
+>\end{array}$$
+
+![Figure 3](img/fig3.jpg)
+
+# Exercice 3
+
+1. Un relais électromagnétique prend en entrée un signal. Il accepte 4 paramètres :
+   - Un seuil d'activation
+   - Une valeur de sortie une fois activée
+   - Un seuil de désactivation
+   - Une valeur de sortie une fois activée
+
+   Il permet dans cet exercice de générer de la chaleur en fonction de la température en entrée.
+2. ![Figure 4](img/fig4.jpg)
+   ![Figure 5](img/fig5.jpg)
+3. $y\_{\text{moy}} = 25$
+4. La température $y$ évolue de manière périodique autour de $y\_{\text{moy}}$ et ne semble pas converger.
+   On peut imputer ce souci au délai où à la méthode d'adaptation. La moyenne de température est bien celle souhaitée, mais elle chute vers $20°C$ et remonte vers $30°C$ régulièrement.

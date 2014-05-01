@@ -1,7 +1,7 @@
 mixin showToc(toc)
   if toc.level != 0
     li
-      a(href='#' + toc.anchor)= toc.name
+      a(href='#' + toc.anchor)!= toc.name
   ul
     each val, key in toc.next
       mixin showToc(val)

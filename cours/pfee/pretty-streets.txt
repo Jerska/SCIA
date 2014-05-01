@@ -1,0 +1,16 @@
+# Pretty Streets
+
+*Change city visits forever*
+
+Techno : Pathfinding
+
+Graphe :
+- Points d'intérêts
+- Zone d'intérêts
+- Contraintes de l'utilisateur.
+
+Pour le moment, SGBD simple.
+
+Paritalie 5è étage.
+
+

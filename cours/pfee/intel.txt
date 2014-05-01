@@ -1,0 +1,6 @@
+Sur plateforme Android :
+- Java
+- C++
+- ASM Intel
+
+Développer sur un drone de manière à le rendre autonome.

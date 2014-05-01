@@ -1,0 +1,2 @@
+1. On cherche $P^t = P \iff v . v^t = \left(v.v^t\right)^t$
+$$\begin{pmatrix} x\_0 \\\\ x\_1 \\\\ ... \\\\ x\_{n-1} \\\\ x\_n \end{pmatrix} . \begin{pmatrix} x\_0 & x\_1 & ... & x\_{n-1} x\_n \end{pmatrix} = \begin{pmatrix} x\_0^2 & x\_0x\_1 & ... & x\_0 x\_{n-1} & x\_0x\_n \\\\ x\_1x\_0 & x\_1^2 & ... & x\_1x\_{n-1} & x\_1 x\_n \\\\ ... & ... & ... & ... & ... \\\\ x\_{n-1}x\_0 & x\_{n-1}x\_1 & ... & x\_{n-1}^2 & x\_{n-1}x\_n \\\\ x\_nx\_0 & x\_nx\_1 & ... & x\_nx\_{n-1} & x\_n^2 \end{pmatrix} $$

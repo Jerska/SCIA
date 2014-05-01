@@ -1,31 +1,29 @@
 # Topologie
 
-=> "Étude des voisinages"
+La topologie peut se décrire comme étant l'**étude des voisinages**.
 
 ## Définition
+>Une ** topologie ** sur $E$ est un ensemble $\mathcal{T}$ contenant des parties de $E$ vérifiant :
+>- *Éléments distincts* : $\varnothing \in \mathcal{T}$ et $E \in \mathcal{T}$
+>- *Stabilité par unions quelconques* : $\forall u\_i \in \mathcal{T}$ et $\bigcup\limits\_{i \in \mathcal{T}} u\_i \in \mathcal{T}$
+>- *Stabilité par intersections finies* : $ \forall(u\_i)\_{i \leq n} \in \mathcal{T}^n\text{, }\bigcap\limits^n\_{i = 1}u\_i \in \mathcal{T}$
 
-Une ** topologie ** sur $E$ est un ensemble $\mathcal{T}$ contenant des parties de $E$ vérifiant :
-* *Éléments distincts* : $\varnothing \in \mathcal{T}$ et $E \in \mathcal{T}$
-* *Stabilité par unions quelconques* : $\forall u\_i \in \mathcal{T}$ et $\bigcup\limits\_{i \in \mathcal{T}} u\_i \in \mathcal{T}$
-* *Stabilité par intersections finies* : $ \forall(u\_i)\_{i \leq n} \in \mathcal{T}^n\text{, }\bigcap\limits^n\_{i = 1}u\_i \in \mathcal{T}$
+#### Définition
+> Les éléments de $\mathcal{T}$ sont appelés **ouverts**.
 
-### Vocabulaire
-Les éléments de $\mathcal{T}$ sont appelés *ouverts*.
+#### Définition
+> Un **fermé** est tout complementaire d'un *ouvert*.
 
+#### Définition
+> Soit $A \subset E$ quelconque. On définit $\text{int }A$ (**intérieur** de $A$) aussi noté $\overset{o}A$ comme *le plus grand ouvert dans $A$*.
 
-### Définition
-Un *fermé* est tout complementaire d'un *ouvert*.
-
-### Définition
-Soit $A \subset E$ quelconque. On définit $\text{int }A$ (intérieur de $A$) comme le plus grand ouvert dans $A$.
-
-**Remarque**
-$\varnothing \notin \varnothing$ mais $\varnothing \subset \varnothing$
+#### Remarque
+> $\varnothing \notin \varnothing$ mais $\varnothing \subset \varnothing$
 
 #### Propriété
-Il existe toujours un intérieur topologique à tout ensemble.
+> Il existe **toujours** un *intérieur topologique* à tout ensemble.
 
-#### Démonstation
+##### Démonstation
 
 Posons $\mathcal{O} = \bigcup\limits\_{\mathcal{F}\left\\\{
 \begin{array}{}
@@ -36,61 +34,48 @@ Posons $\mathcal{O} = \bigcup\limits\_{\mathcal{F}\left\\\{
 **$\mathcal{F}$ est non vide** car il contient le vide.
 Considérons $\omega$ un ouvert inclus dans $A$.
 $\omega \in \mathcal{F} \implies \omega \subset \bigcup\limits\_{\mathcal{F}} u$
-Ainsi, $\theta$ est bien l'élément maximum de $\mathcal{F}$ donc $$\theta = \text{int }A$$
-
-**Notation** : $\text{int }A = A°$
+Ainsi, $\theta$ est bien l'élément maximum de $\mathcal{F}$ donc $\theta = \text{int }A$.
 
 #### Définition
-L'**adhérenceùù (/ **fermeture**) de $A$ notée $\overline{A}$ (/!\ pas le complémentaire de $A$) est le plus petit fermé contenant $A$.
+> L'**adhérence** (/ **fermeture**) de $A$ notée $\overline{A}$ (&#9888; pas le complémentaire de $A$) est *le plus petit fermé contenant $A$*.
 
-#### Démonstation
+##### Démonstation
 $F = \bigcap\limits\_{\begin{array}{}
 G \text{ fermé} \\\\
 G \supset A
 \end{array}} G$
 
 #### Lemme
+> Les *fermés* sont **stables par interactions quelconques** et **par unions finies**. (*Passage au complément* et *Algèbre de Boole*)
 
-Fermés sont stables par interactions quelconques et par unions finies. (Passage au complément et Algo de Bool)
-
-**Remarque**
-
-$$ \varnothing\text{ : ouvert} \implies \varnothing^c = E \text{ fermé} \\\\
-E \text{ : ouvert} \implies E^c = \varnothing \text{ fermé}$$
-
-**/!\ Cadre d'étude** : L'espace considéré est toujous de fait ouvert et fermé.
+#### Remarque
+>$$ \varnothing\text{ : ouvert} \implies \varnothing^c = E \text{ fermé} \\\\ E \text{ : ouvert} \implies E^c = \varnothing \text{ fermé}$$
+> **&#9888; Cadre d'étude** : L'espace considéré est toujous de fait ouvert et fermé.
 
 #### Définition
-
-Soit $A$ quelconque dans $E$. $\delta A$ aussi noté $Fr A$ appelé frontière ou bordure est définit comme $\delta A = \overline{A} \backslash \overset{o}A$
+> Soit $A$ quelconque dans $E$. $\delta A$ aussi noté $\text{Fr} A$ appelé **frontière** ou **bordure** est défini comme $\delta A = \overline{A} \backslash \overset{o}A$
 
 #### Propriété
+>$\text{Fr} A$ est un *fermé d'intérieur vide*
 
-$Fr A$ est un fermé d'intérieur vide
+##### Démonstration
 
-### Démonstration
+$\text{Fr}A = \overline{A} \backslash \overset{o}{A} = \overline{A} \cap \left(\overset{o}{A}\right)^c$
 
-$$
-\begin{array}{rl}
-FrA & = \overline{A} \backslash \overset{o}{A} \\\\
-& = \overline{A} \cap (\overset{o}{A})^c
-\end{array}$$
-
-Réaliser que $\text{int }A$ est "le plus grand des"
+Réaliser que $\text{int }A$ est *"le plus grand des"*.
 Aboutir à une contradiction.
 Avec $\text{int }A \cup \theta$ où $\theta = \text{int }(FrA)$ (non vide)
 
 #### Propriété caractéristique
-
-$\mathcal{U}$ ouvert ssi il existe un ouvert $\mathcal{U}\_x \subset \mathcal{U}$ contenant $x \in \mathcal{U}$. (Récursif)
+> $\mathcal{U}$ *ouvert* ssi il existe un *ouvert* $\mathcal{U}\_x \subset \mathcal{U}$ **contenant** $x \in \mathcal{U}$. (Récursif)
 
 #### Vocabulaire
 
-$\text{ext }A = (\overline{A})^c$
+> $\text{ext }A = \left(\overline{A}\right)^c$
 
 #### Propriété
 
-$\text{ext }A$ est un ouvertt (Le plus grand inclus dans $A^c$)
+> $\text{ext }A$ est un *ouvert* (Le plus grand inclus dans $A^c$)
 
 #### Propriété
 
@@ -183,7 +168,7 @@ $\mathcal{T}\_{\mathbb{R}} = < \mathcal{T} >$
 
 Montrer que $\] a; +\infty \[$ est ouvert :
 $\begin{array}{rl}
-\] a; +\infty \[ & = \bigcup\limits\_{\begin{array}{} n \in \mathbb{N} \\\\ n > a \begin{array}} \] a; n \[ \\\\
+\] a; +\infty \[ & = \bigcup\limits\_{\begin{array}{} n \in \mathbb{N} \\\\ n > a \end{array}} \] a; n \[ \\\\
 & = \bigcup\limits\_{\text{qq}} \text{ ouvert} = \text{ouvert}
 \end{array}$
 
@@ -202,7 +187,7 @@ $ = \bigcup \text{ ouvert}$
 $ = \text{ouvert}$
 $\implies \mathbb{Z}$ fermé.
 
-Existe-t-il un intervalle $\] a; b \[$ inclus dans \mathbb{Z} ?
+Existe-t-il un intervalle $\] a; b \[$ inclus dans $\mathbb{Z}$ ?
 Non, donc $\text{int }\mathbb{Z} = \varnothing$
 $\implies \mathbb{Z} $ n'est pas ouvert;
 
@@ -305,3 +290,322 @@ Soient $u\_x \ni x$ et $u\_y \ni y$ (voir définition de la séparation)
 $\forall n \geq N \;\; \left\\\{ \begin{array}{} x\_n \in u\_x \\\\ y\_n \in u\_y \end{array} \right.$
 
 Donc $x\_n \in u\_x \cap u\_y$ qui est vide ... ABSURDE !
+
+>...
+>...
+>...
+
+## Tribus, ou $T$-algèbres
+
+### Définition
+Soit $E$ un ensemble, on définit une tribu $T$ sur $E$ comme un ensemble inclus dans $P(E)$ tel que :
+- $\varnothing \in T$ et $E \in T$
+- $A \in T \implies A^c \in T$
+- $\forall (A\_n)\_{n \in \mathbb{N}} \in T^\mathbb{N} \implies \bigcup\limits\_{n \in \mathbb{N}} A\_n \in T$
+
+### Propriété
+$$ \forall (A\_n)  \in T^{\mathbb{N}} \implies \bigcap\limits\_{n\in\mathbb{N}} A\_n \in T$$
+
+### Remarque
+$T$-algèbre $\implies$ Algèbre de Boole.
+
+### Vocabulaire
+Les éléments d'une tribu sont nommés "*mesurables*".
+
+### Définition
+Soit $A$ un ensemble de parties de $E$, on définit $\lt A \gt$ comme tribu engendrée par $A$, c'est-à-dire la plus petite tribu sur $E$ qui contient $A$.
+
+** Attention ! **
+La notation $\lt \epsilon \gt$ est utilisée pour les tribus ET les topologies.
+
+**Exemple :**
+Tribu usuelle sur $\mathbb{R}$
+"*Tribu des Boréliens*" = $\lt \mathcal{T}\_{\mathbb{R}} \gt$
+Plus généralement, une tribu borélienne sur $E$ est celle engendrée par sa topologie.
+
+
+# Mesures
+
+>...
+>...
+>...
+
+## Construction de l'intégrale
+
+### Définition 1
+Soit A mesurable
+$$\mu(A) = \int \mathbb{1}\_A . d\mu$$
+
+### Définition 2
+Soit $v$ étagée mesurable avec $v = \sum\limits\_{i = 1}^n \lambda\_i \mathbb{1}\_{A\_i}$, on a :
+$$ \int v.d\mu = \sum\limits\_{i = 1}^n \lambda\_i \mu(A\_i) $$
+
+### Définition 3
+Soit $f$ mesurable avec $f = \text{sup}(v\_n)$ :
+$$\begin{array}{rl}
+\int f . d\mu = & \text{sup} \int v\_n . d\mu \\\\
+= & \lim \int v\_n . d\mu
+\end{array}$$
+
+### Convention
+L'intégrale porte sur l'espace mesuré $\Omega$.
+Ainsi $\int f . d \mu$ est aussi appelée mesure de $f$.
+
+### Notation
+$\int\_X f . d\mu = \int \mathbb{1}\_X . f . d\mu$
+Il est par ailleurs préférable que $X$ soit mesurable, parce que même si $f$ l'est, le produit d'un mesurable et d'un non-mesurable n'est pas nécessairement mesurable.
+
+### Propriétés
+
+Les propriétés classiques des intégrales demeurent :
+- linéarité
+- positivité et ordre
+- Chasles : $\int\_{X \uplus Y} f . d\mu = \int\_X f . d\mu + \int\_Y d. d\mu$
+- *etc.*
+
+### Propriété
+
+$v$ est en escalier $\implies$ $v$ est étagée mesurable.
+Ainsi, $f$ intégrable au sens de Riemann $\implies$ $f$ mesurable.
+
+### Théorème
+
+Soit $f$ intégrable par Riemann.
+Si $\lambda$ désigne la mesure de Lebesgue, alors :
+$$\int\_a^b f(x) . dx = \int\_{\left[a, b\right]} f . d\lambda$$
+
+**Attention !** $\neq \int\_{\left[a, b\right]} f . d\mu$ en général.
+
+### Intégrale pour Lebesgues
+
+Définissons les intégrales de Lebesgues, qui ne sont pas exactement les intégrales habituelles.
+
+- $f$ mesurable
+- $\int\_{\Omega} |f|.d\lambda \lt + \infty$
+
+### Intégrales des mesurables
+
+Certaines fonctions ne sont donc pas intégrables par Lebesgues sont :
+$$ \int\_\Omega |f| . d\mu = + \infty $$
+
+Sauf que Riemann gère les fonctions qui respectent :
+$$ \int\_\Omega f . d\mu < + \infty $$
+
+### Exemples
+- $1\_\mathbb{Q}$ ($\mathbb{Q}$ est la fonction qui a un rationnel associe 0 et à un irrationnel associe 1).
+  - Impossible pour Riemann
+  - Pour Lebesgues, on a $\mathbb{1}\_\mathbb{Q} . d\lambda = \lambda(\mathbb{Q}) = 0$
+- $(x + 1) . e^x . d\delta(x)$
+  $$\int\_\mathbb{R} (x +1) . e^x . d\delta(x) = \int\_{\mathbb{R}\_+^\star} (x +1) . e^x . d\delta(x) + \int\_{\\\{0\\\}} (x +1) . e^x . d\delta(x)$$
+  Notons que $\delta(\mathbb{R}\_+^\star) = 0$
+  Soit $(v\_n)$ tq $v\_n \nearrow f$ sur $\mathbb{R}\_+^\star$
+  $$\begin{array}{rl}
+    \int\_{\mathbb{R}\_+^\star} v\_n . d \delta = & \sum \lambda\_i \mu\Big(v\_n^-1(\mathbb{R}\_+^\star \cap ...)\Big) \\\\
+    = & \sum 0 \\\\
+    = & 0
+  \end{array}$$
+  Donc $$\begin{array}{rl}
+    \int f . d\delta = & \int\_\\\{0\\\} (x + 1) . e^x . d\delta \\\\
+    = & \sum\limits\_{i = 0}^1 (0 + 1) e^0 . \mu(\\\{0 \\\}) \\\\
+    = & 1
+  \end{array}$$
+
+### Propriété
+Si $\delta\_a$ est Dirac en $a$, on a :
+$$ \int\_X f . d \delta\_a = f(a) . \mathbb{1}\_{X}(a) $$
+
+### Vocabulaire
+$N$ est dit négligeable lorsque :
+$$ \exists \mathcal{N} \in \gamma \;\; N \subset \mathcal{N} \text{ et } \mu(\mathcal{N}) = 0$$
+
+### Propriété
+$$\int\_X f.d\mu = \int\_{X \cup N} f.d\mu = \int\_{X \\ N} f . d\mu$$
+pour $N$ négligeable.
+
+### Propriété
+$D$ dénombrable $\implies$ $D$ estnégligeable pour $\lambda$ (mesure de Lebesgues).
+
+**Attention !** Pas de réciproque : $\lambda(K) = 0$ mais $K$ non dénombrable (K : Kantor)
+
+### Vocabulaire
+On dit que $f = g \;\; \mu$ presque partout lorsque $\exists N$ négligeable $\forall x \in \Omega\backslash N$
+
+Soit $f|\_{\Omega X N} = g|\_{\Omega X N}$
+
+Enfin, une propriété $P$ est vraie $\mu \text{ pp}$ lorsqu'elle est vraie partout sauf sur $N$ négligeable.
+Exemple :
+$$\left.{\begin{array}{rl}
+& L(f) = L(g) \\\\
+\iff &  f = g
+\end{array}} \right| \text{ est vraie } \lambda \text{ pp}$$
+
+### Définition
+On note $\mathcal{L}\_p$ l'espace (vectoriel) des fonctions $f$ mesurables avec $\int |f|^p . d\mu < +\infty$.
+
+### Propriété
+$f R g \iff f = g \;\; \mu \text{pp}$ définit une relation d'équivalence.
+1.  Réflexivité
+    $$x R x$$
+    $\varnothing$ est négligeable
+2.  Symétrique
+    $$x R y \iff y R x$$
+3.  Transitivité
+    $$x R y \wedge y R z \iff x R z$$
+
+### Définition
+$$ L\_p = \mathcal{L}\_{p\_{/R}} $$
+$f = g$ dans $L\_p$ $\iff$ $f = g \;\;\mu\text{pp}$ dans $\mathcal{L}\_p$
+$L\_p$ est alors un espace vectoriel normé pour :
+$$\begin{array}{rlrl}
+& \parallel f \parallel\_p & = & \left( \int\_\Omega |f|^p . d\mu \right)^{\frac{1}{p}} \\\\
+\xrightarrow{p \rightarrow +\infty} \;\; & \parallel f \parallel\_{+\infty} & = & \text{sup } |f|
+\end{array}$$
+
+## Lebesgues
+
+$N$ est négligeable est pas mesurable ...
+Tribu de Lebesgues :
+$$\mathcal{B}\_{\mathbb{R}}$$
+Y'en a plein !
+
+### Théorème
+Soit $(\Omega, \gamma, \mu)$ mesure.
+Il existe $\left\\\{ \begin{array}{} \gamma^\star \supset \gamma \\\\ \mu^\star \text{ mesure qui étend } \mu \text{ à } \gamma^\star \end{array} \right.$ les plus petits possibles tels que :
+$N$ négligeable pour $(\Omega, \gamma, \mu)$ alors $N$ est mesurable pour $(\Omega, \gamma^\star, \mu^\star)$.
+
+### Définition
+$\mathcal{L}\_{\mathcal{R}}$ est la tribu $\mathcal{B}\_{\mathbb{R}}^\star$
+
+## Distributions
+
+### Définitions
+
+$\phi$ est appelée fonction test lorsque
+1.  $\varphi \in \mathcal{C}^\infty$ (smooth)
+2.  $\varphi $ est à support compact
+    $supp(\varphi) = \text{int }\\\{ x \in \mathbb{R} / \varphi(x) \neq 0\\\}$
+
+Exemples:
+- $\mathbb{1}\_{\left[0, 1\right]}$ : support compact (mais pas fonction test)
+- $\mathbb{1}\_{K} = 0 \;\; \lambda\text{pp}$ support vide.
+- $u$ support $\mathbb{R}\_+$ non compact
+
+### Définition
+
+Soit $E$ un espace vectoriel :
+$$E^* = \mathcal{L}(E; \mathbb{R})$$
+
+Exemple :
+- $\left(\mathbb{R}^3\right)^* = \\\{ \varphi : (x, y, z) \longmapsto \alpha$
+  $\simeq \mathcal{M}\_{1\;3}$
+  Par transposition : $\mathbb{R}^3 \simeq \mathcal{M}\_{3\;1}$
+
+### Définition
+
+Soit $\mathcal{C}$ l'espace des fonctions test.
+On nomme distribution un élément $D \in \mathcal{C}^\star$ : $D : \varphi \longmapsto D(\varphi) \in \mathbb{R}$.
+
+### Théorème
+Soit $u$ mesure (réel).
+Il existe $D\_\mu$ une distribution naturelle associée à $\mu$.
+$$ D\_n : \varphi \longmapsto \int\_{\Omega} \varphi . d\mu $$
+
+** Ditribution ? **
+- Linéarité : *OK*
+- Continuité : $\int\_\Omega \lim \varphi\_n .d\mu = \int\_\Omega \varphi . d\mu$ : *OK*
+
+### Propriété
+
+Soit $f : \mathbb{R} \longrightarrow \mathbb{R}$ mesurable.
+Il existe $\mu\_f$ associée mésure naturelle :
+$$ \mu\_f : A \longmapsto \int\_A f.d\lambda $$
+
+** Hiérarchie **
+Fonction $\longrightarrow$ Norme $\longrightarrow$ Distribution
+
+### Dérivée des distributions
+
+$$ D(\varphi) = &lt;D|\varphi &gt; $$
+
+### Observation
+
+Soit $\varphi \in \mathcal{C}$
+$$ \begin{array}{rl}
+  \int\_{\mathbb{R}} f' \varphi . d\mu = & [f\varphi]\_{-\infty}^{+\infty} - \int f . \varphi ' . d\mu \\\\
+  = & (0 - 0) - \int f . \varphi . d\mu \\\\
+  = & \varphi \text{ support } \subset \mathcal{B}(0, r)
+\end{array}$$
+
+Ainsi $\int\_\Omega f' . \varphi . d\mu = - \int\_\Omega . \varphi . d\mu $
+
+### Définition
+$D^,$ la dérivée de $D$ est définie par :
+$$ D^,: \varphi \longmapsto - \lt D | \varphi^, \gt $$
+$$ \lt D^, | \varphi \gt = - \lt D | \varphi^, \gt $$
+
+**Exemple :**
+
+$u : x \longmapsto \left\\\{ \begin{array}{ll} 1 & \text{ si } x \geq 0 \\\\ 0 & \text{ sinon} \end{array}\right.$
+Fonction échelon $\longmapsto$ $\mathbb{1}\_{\mathbb{R}\_+}$ mesure naturelle $\longmapsto$ $H : \varphi \longmapsto \int\_{\mathbb{R}\_+} \varphi . d\lambda$
+Dérivons : $$\begin{array}{rl} H^\prime : \varphi = & - \lt H | \varphi^\prime \gt \\\\ = & - \int\_{\mathbb{R}\_+} \varphi^\prime .d\lambda \\\\ & = \int\_{0}^{+\infty} \varphi^\prime(x) . dx \;\;\;\; \text{ Support compact } \\\\ = & -\left[ \varphi(x) \right]\_0^{+\infty} \\\\ = & \varphi(0) - \not{\varphi(+\infty)} \\\\ = & \varphi(0) \end{array}$$
+
+Or $D\_{\delta} : \varphi \longmapsto \varphi(0)$ déjà vu $ = \int\_{\mathbb{R}} \varphi . d\delta$.
+Donc $D\_{\delta}$ et $H^\prime$ coincident sur chaque $\varphi$ fonction test $D^\prime$ où $D\_{\delta} = H^\prime$.
+
+### Théorème
+Soient $\mu\_1$ et $\mu\_2$ mesures :
+$$ \text{Si } \forall \varphi \in \mathcal{C}, \int\_\Omega \varphi d\mu\_1 = \int\_\Omega \varphi . d \mu\_2 \text{, alors } \mu\_1 = \mu\_2$$
+
+** Exercice :**
+Calculez $\delta^{(n)}$
+$$\begin{array}{rl}
+\lt \delta^{(n)} | \varphi \gt = & - \lt \delta^{(n - 1)} | \varphi^\prime \gt \\\\
+= & (-1)^n \lt \delta | \varphi^{(n)} \gt \\\\
+= & (-1)^n \varphi^{(n)}(0)
+\end{array}$$
+
+** A retenir :**
+$\left(\mathbb{1}\_{\left[ a, +\infty \right[}\right)^\prime = \delta\_a$ et $\forall n \in \mathbb{N} \delta\_a^{(n)} : \varphi \longmapsto \varphi^{(n)}(a)$
+
+** Exercices :**
+Dériver :
+- $E$ : Partie entière
+  $$\begin{array}{rl}
+    E = & \sum\limits\_{k = 0}^{+\infty} k . \mathbb{1}\_{\left[ k, k + 1\right[} + (-k - 1) . \mathbb{1}\_{\left[ -k -1, -k\right[} \\\\
+    E^\prime = & \sum\limits\_{k = 0}^{+\infty} k . \left(\mathbb{1}\_{\left[ k, k + 1 \right[}\right)^\prime + (-k - 1) . \left(\mathbb{1}\_{\left[ -k -1, -k \right[}\right)^\prime \\\\
+    = & \sum\limits\_{k = 0}^{+\infty} k . \left(\mathbb{1}\_{\left[ k, + \infty[} - \mathbb{1}\_{\left[ k + 1, + \infty[} \right)^\prime + ... \\\\
+    = & \sum\limits\_{k = 0}^{+\infty} k .  (\delta\_k - \delta\_{k + 1}) + (-k-1) (\delta\_{-k - 1} - \delta\_{-k})
+    = & \sum\limits\_{k = 1}^{+\infty} \delta\_k + \sum\limits\_{k = 0}^{+\infty} \delta\_{-k} \\\\
+    = & \sum\limits\_{k \in \mathbb{Z}} \delta\_k
+  \end{array}$$
+- $|x|$
+  $|x|^\prime = \text{sgn}(x)$
+
+### Propriété
+Soit $f$ mesurable avec $f$ non continue en $a$, on note :
+$$ \lim\limits\_{x \rightarrow a^-} f(x) = f(a^-) $$
+$$ \lim\limits\_{x \rightarrow a^+} f(x) = f(a^+) $$
+$$ f^\prime(a) = \left(f(a^+) - f(a^-)\right) . \delta\_a $$
+
+**Exemple :**
+$\left(\mathbb{1}\_{\mathbb{Q}}\right)^\prime$
+$$\begin{array}{rl}
+D^\prime : \varphi \longmapsto & - \lt D | \varphi^\prime \gt \\\\
+= & - \int\_{\mathbb{Q}} \varphi^\prime . d\lambda\\\\
+= & - \int\_{\varnothing} \varphi^\prime . d\lambda \;\;\;\; \text{car } \mathbb{Q} \text{ est négligeable} \\\\
+= & 0
+\end{array}$$
+
+### Vocabulaire
+
+On appelle distribution régulière toute distributionobtenue à partir d'une $\lambda$ fonction mesurable.
+En pratique, on confond $f$ et $D\_f$.
+
+### Propriété
+
+$$ f = g \;\;\; \lambda\text{pp} \implies f^\prime = g^\prime \text{ en temps que distribution}
+
+** Remarque : **
+$ sgn(0) $ peut donc être choisi arbitrairement.
+$$ \mathbb{1}\_{\left[ a, b\right]} = \mathbb{1}\_{\left] a , b \right [} \lambda\text{pp}$$
+ont donc même dérivée.

@@ -1,0 +1,32 @@
+# Protetic designer
+
+Full automated 3D face reconstruction
+
+- Inputs :
+  - 2 photos minimum
+- Modification de la dentition
+- Transfert d'informations entre logiciels
+
+Techno :
+- Reconstruction pseudo-stéréoscopique
+- C++
+
+Avancement actuel :
+- Extraction de la peau, yeux, bouche nez (face)
+- Positionnement manuel des autres points
+- Algorithme MLS implémenté, en cours d'intégration
+
+Sujet du PFEE :
+- Automatisation de l'extraction des points
+  - Etat de l'art des solutions
+  - Améliorations des algorithmes existants
+  - Proposition et implémentation des parties manquantes
+- Modèle 3D
+  - Parallélisation de la construction du visage
+- Optimisation des algorithmes
+- Facoriser l'approche réaliste de la texture
+
+## Contact
+
+quentin.sanglier@gmail.com
+coquyt.lennart@gmail.com

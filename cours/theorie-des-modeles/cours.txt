@@ -1,0 +1,215 @@
+Pour faciliter l'exposé, on va utiliser la symbolique de la théorie des ensembles.
+La théorie des ensembles permet de faciliter la compréhension, mais elle n'est pas nécessaire pour cet exposé.
+
+On se met un base logique usuelle pour éviter toute confusion.
+
+# Langage
+$$\begin{array}{}
+      & Alphabet  & \longrightarrow   &   Mot   & \longrightarrow   & Phrases   & \longrightarrow   & Discours / Texte  & \longrightarrow   & Contexte \\\\
+\iff  & Symboles  & \longrightarrow   &   Terme & \longrightarrow   & Formules  & \longrightarrow   & Démonstration     & \longrightarrow   & Théorie
+\end{array}$$
+
+## Symboles
+
+Considérons nos **symboles** :
+- symboles de *connecteurs logiques* : $\mathcal{C}$
+  - connecteurs à 0 argument : $\bot$ et $\top$
+  - connecteurs à 1 argument : $\neg$
+  - connecteurs à 2 arguments : $\vee$, $\wedge$, $\implies$, $\iff$
+  - quantificateurs : $\forall$, $\exists$
+- *symboles de variables* : $\mathcal{V}$
+  - des *lettres* latines / grecques / etc., n'importe quel symbole différent des autres avec ou sans écritures d'entiers en indice
+    - $a$, $b$, $c$, $...$
+    - $\alpha$, $\beta$, $\gamma$, $...$
+    - $x\_{127}$, $...$
+- collection spécifique de *symboles relationnels* : $\mathcal{R}$
+  - des symboles de constantes : $d\_1$, $d\_2$, $...$, $d\_n$ (ex: $\diamond$)
+  - des symboles de fonctions : $f\_{k1}$, $f\_{k2}$, $...$, $f\_{kn}$ (fonction à $k$ (fini) arguments)
+  - des symboles de relations : $R\_{n\_1}$, $R\_{n\_2}$, $...$, $R\_{n\_m}$ (relations d'arité $n$)
+
+**A noter** : Le nombre de symboles de chaque type peut être nul ou infini.
+
+## Règles de construction des termes
+
+- termes atomiques : la donnée d'un unique symbole de variable ou de constante
+- si $t\_1, t\_2 ... t\_k$ sont $k$ termes, alors : $f \;\; t\_1 ... t\_k$ est un terme dès lors que $f$ est un symbole de fonction à $k$ arguments
+
+### Reconnaître un terme
+- Attribuer $k - 1$ à un symbole de fonction à $k$ arguments et $-1$ aux constantes
+- Lire le terme de gauche à droite
+- Effectuer les sommes partielles
+- Stop à $-1$
+
+### Reconnaître une propriété
+- Stop au dernier symbole $\iff$ $t$ est un terme
+
+#### Démonstration
+
+- Pour les termes atomiques :
+  - La valuer est -1
+  - La lectuere s'arrête
+  - Le texte est $-1$
+
+- Supposons $t\_1 ... t\_k$ $k$ termes qui valident le critère
+  - Alors pour $f$ symbole de fonction à $k$ arguments, on a $f \;\; t\_1 ... t\_k \iff f \;\; v\_1^1 v\_2^1 ... v\_1^k ... \iff f : k \longmapsto k - k - 1 = -1$
+
+## Formules
+
+Si on donne les éléments qui remplissent l'arité d'un "opérateur", on peut directement dire si c'est "vrai"($\top$) ou "faux"($\bot$).
+
+Construction des formules :
+- Atomiques
+  - Si $t\_1 ... t\_n$ sont $n$ termes et $R$ est une relation d'arité $n$.
+    Alors $R \;\; t\_1 ... t\_n$ est une formule atomique
+  - $\top$ et $\bot$ sont atomiques
+- Si $\varphi$, $\psi$ sont des formules et $x$ un symbole de variable
+  Alors :
+  - $\neg \varphi, \psi \vee \varphi, \psi \wedge \varphi, \psi \implies \varphi, \psi \iff \varphi$
+  - $\forall x \varphi$ et $\exists x \varphi$ sont également des formules (** Attention ** : Si $x$ n'est pas déjà à droite d'un quantificateur dans $\varphi$).
+
+#### Vocabulaire
+$x$ est un symbole de variable.
+On dit que $x$ a une occurence dans $\varphi$ (formule) si $x$ apparaît dans $\varphi$.
+
+Ex : $\varphi : x + 2 = 3$
+
+#### Définition
+
+Une occurence est libre si aucun quantificateur suivi de la variable ne précède :
+
+Ex : $\varphi : \underset{\text{Occurrence libre}}{x} + 2 = 3 \implies \forall x x = x$
+
+#### Définition
+
+Une variable quantifiée est une variable précédée d'un quantificateur.
+Ex : $\varphi : \exists \underset{Quantif}{x} x = y$
+
+#### Définition
+
+Le champ de quantification est à droite d'une variable de même nature quantifiée :
+Ex : $\varphi : \forall \underset{\text{Champ de x}}{\underline{x\;\; x = 1 \implies \forall \underset{\text{Champ de y}}{\underline{y \;\; x = y}}}}$
+
+#### Propriété
+
+Une variable est libre ou liéée lorsque chaque occurrence l'est.
+
+#### Notation
+
+$\varphi (x\_1 ... x\_n)$
+possède des occurrences éventuelles toutes libres de $x\_1 ... x\_n$.
+
+$\varphi [ x\_1 ... x\_n ]$ $x\_1 ... x\_n$ ont des occurrences libres dans $\varphi$.
+
+## Textes
+
+#### Notation
+
+Séquent : $A \Vdash B$ pour $A$ et $B$
+Signification : $B$ peut être déduit de $A$ par un ensemble de règles de déductions
+$\top \Vdash A \vee \neg A$ (pour tout $A$) (*Tiers exclus*)
+
+### Règles
+
+- Axiome : $A \Vdash A$ (pour tout $A$)
+- $\wedge$ intro : Si $A \Vdash B \wedge A \Vdash C$ alors $A \Vdash B \wedge C$
+- Affaiblissement droit : De $A \Vdash B$ on a $A \Vdash B \vee C$
+  On augmente le nombre de contraintes : Il y a donc affaiblissement
+- $\vee$ intro : Si $A \Vdash B$ et $A^\prime \Vdash B$ alors $A \vee A^\prime \Vdash B$
+- Affaiblissement gauche : De $A \Vdash B$ on a $A \wedge A^\prime \Vdash B$
+- Modus Ponens : Si $A \Vdash B \implies C$ et $A \Vdash B$ Alors $A \Vdash C$
+- Coupure (*Cut*) : Si $H \Vdash A$ et $A \Vdash G$, alors $H \Vdash G$
+- $\iff$ intro : Si $H \Vdash A \implies B$ et $H \Vdash B \implies A$, alors $H \iff B$
+- $\implies$ intro : Si $H \wedge A \Vdash B$, alors $H \Vdash A \implies B$
+- Par l'absurde : Si $H \wedge \neg A \Vdash \bot$, alors $H \Vdash A$
+- $\forall$ intro : Si $H \Vdash A \;\; [x]$, alors $H \Vdash \forall x \;\; A$
+- $\exists$ intro : Si $H \Vdash A \;\; [t / x]$, alors $H \Vdash \exists x$
+
+** Cette liste n'est pas exhaustive. **
+
+#### Important
+
+Termes, formules et démonstrations sont toujours des suites finies d'emploi des règles constructives.
+
+#### Notation
+
+Si $\varphi \Vdash \psi$ et $\psi \Vdash \varphi$, on pourra noter $\varphi \dashv \vdash \psi$ (Équivalence syntaxique)
+
+On écrit $\Vdash A$ pour indiquer que pour tout $H$ on a $H \Vdash A$.
+
+#### Propriété
+
+$\varphi \dashv \vdash \psi$ ssi $\Vdash \phi \iff \psi$.
+
+### Lois de Morgan
+
+$\neg (A \vee B) \dashv \vdash \neg A \wedge \neg B$
+$\neg (A \wedge B) \dashv \vdash \neg A \vee \neg B$
+$\neg \forall x A \dashv \vdash \exists x \neg A$
+$\neg \exists x A \dashv \vdash \forall x \neg A$
+
+#### Propriété algébrique
+
+$\bot$ est absorbant pour $\wedge$, neutre pour $\vee$
+$\top$ est absorbant pour $\vee$, neutre pour $\wedge$
+$\neg$ est involutive ($\neg \neg A \dashv \vdash A$)
+$\neg T \dashv \vdash \bot$ et $\neg \bot \dashv \vdash \top$
+$\wedge$ et $\vee$ sont distributives sur $\wedge$ et $\vee$
+
+**A noter : ** $\dashv \vdash$ est une relation d'équivalence.
+
+#### Définition
+
+Ensemble quotient = $\\\{$ Classes d'équivalence $\\\}$
+
+Pour le travail algébrique des formules : $\mathcal{L} := \text{langage}(\mathcal{C} \cup \mathcal{R} \cup \mathcal{V})$
+$\mathcal{F}(\mathcal{L}) := \text{formules de } \mathcal{L} \neq \mathcal{L}^\star$
+$\mathcal{F}(\mathcal{L})/{\dashv \vdash}$ Structure de travail.
+
+## Théories
+
+#### Vocabulaire
+
+Si $\varphi$ est close (chaque variable est liée), on dit que $\varphi$ est un énoncé.
+
+### Théorie
+
+$\mathcal{T}$ est la donnée de :
+- un nombre fini d'énoncés (appelés axiomes de $\mathcal{T}$)
+- un nombre fini de schémas ($n \longmapsto \varphi\_n$)
+
+Exemples : $\mathcal{L}\_G = \\\{\equiv, \star, e\\\}$
+$\mathcal{L}\_G$
+- $A\_{\text{neutre}} : \forall x, x * e \equiv e * x \wedge x * e \equiv x$
+- $A\_assoc \forall x, \forall y, \forall z (x * y) * z \equiv x * (y * z)$
+- $A\_inverse \forall x, \exists y \;\; x*y \equiv e \wedge y * x \equiv e$
+
+De plus, $\equiv$ satisfait aux conditions de l'égalité.
+
+### Théorie égalitaire
+
+$\mathcal{L}\_{\equiv} = \\\{ \equiv \\\}$
+$\mathcal{T}\_{\equiv} :$
+- $A\_{\text{sym}} : \forall x \forall y \;\; x \equiv y \implies y \equiv x$
+- $A\_{\text{train}} : \forall x \forall y \forall z \;\; x \equiv \wedge y \equiv z \implies x \equiv z$
+- $A\_{\text{refl}} : \forall x \;\; x \equiv x$
+
+Cette 1<sup>ère</sup> partie constitue les axiomes des relations d'équivalence.
++ Schéma d'axiomes de l'égalité pour toute famille $\varphi$ à une variable libre.
+
+$A\_{\varphi}^{\equiv} : \forall x \forall u \;\; \Big[ \varphi [x] \iff \varphi[u] \Big] \implies x \equiv y$
+
+#### Vocabulaire
+
+$\mathcal{T}$ est dite égalitaire lorsque :
+1. $\equiv$ est un symbole de $\mathcal{L}$
+2. $\mathcal{T}$ contient $\mathcal{T}\_{\equiv}$
+
+$\mathcal{T}\_G$ est considérée égalitaire
+
+#### Définition
+
+Un théorème est un énoncé obtenu par une théorie comme : $A\_1 \wedge A\_2 \wedge ... \wedge A\_n \Vdash \sigma$ où $A\_1 ... A\_n$ sont des axiomes de $\mathcal{T}$.
+
+#### Notation
+
+$\mathcal{T} \vdash \sigma$ ($\sigma$ est un thèse de $T$)

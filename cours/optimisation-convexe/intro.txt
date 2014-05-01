@@ -51,60 +51,35 @@ sous contraintes définissant un domaine convexe exprimé à l'aide de.
 
 Deux notations pour un vecteur colonne :
 
+$$ x = \left[ \begin{array}{c} x\_1 \\\\ \dotsc \\\\ x\_n \end{array} \right] = [x\_i]\_{1 - n}$$
+$$ \overline{x} . x = |x|^2 $$
 
-         _      _
-        |   x    |
-        |    1   |
-        |        |
-    x = |  ...   | = [xi]
-        |        |      1 - n
-        |  x     |
-        |   n    |
-        |_      _|
+Le produit scalaire usuel défini sur $E$ est noté :
 
-    _
-    x . x = |x|²
-
-Le produit scalaire usuel défini sur `E` est noté :
-
-                        T     n
-    < x, y > = x * y = x  y = E  x  . y
-                             i=1  i    i
+$$&lt; x, y &gt; = x × y = x^T . y = \sum\limits\_{i = 1}^n (x\_i . y\_i) $$
 
 Un ensemble convexe satisfait :
 
-    Vx € E, Vy € E, Vl € [0,1], lx + (1 - l) y € E
+$$ \forall x \in E,\; \forall y \in E, \; \forall \lambda \in [0, 1], \; \lambda x + (1 - \lambda)y \in E $$
 
 ## Fonctions
 
-Application de `E` dans R qui, à tout élément x € E associe une unique valeur f(x)
+Application de $E$ dans $\mathbb{R}$ qui, à tout élément $x \in E$ associe une unique valeur $f(x)$
 
-- **Forme linéaire**, cas particulier où
+- **Forme linéaire**, cas particulier où : $f(x) = a . x$
 
-    f(x) = a . x
+- **Forme affine**, cas particulier où : $f(x) = a . x + b$
+  $$ A.x = n \implies \left\\\{ \begin{array}{} x\_0 \in E \text{ tq } A . x\_0 = b \\\\ v \in \text{Ker}(E) \text{ tq } x\_i = x\_0 + v\_i \end{array} \right. $$
 
-- **Forme affine**, cas particulier où :
+- **Forme quadratique**, cas particulier où : $f(x) = x . A . x + b . x + c = &lt; x, A . x &gt; + b . x + x$
 
-    f(x) = a . x + b
-
-                 | x0 € E tq A . x0 = b
-    A x = b  => <
-                 | v € Ker(E) tq xi = x0 + vi
-
-- **Forme quadratique**, cas particulieroù :
-
-    f(x) = x . A . x + b . x + c
-
-         = < x, A . x > + b . x + x
-
-- `f` est **convexe** si elle est en dessous de ses cordes :
+$f$ est **convexe** si elle est en dessous de ses cordes
 
 ## Les formes quadratiques
 
 - À une transformation affine près, dans ce cours, les formes quadratiques seron de la forme :
 
-              T
-      q(x) = x . M . x = <x, Mx>
+$$ q(x) = x^T . M . x = &lt; x, Mx &gt; $$
 
   Il existe une matrice symétrique M.
 
@@ -112,69 +87,40 @@ Application de `E` dans R qui, à tout élément x € E associe une unique vale
 
   - Des valeurs propres et des vecteurs propres
   - Une base de vecteurs propres
-  - Une expression de la forme
-
-         T
-        P . DP avec D = diag(Sp(M))
+  - Une expression de la forme $ P^T . DP$ avec $D = \text{diag}\Big(\text{Sp}(M)\Big)$
 
   **Remarques**:
+  - ${M + M^T \over 2} = $ Symétrique
+  - ${M - M^T \over 2} = $ Anti-symétrique
+  - $$\begin{array}{rl}
+    x^T . M.x = & x^T \left( {M + M^T \over 2} + {M - M^T \over 2}\right) . x \\\\
+    = & x^T . S . x + x^T \left( {M - M^T \over 2} \right) . x \;\;\;\; \text{ avec } S = \text{Sym}(M) \\\\
+    = & x^T . S . x + {1 \over 2}\left( x^T . M . x - x^T . M^T .x \right) \\\\
+    = & x^T . S . x + {1 \over 2}(&lt; x, Mx &gt; - &lt; Mx, x &gt; ) \\\\
+    = & x^T . S . x
+    \end{array}$$
 
-            T
-       M + M
-      -------  = Symétrique
-         2
-
-            T
-       M - M
-      ------- = Anti-symétrique
-         2
-
-                        T          T
-       T      T /  M + M      M - M   \
-      x Mx = x  | -------- + -------  | . x                  // S = Symétrique (M)
-                \    2          2     /
-
-                               T
-              T      T /  M - M  \
-           = x Sx + x  | ------- | . x
-                       \    2    /
-
-              T      1  /  T        T  T   \
-           = x Sx + --- | x . M x - x  M  x |
-                     2  \                  /
-
-              T        1
-           = x . Sx + --- (<x, Mx> - <Mx, x>)
-                       2
-              T
-           = x . Sx
-
-- En notant `y = Px`, l'expression de `x` dans la nouvelle base
-
-    q(x) = E        l . y²
-          l € Sp(M)  i   i
-          i
-
+- En notant $y = P\_x$, l'expression de $x$ dans la nouvelle base
+  $$ q(x) = \sum\limits\_{\lambda\_i \in \text{Sp}(M)} (\lambda\_i . y\_i^2)$$
 
 - Une forme quadratiques est définie si et seulement si
+  $$ q(x) = 0 \iff x = 0 $$
 
-      q(x) = 0 <=> x = 0
-
-  NB : `x = O => q(x) = 0` toujours vrai
+  NB : $x = 0 \implies q(x) = 0$ toujours vrai
 
 
-- Si q est définie, alors M est inversible
+- Si $q$ est définie, alors $M$ est inversible
 
 - Une forme quadratique définie est définie positive ou définie négative
-  - Preuve par l'absurde : `q(x+) > 0` et `q(x-) < 0`
-  - Utiliser `ø: t € [0, 1] -> ø(t) = (1 - t) . x- + t . x+`
-  - `ø(0) < 0, ø(1) > 0`, ø continue donc ... ?
+  - Preuve par l'absurde : $q(x\_+) > 0$ et $q(x\_-) < 0$
+  - Utiliser $\varnothing: t \in [0, 1] \longrightarrow \varnothing(t) = (1 - t) . x\_- + t . x\_+$
+  - $\varnothing(0) < 0$ et $\varnothing(1) > 0$, $\varnothing$ continue donc ... ?
 
-- Le rang d'une forme quadratique est `n - dim(ker(q))`
-  - `n` est la dimension de l'espace
+- Le rang d'une forme quadratique est $n - \text{dim}(\text{Ker}(q))$
+  - $n$ est la dimension de l'espace
 
 - Pour étudier une forme quadratique, on étudie le spectre de la matrice associée.
-  - Si \\( \exists (x, y) \; tq \; q(x)q(y) < 0 \\), alors `q` n'est pas définie
+  - Si \\( \exists (x, y) \; tq \; q(x)q(y) < 0 \\), alors $q$ n'est pas définie
   - Valeurs propres / Vecteurs propres
   - Racines du polynôme caractéristique : $x\_M (\lambda) = det(M - \lambda I)$
 
@@ -185,16 +131,8 @@ Application de `E` dans R qui, à tout élément x € E associe une unique vale
   - \\( Q(x, y, z) = 3x² + 3y² + 3z² + 2xy - 2xz + 2yz \\)
     $$ M = \begin{pmatrix}3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \end{pmatrix} $$
 
-              /  3  1 -1  \
-          M = |  1  3  1  |
-              \ -1  1  3  /
-
   - \\( Q(x, y, z, t) = xy + yz + zt + tx \\)
-
-             / 0 1 0 1 \
-        2M = | 1 0 1 0 |
-             | 0 1 0 1 |
-             \ 1 0 1 0 /
+    $$ 2M = \begin{pmatrix} 0 & 1 & 0 & 1 \\\\ 1 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 1 \\\\ 1 & 0 & 1 & 0 \end{pmatrix}$$
 
   **Remarque**: \\( q(e\_i) = m\_{i,i} \\)
 
@@ -207,3 +145,42 @@ Application de `E` dans R qui, à tout élément x € E associe une unique vale
 - Exemples
   - Fonction linéaire
   - Forme quadratique, polynomiale
+
+## Étude des points singuliers
+- Quand elle existe la différentielle permet de faire un approximation à l'ordre 1 d'une fonction
+- La différentielle est une application linéaire
+- Les points sinfuliers sont les points où la différentielle est l'application nulle
+- Déterminer les points singuliers se fait en résolvant un système d'équation posé en annulant le gradient
+- L'étude de la forme quadratique associée à la matrice hessienne permet de dire si l'on a un extremum local (min ou max) ou non
+
+### Exemple
+$$\begin{array}{rl}
+f(x, y) = & x^4 + y^4 - 2(x - y)^2  \\\\
+= & x^4 + y^4 - 2x^2 + 4xy - 2y^2 \\\\
+\triangledown f(x, y) = & \left( \begin{array}{} 4x^3 - 4x + 4y \\\\ 4y^3 - 4y + 4x \end{array} \right) \\\\
+\text{On cherche } \;\; \triangledown f(x, y) = & \left( \begin{array}{} 0 \\\\ 0 \end{array} \right) \\\\
+\iff & \left\\\{ \begin{array}{} 4x^3 - 4x + 4y = 0 \\\\ 4y^3 - 4y + 4x = 0 \end{array} \right. \\\\
+\iff & \left\\\{ \begin{array}{} x^3 - x = -y \\\\ y^3 - y = -x \end{array} \right. \\\\
+\iff & \left\\\{ \begin{array}{} x = y - y^3 \\\\ y = y - y^3 - \left( y - y^3 \right)^3  \end{array} \right. \\\\
+\text{Cherchons la matrice hessienne } \;\; \triangledown^2f(x, y) = & \begin{pmatrix} {\partial \triangledown f(x, y)[0] \over \partial x} & {\partial \triangledown f(x, y)[0] \over \partial y} \\\\ {\partial \triangledown f(x, y)[1] \over \partial x} & {\partial \triangledown f(x, y)[1] \over \partial y} \\\\\end{pmatrix} \\\\
+= & \begin{pmatrix} 12x^2 - 4 & 4 \\\\ 4 & 12y^2 - 4 \end{pmatrix}
+\end{array}$$
+
+>On détermine les points singuliers avec l'expression du gradient (On cherche $\triangledown f(x, y) = 0$).
+>On cherche les valeurs propres de la hessienne ($\triangledown^2 f(x, y)$) pour chacun des points singuliers. (Sur une matrice diagonale, les valeurs propres sont les valeurs de la diagonale)
+>Si elles sont toutes négatives, on a un maximum local.
+>Si elles sont toutes positives, on a un minimum local.
+>Sinon, c'est non défini.
+
+** Remarque **
+Une forme quadratique dont certaines valeurs propres de la hessienne sont positives et négatives est non définie, pourquoi ?
+$q$ est définie : $q(x) = 0 \iff x = 0$
+Si $\left\\\{ \begin{array}{} \exists X\_0 \text{ tq } q(X\_0) > 0 \\\\ \exists Y\_0 \text{ tq } q(Y\_0) < 0\end{array}\right.$, prenons  $f : \lambda \in [0, 1] \longmapsto q(\lambda X\_0 + (1 - \lambda) Y\_0)$.
+$f(0) = \underset{> 0}{q(Y\_0)}$ et $f(1) = \underset{< 0}{q(X\_0)}$ $\implies \exists \lambda\_0 \text{ tq } f(\lambda\_0) = 0$
+Soit $Z\_0 = \lambda\_0 X\_0 + (1 - \lambda\_0) Y\_O, q(Z\_0) = q(\lambda\_0) = 0$
+$Z\_0 \implies X\_0$ et $Y\_0$ sont colinéaires ($X\_0 = \alpha Y\_0$).
+$\underset{< 0}{q(X\_0)} = q(\alpha Y\_0) = \underset{\geq 0}{\alpha^2} . \underset{\gt 0}{q(Y\_0)}$. **Impossible !**
+
+## Méthode de newton
+
+L'idée de la méthode de Newton est de converger vers $0$.
