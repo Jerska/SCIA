@@ -1,3 +1,7 @@
+Auteurs:
+** DUMONT Matthieu **
+** SZTERN Kévin **
+
 # Exercice 2
 
 ## 1<sup>ère</sup>
