@@ -1,0 +1,47 @@
+# Définitions
+- **Parties prenantes** : Toutes les personnes affectées ou affectant par le fonctionnement d'une entreprise.
+  Ex: Une ville.
+  - Riverains
+  - Services de l'état
+  - Entreprises
+  - Elus
+  - Citoyens votants
+  - Banques
+- **Actifs intangibles** : Aussi appelé *actif immatériel*, il définit tout ce qui n'a pas de valeur marchande fixée. Typiquement : une marque, un droit d'auteur.
+  Liés directement aux risques.
+  Ex: Nano-composants, rentrent sous la peau mais pour autant, on n'est pas capable d'évaluer la nocivité.
+  À relier : *Principe de précaution*.
+- **RSE** : Responsabilité Sociale Entreprise
+  3 axes :
+  - Social
+  - Économique
+  - Environnement / Sociétal
+  Ne pas regarder uniquement l'entreprise, mais aussi les fournisseurs.
+  Ex: *L'informatique*
+  | Environnement         | Social                              | Economique / Sociétal        |
+  |:---------------------:|:-----------------------------------:|:----------------------------:|
+  | Déchets -> Recyclage  | Éducation / Formations              | Accès aux matières premières |
+  | Extraction            | Équilibre vie privée / vie publique | Volabilité des coûts         |
+  | Pollution             | Communication                       | Santé                        |
+  |                       | Conditions de travail               | Virtualisation               |
+  |                       | R & D                               | Transition                   |
+  |                       | Salaires                            | Transparence                 |
+  |                       |                                     | Accès                        |
+  |                       |                                     | Gouvernance                  |
+
+## Règles d'or pour les entreprises
+
+- Problème de confiance si l'entreprise ne cherche pas à satisfaire toutes ses parties prenantes
+- Pas suffisant d'innover, mesure des "valeurs ajoutées" nécessaires
+- Communication proactive auprès des clients
+
+## Exo pour la semaine prochaine
+
+10 G€ -> Economie numérique
+Sur quoi on investit ?
+Pourquoi ?
+Slides.
+
+Groupes de 4/5
+
+nicolas.delange@gmail.com
