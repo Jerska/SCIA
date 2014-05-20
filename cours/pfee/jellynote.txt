@@ -1,0 +1,30 @@
+# Aspects techniques
+
+## Application de création de partitions
+
+Langages :
+- C++ (Why ? Parce que Jellynote fait la transi JS vers du C++ et pas de nécessité d'interaction avec l'utilisateur, au moins au départ)
+- Possiblement du JavaScript
+Input : Fichier audio / vidéo (Jellynote propose aux utilisateurs de se filmer en train d'interpréter une musique)
+Output : Partition sous format MIDI
+
+### Problématiques
+
+- Analyse du signal
+  - FFT
+  - Harmoniques
+  - Hauteur
+  - Accords (superposition)
+  - Erreurs de note (accordage /  Timing) + bruit
+  - Longeur des notes
+- Notions de classification
+  - Tempo
+  - Signature rythmique
+  - Mesures
+  - Erreurs de temps (décalage user et/ou micro)
+
+## Bonus possibles
+
+- Notions de classification
+  - Plus de gestion d'erreurs de temps (décalage user et/ou micro)
+

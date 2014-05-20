@@ -178,10 +178,10 @@ $\mathcal{T}$ est la donnée de :
 - un nombre fini de schémas ($n \longmapsto \varphi\_n$)
 
 Exemples : $\mathcal{L}\_G = \\\{\equiv, \star, e\\\}$
-$\mathcal{L}\_G$
-- $A\_{\text{neutre}} : \forall x, x * e \equiv e * x \wedge x * e \equiv x$
-- $A\_assoc \forall x, \forall y, \forall z (x * y) * z \equiv x * (y * z)$
-- $A\_inverse \forall x, \exists y \;\; x*y \equiv e \wedge y * x \equiv e$
+$\mathcal{L}\_G$ :
+- $A\_{\text{neutre}} : \forall x, x \star e \equiv e \star x \wedge x \star e \equiv x$
+- $A\_{\text{assoc}} : \forall x, \forall y, \forall z (x \star y) \star z \equiv x \star (y \star z)$
+- $A\_{\text{inverse}} : \forall x, \exists y \;\; x\star y \equiv e \wedge y \star x \equiv e$
 
 De plus, $\equiv$ satisfait aux conditions de l'égalité.
 
@@ -213,3 +213,257 @@ Un théorème est un énoncé obtenu par une théorie comme : $A\_1 \wedge A\_2 
 #### Notation
 
 $\mathcal{T} \vdash \sigma$ ($\sigma$ est un thèse de $T$)
+
+#### NB
+
+$\forall x, \forall y \;\; x \equiv u \implies (\varphi[x/u] \iff \varphi [u])$
+
+**En résumé**
+
+$\mathcal{T} \vdash \sigma$ ($\sigma$ : théorème) signifie : il existe $A\_i ... A\_n$ axiomes de $\mathcal{T}$ tels que $A\_1 \wedge ... \wedge A\_n \Vdash \mathcal{T}$ puisse être établi.
+
+**Remarque**
+$A\_1 \wedge ... \wedge A\_n =: A$
+
+### Théories équivalentes
+
+$\mathcal{T}\_1$ et $\mathcal{T}\_2$ sont dites équivalentes lorsque pour tout $\sigma$ énoncé de $\mathcal{L}$ langage commun à $\mathcal{T}\_1$ et $\mathcal{T}\_2$, on a :
+$$\mathcal{T}\_1 \vdash \sigma \text{ ssi } \mathcal{T}\_2 \vdash \sigma$$
+
+#### Propriété
+
+Ceci définit une relation d'équivalence sur la classe des théories.
+
+**Démonstration :**
+- *Réflexivité* : $\mathcal{T}$ équivalente à $\mathcal{T}$ puisque : $\mathcal{T} \vdash \sigma \text{ ssi } \mathcal{T} \vdash \sigma$
+- *Symétrie* : celle du $\text{ssi}$
+- *Transitivité* : $[\mathcal{T}\_1 \text{ equiv } \mathcal{T}\_2 \text{ et } \mathcal{T}\_2 \text{ equiv } \mathcal{T}\_3]$
+  équivaut à $[\mathcal{T}\_1 \vdash \sigma \text{ ssi } \mathcal{T}\_2 \text{ et } \mathcal{T}\_2 \vdash \sigma \text{ ssi } \mathcal{T}\_3]$
+  d'où $\mathcal{T}\_1 \vdash \sigma \text{ ssi } \mathcal{T}\_3$
+
+### Classes d'équivalences
+
+Notée $\overline{\mathcal{T}}$ choisie comme la classe de tous les théorèmes de $\mathcal{T}$.
+On nomme $\overline{\mathcal{T}}$ **cloture déductive** de $\mathcal{T}$.
+
+#### Propriété
+
+Si $\mathcal{T}\_1$ et $\mathcal{T}\_2$ sont équivalentes, alors $\overline{\mathcal{T}\_1} = \overline{\mathcal{T}\_2}$
+
+#### Démonstration
+
+$\overline{\mathcal{T}\_i}$ : Théorèmes de $\mathcal{T}\_i$ (Vus comme axiomes)
+Or : $\mathcal{T}\_i \vdash \sigma \text{ ssi } \mathcal{T}\_2 \vdash \sigma$
+Soit $\sigma$ est dans $\overline{\mathcal{T}\_1}$ ssi $\sigma$ est dans $\overline{\mathcal{T}\_2}$.
+Donc constitué des mêmes éléments.
+
+### Classes de théorèmes
+
+#### Définition
+
+Une théorie $\mathcal{T}$ est dite contradictoire lorsqu'il existe $\sigma$ énoncé tel que $$\mathcal{T} \vdash \sigma \wedge \neg \sigma$$
+
+#### Définition
+
+Une théorie $\mathcal{T}$ est dite inconsistante lorsque
+$$\mathcal{T} \vdash \varphi \text { pour toute } \varphi \text{ de } F(\mathcal{L})$$
+
+#### Définition
+
+Une théorie est dite incohérente lorsque :
+$$ \mathcal{T} \vdash \bot $$
+
+#### Théorème (dans LK)
+
+Les trois définitions sont éuivalentes en ce sens :
+$\mathcal{T}$ incohérente $\text{ ssi }$
+$\mathcal{T}$ inconsistante $\text{ ssi }$
+$\mathcal{T}$ contradictoire
+
+##### Démonstration
+
+- Supposons $\mathcal{T}$ inconsistante.
+  Soit $\sigma$ quelconque de $F(\mathcal{L})$.
+  Posons $\varphi := \sigma \wedge \neg \sigma$.
+  Par définition $\mathcal{T} \vdash \sigma \wedge \neg \sigma$
+  Donc inconsistante entraîne contradictoire.
+- Supposons $\mathcal{T}$ contradictoire.
+  Soit alors $\mathcal{T} \vdash \sigma \wedge \neg \sigma$ pour un certain $\sigma$.
+  Soit $A$ dans $\overline{\mathcal{T}}$ avec $A \Vdash \sigma \wedge \neg \sigma$.
+  On a donc :
+  - $A \vee \sigma \Vdash \neg \sigma$
+  - soit $A \vee \sigma \Vdash \neg \sigma \vee \bot$
+  - soit $A \vee \sigma \vee \neg \sigma \Vdash \bot$
+  Mais dans LK, ceci signifie $A \Vdash \bot$, d'où $\bot$ est dans $\overline{\mathcal{T}}$.
+- Donc $\mathcal{T}$ contradictoire entraîne $\mathcal{T}$ incohérente.
+  Si $\mathcal{T}$ est incohérente, alors $\mathcal{T} \vdash \bot$.
+  D'où $A \Vdash \bot$ avec $A$ dans $\overline{\mathcal{T}}$.
+  Donc $A \Vdash \bot \vee \varphi$
+  Soit $A \Vdash \varphi$
+  Par propriété des Algèbres de Boole.
+
+#### Notation
+
+$\text{Coh}(\mathcal{T})$ pour désigner une formule de $\mathcal{L}$ désignant la cohérence de $T$.
+**Attention !** C'est un élément de $F(\mathcal{L})$, il n'est pas toujours exprimable.
+
+### Théorème de compacité
+
+Une théorie $\mathcal{T}$ est cohérente $\text{ssi}$ chaque sous-théorie $\mathcal{T}\_0$ l'est.
+
+**Démonstration**
+
+Supposons $\mathcal{T}$ incohérente. Alors soit $A\_1 ... A\_n$ tels que $A\_1 \wedge ... \wedge A\_n$ incohérente, finie et incluse dans $\mathcal{T}$.
+*Ce raisonnement est la méta contraposée de la réciproque*
+
+**Sens direct par contraposée**
+
+Si il existe $\mathcal{T}\_0$ finie contradictoire incluse dans $\mathcal{T}$, alors soient $A\_1 ... A\_n$ les axiomes de $T\_0$.
+Par définition :
+$$ A\_{i1} \wedge ... \wedge A\_{ik} \Vdash \bot$$
+Mais chaque $A\_{i\star}$ est aussi un axiome de $\mathcal{T}$.
+
+Par définition, on a aussi $\mathcal{T} \vdash \bot$.
+
+#### Définition
+
+Soit $\Sigma$ un ensemble d'enoncés.
+$\Sigma$ est dit axiomatisable si il existe une théorie $\mathcal{T}$ cohérente telle quel:
+$\sigma$ est dans $\Sigma$ implique $\mathcal{T} \vdash \sigma$
+$\longrightarrow$ utile pour les sciences d'observation
+
+#### Définition
+
+$\mathcal{T}$ est dite complète lorsque :
+- $\mathcal{T}$ est cohérente
+- Pour tout $\sigma$ énoncé, $\mathcal{T} \vdash \sigma$ ou $\mathcal{T} \vdash \neg \sigma$
+
+**Remarque**
+$\mathcal{T} \vdash \sigma$ et $\mathcal{T} \vdash \sigma^\prime$ équivaut à $\mathcal{T} \vdash \sigma \wedge \sigma^\prime$
+$A\_1 \wedge ... \wedge A\_n \Vdash \sigma \;\; B\_1 \wedge ... \wedge B\_n \Vdash \sigma^\prime$
+$A\_1 \wedge ... \wedge A\_n \wedge B\_1 \wedge ... \wedge B\_n \Vdash \sigma$
+$A\_1 \wedge ... \wedge A\_n \wedge B\_1 \wedge ... \wedge B\_n \Vdash \sigma^\prime$
+
+Mais il n'en est rien pour $\vee$.
+
+#### Propriété
+
+$\mathcal{T}$ est complète équivaut à $\left( \mathcal{T} \not{\vdash} \sigma \text{ ssi } \mathcal{T} \vdash \neg \sigma \right)$
+
+**Démonstration**
+Supposons $\mathcal{T} \not{\vdash} \mathcal{\sigma} \text{ ssi } \mathcal{T} \vdash \neg \sigma$
+Cohérence de $\mathcal{T}$ : Par Méta-absurde
+Si $\mathcal{T}$ était contradictoire on aurait $\mathcal{T} \vdash \sigma \wedge \neg \sigma$ donc $\mathcal{T} \vdash \varphi$ pour tout $\varphi$ donc $\mathcal{T} \vdash \sigma$ et $\mathcal{T} \vdash \neg \sigma$.
+Mais alors $\mathcal{T} \vdash \neg \sigma \text{ ssi } \mathcal{T} \not{\vdash} \sigma$
+Or $\mathcal{T} \vdash \sigma$
+Méta-absurde, donc $\mathcal{T}$ est cohérente.
+Montrons à présent le second point : (Méta-tiers-exclu)
+Si $\mathcal{T} \vdash \neg \sigma$, alors on a bien $\mathcal{T} \vdash \neg \sigma$ ou $\mathcal{T} \vdash \sigma$.
+Supposons que $\mathcal{T} \not{\vdash} \neg \sigma$, alors $ \mathcal{T} \vdash \neg \neg \sigma$.
+Dans LK on a donc : $\mathcal{T} \vdash \sigma$, d'où $\mathcal{T} \vdash \sigma$ et $\mathcal{T} \vdash \neg \sigma$.
+La méta-réciproque est établie.
+Maintenant : Méta-sens discret.
+$\mathcal{T}$ est complète équivaut à $\mathcal{T} \vdash \sigma \text { XOR } \mathcal{T} \vdash \neg \sigma$ équivaut à $\mathcal{T} \not{\vdash} \sigma \text{ ssi } \mathcal{T} \vdash \neg \sigma$.
+$(A \text{ XOR } B) \text { ssi } (A \iff B)$
+
+#### Exemple de Théorie : L'arithmétique de Peano
+
+Notée $\mathcal{P}$ de langage :
+$$\mathcal{L} = \left\\\{ \equiv, \diamond, \oplus, \otimes, \nearrow \right\\\}$$
+
+**Axiomes**
+- Théorie égalitaire
+- $\forall a$
+  - $x \oplus \diamond \equiv a$
+  - $\wedge \diamond \oplus a \equiv a$
+  - $\wedge a \otimes \diamond \equiv \diamond$
+  - $\wedge \diamond \otimes a \equiv \diamond$
+- $\forall a \;\; \left( \exists y \; \nearrow y \equiv a \; \; \wedge \neg a \equiv \diamond \right) \vee \left( a \equiv \diamond\right)$
+- $\forall a \forall b \;\; a \oplus \nearrow b \equiv \nearrow (a \oplus b)$
+- $\forall a \forall b \;\; a \otimes \nearrow b \equiv (a \otimes b) \oplus a$
+
+Schéma axiomatique de récurrence : $\left( \varphi[\frac{\diamond}{n}] \wedge \left( \forall n \;\; \varphi (n) \implies \varphi [\frac{{\nearrow n}}{n}] \right) \right) \implies \forall n \varphi (n)$
+Pour tout $\varphi$ à exactement une variable libre.
+
+# La sémantique
+
+$\mathcal{L}$ est un langage relationnel.
+On appelle $\mathcal{L}$-interprétation ou $\mathcal{L}$-réalisation ou $\mathcal{L}$-structure la donnée de :
+- un domaine $A$ (composé d'individus)
+- pour chaque symbole $\delta$ dernier$C^k$, un véritable individu $a$ de $A$
+- pour chaque symbole de fonction $f$ à $k$ argument : une vraie fonction $f : A^k \longrightarrow A$
+- pour chaque symbole $R$ de relation, un ensemble $R \subset A^n$ ($n$ : arité)
+
+**NB:** La dépendance de l'intérprétation de $A$ pourra être signalée.
+
+#### Notation
+
+Si $\clubsuit$ est un symbole de $\mathcal{L}$, alors $\overline{\clubsuit}^{\mathcal{A}}$ désignera son son interprétation dans la $\mathcal{L}$-structure $\mathcal{A}$.
+On peut écrire :
+$$ \mathcal{A} = \left\lt A; \lt a\_i \gt ; \lt f\_j \gt ; \lt R\_k \gt \right\gt $$
+
+**Exemples :**
+- Interprétation 1 : $\mathcal{N} = \left\lt \mathbb{N} ; \lt 0 \gt ; \lt x \mapsto x + 1; +\_{\mathbb{N}} ; \times\_{\mathbb{N}} \gt \right\gt$
+
+**Notation :** $\delta\_E := \\\{ (x; x) ; x \in E \\\}$
+Pour l'interprétation des symboles, il suffit juste de respecter le typage :
+Il nous faut
+- 1 ensemble
+- 1 constante
+- 1 fonction à 1 argument
+- 1 fonction à deux arguments
+- 1 sous-ensemble de l'ensemble$\;^2$
+
+### Termes du langage
+
+Cas des symboles de variables.
+On se donne :
+$\mathcal{V}$ :
+- $v \longmapsto A$
+- $x \longmapsto a$ ($x$ : lettre, $a$ : variable)
+dite assignation de valeur aux variables ou valuation.
+
+Pour $t$ terme, on définit alors :
+- si $t$ est atomique, on pose $\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}(t)$ l'interprétation de $t$ dans $A$ selon $\mathcal{V}$ par :
+  $\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}(t) = $
+    - $\overline{t}^{\mathcal{A}}$ si $t$ symbole de $C^k$
+    - $\mathcal{V}(t)$ si $t$ symbole de variable
+- si $t = f \;\; t\_1 ... t\_n $ avec $f$ symbole de fonction
+  $\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}} = \overline{f}^{\mathcal{A}} \left(\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}} (t\_1), ... , \mathcal{J}\_{\mathcal{A}}^{\mathcal{V}} (t\_2) \right) \;\;$ ($\in A$)
+  Exemple: Dans $\mathcal{N}$, on a : $\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}} \left( \diamond \oplus \nearrow \diamond \right)$
+  $= +\_{\mathbb{N}} \left( \overline{\diamond}^{\mathcal{N}}, (x \; \mapsto \; x + 1)\left( \overline{\diamond}^{\mathcal{N}} \right) \right)$
+
+### Sémantique des formules
+
+Pour $\varphi$ dans $F(\mathcal{L})$, on notera $\parallel \varphi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$ sa sémantique.
+- Si $\varphi$ est atomique
+  $\parallel \bot \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$ = faux
+  $\parallel \top \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$ = vrai
+- $\parallel R \;\; t\_1 ... t\_n \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$ = vrai $\text{ssi}$ $\overline{R}^{\mathcal{A}} \ni (\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}(t\_1) ... \mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}(t\_n))$
+- Si $\varphi$ et $\psi$ sont des formules :
+  - $\parallel \varphi \wedge \psi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} = \parallel \varphi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} \times \parallel \psi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$
+  - $\parallel \varphi \vee \psi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} = \parallel \varphi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} + \parallel \psi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$
+  - ...
+- Quantifications
+  - On note $\mathcal{V}\_a^x : v \longmapsto A$ telle que
+    - $\mathcal{V}\_a^x = \mathcal{V}$ sur $v \ \\\{ a \\\}$
+    - $\mathcal{V}\_a^x (x) = a$
+    On a alors :
+    - $\parallel \forall x \;\; \varphi (x) \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} = \text{Min}\_{a \in A} \parallel \varphi(x) \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V\_a^x}}}$
+    - $\parallel \exists x \;\; \varphi (x) \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} = \text{Max}\_{a \in A} \parallel \varphi(x) \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V\_a^x}}}$
+    **Remarque** : $\parallel \;\; \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} : F(\mathcal{L}) \longrightarrow B$ en temps qu'application, chaque formule n'a qu'une image au plus.
+    On n'aura **jamais** $\varphi$ est "vrai est faux".
+    Si $\varphi$ n'a pas d'image par cette appli, elle n'a pas de sens.
+
+#### Propriété
+
+Si $\mathcal{A}$ est fixée et $\varphi$ close, alors $\parallel \varphi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}}$ ne dépend pas de $\mathcal{V}$.
+
+**Démonstration** : Par induction sur la construction des formules.
+
+#### Notation
+
+Si $\varphi$ est close, on écrit $\mathcal{A} \models \varphi$ au lieu de $\parallel \varphi \parallel\_{\mathcal{J}\_{\mathcal{A}}^{\mathcal{V}}} = $ vrai
+Lire : "$A$ est un modèle de $\varphi$"
+
+Différencier la sémantique $\mathcal{A} \models \varphi$ ($\mathcal{A}$ structure) de la syntaxique $\mathcal{T} \vdash \varphi$

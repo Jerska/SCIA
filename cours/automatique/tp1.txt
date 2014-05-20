@@ -1,6 +1,6 @@
 Auteurs:
-** DUMONT Matthieu **
-** SZTERN Kévin **
+**DUMONT Matthieu**
+**SZTERN Kévin**
 
 # Exercice 2
 
@@ -19,7 +19,7 @@ $$\begin{array}{rrll}
  \iff & y(t) = & 10 . \left( u(t) + e^{-\dfrac{t}{5}}\right)
 \end{array}$$
 
-> ** Réponses : **
+> **Réponses :**
 > $$\begin{array}{rll}
 > y(0^+) = & 10 . (1 - 1) & = \mathbf{0} \\\\
 > y(+\infty) = & 10 . (1 - 0) & = \mathbf{10} \\\\
@@ -42,7 +42,7 @@ G(p) = & K . {1 + T\_2p \over 1 + T\_1 p} & \text{ avec } K = 10 \text{, } T\_1 
 \iff y(t) = & 10 . \left( u(t) + \frac{1}{2} e^{-\dfrac{t}{4}} \right) &
 \end{array}$$
 
->** Réponses : **
+>**Réponses :**
 >$$\begin{array}{rll}
 > y(0^+) = & 10 . (1 + \frac{1}{2} . 1) & = \mathbf{15} \\\\
 > y(+\infty) = & 10 . (1 + \frac{1}{2} . 0) & = \mathbf{10} \\\\
@@ -62,7 +62,7 @@ Le seul changement sur la formule finale est de changer $b$ de la décomposition
 D'où :
 $$y(t) = 10 . \left[ u(t) - \frac{1}{2} \left( e^{-\frac{t}{4}} \right) \right]$$
 
-> ** Réponse : **
+> **Réponses :**
 >$$\begin{array}{rll}
 > y(0^+) = & 10 . (1 + \frac{1}{2} . 0) & = \mathbf{10} \\\\
 > y(+\infty) = & 10 . (1 + \frac{1}{2} . 1) & = \mathbf{15}
@@ -88,4 +88,4 @@ $$y(t) = 10 . \left[ u(t) - \frac{1}{2} \left( e^{-\frac{t}{4}} \right) \right]$
    ![Figure 5](img/fig5.jpg)
 3. $y\_{\text{moy}} = 25$
 4. La température $y$ évolue de manière périodique autour de $y\_{\text{moy}}$ et ne semble pas converger.
-   On peut imputer ce souci au délai où à la méthode d'adaptation. La moyenne de température est bien celle souhaitée, mais elle chute vers $20°C$ et remonte vers $30°C$ régulièrement.
+   On peut imputer ce souci au délai où à la méthode d'adaptation. La moyenne de température est bien celle souhaitée, mais elle chute vers $20^oC$ et remonte vers $30^oC$ régulièrement.

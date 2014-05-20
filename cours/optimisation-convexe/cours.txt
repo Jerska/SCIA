@@ -184,3 +184,68 @@ $\underset{< 0}{q(X\_0)} = q(\alpha Y\_0) = \underset{\geq 0}{\alpha^2} . \under
 ## Méthode de newton
 
 L'idée de la méthode de Newton est de converger vers $0$.
+
+## Exercices
+
+1. - **Qu'est-ce que la différentielle d'une fonction et à quoi sert elle ?**
+     La différentielle est une application linéaire pour faire une approximation linéaire en un point, et elle est définie par le gradient autour du point.
+     Elle vaut : $dfa(x) = \triangledown f(a)^T . x = 2 . a^T . x$
+   - **Calculer la différentielle de $f : x \in \mathbb{R}^k \longmapsto \parallel x \parallel^2$ **
+     $$\begin{array}{rl}
+     \parallel x \parallel^2 = & \lt x, x \gt \; = \; x^T . x = \; \sum\limits\_{i = 1}^n x\_i^2 \\\\
+     \triangledown f(x) = & \begin{pmatrix} {\partial f(x) \over \partial x\_1} \\\\ ... \\\\ {\partial f(x) \over \partial x\_n} \end{pmatrix} = \; \begin{pmatrix} 2x\_1 \\\\ ... \\\\ 2 x\_n \end{pmatrix} = \; 2x \\\\
+     \tilde{fa}(x) = & f(a) + \triangledown f(a)^T(x - a) \\\\
+     = & \parallel a \parallel^2 + 2 a^T(x - a) \\\\
+     = & \parallel a \parallel^2 + 2 a^T x - 2 a^T a \\\\
+     = & 2 a^T x - \parallel a \parallel^2
+     \end{array}$$
+
+2. - **Qu'est-ce que l'algo de Newton ?**
+     L'aglorithme de Newton est un algorithme permettant d'approximer une fonction en $0$.
+     On prend $F : \mathbb{R}^n \longmapsto \mathbb{R}^k$. $ F = \left\\\{ \begin{array}{} F\_1(x) \\\\ ... \\\\ F\_k(x) \end{array} \right. $
+     On cherche $x \in \mathbb{R}^n \text{ tq } F(x) = 0$.
+   - **Quelles sont ses grandes lignes ?**
+     - *Initialisation*
+       On prend un $x\_0$
+     - *Linéarisation autour de $x\_k$*
+       $\tilde{F}\_k(x) = F(x\_k) + J(x\_k)(x - x\_k)$
+       $J$ est la *Jacobienne*
+       $$J(x) = \left( \begin{array}{} \triangledown F\_1(x)^T \\\\ ... \\\\ \triangledown F\_k(x)^T \end{array} \right)$$
+       $x\_{k + 1}$ est la solution de $F(x\_k) = 0$
+   - **Exemple**
+     $$\left\\\{ \begin{array}{} x^2 + y^2 = 1 \\\\ x - y = 0 \end{array} \right.$$
+     $$\begin{array}{rl}
+       \tilde{F}\_k \begin{pmatrix} 1 \\\\ 1\end{pmatrix} = & \begin{pmatrix} 1 \\\\ 0 \end{pmatrix} + \begin{pmatrix} 2 & 2 \\\\ 1 & -1 \end{pmatrix} \begin{pmatrix} x - 1  \\\\ y - 1 \end{pmatrix} \\\\
+       = & \begin{pmatrix} 2x + 2y -3 \\\\ x - y \end{pmatrix}
+     \end{array}$$
+
+3. - **Qu'est-ce que les conditions d'optimalité ?**
+     C'est une méthodologie qui à partir d'un problème d'optimisation donne un système d'équation.
+     Ex: $\underset{x \in \mathbb{R}^n}{\text{min }} c^T x$ avec $Ax = a$ et $x \ge 0 \iff -x \le {0}$.
+     On a comme règles :
+     - $\triangledown f(x) = \sum\limits\_{i \in I, E} \lambda\_i \triangledown h\_i x$ ($I$ : contraintes d'inégalité et $E$ : contraintes d'égalité)
+     - Si $h\_i(x) . \lambda\_i = 0$, alors $i \in I$
+     - Si $\lambda\_i \leq 0$, alors $i \in I$
+     - Si $\lambda\_i \in \mathbb{R}$, alors $i \in E$
+
+     On appelle $h\_i$ chaque contrainte.
+
+     La condition d'optimalité transforme
+     $$\left\\\{\begin{array}{rl} & \text{min} f(x) \\\\
+       i \in E & h\_i(x) = 0 \\\\
+       i \in I & h\_i(x) \le 0 \\\\
+       & x \in \mathbb{R}^n
+     \end{array}\right.
+     \longmapsto
+     \left\\\{\begin{array}{rl} \triangledown f & \sum\limits\_{i} \lambda\_i \triangledown h\_i (x)  \\\\
+       i \in E & h\_i(x) = 0 \text{ et } \lambda\_i \in \mathbb{R} \\\\
+       i \in I & \lambda\_i h\_i(x) = 0 \text{ et } \lambda\_i \le 0 \\\\
+       & x \in \mathbb{R}^n
+     \end{array}\right.
+     $$
+
+     En l'appliquant à la programmation linéaire, on obtient :
+     - $c = \lambda A^T - \mu \iff c - \lambda A^T = -\mu$
+     - $\mu \le 0 \iff c - \lambda A^T \ge 0$
+     - $\lambda \in \mathbb{R}^n \iff (x > 0 \implies \mu = 0)$
+     - $\mu\_i . (- x\_i) = 0$ ($i \in [1, n]$) $ \iff (\mu \lt 0 \implies x = 0)$

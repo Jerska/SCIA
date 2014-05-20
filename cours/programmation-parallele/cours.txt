@@ -1,0 +1,30 @@
+# Parallélisme et le cache
+
+## Problème
+- Memory R/W dans le cache
+- Updated as infrequently as possible
+- Cache coherency issues avec de la mémoire partagée
+
+## Impact
+
+Ça coûte cher :
+- écrire en mémoire
+- reload la mémoire dans les caches de tous les procs
+
+## Protocole de cohérence de cache
+
+On étudie ici MESI.
+
+- Modified
+- Exclusive
+- Shared
+- Invalid
+
+|   | M | E | S | I |
+|:-:|:-:|:-:|:-:|:-:|
+| M | ✘ | ✘ | ✘ | ✓ |
+| E | ✘ | ✘ | ✘ | ✓ |
+| S | ✘ | ✘ | ✓ | ✓ |
+| I | ✓ | ✓ | ✓ | ✓ |
+
+See [this file](./experiment.rb)

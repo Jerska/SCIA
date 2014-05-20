@@ -1,5 +1,3 @@
-hljs.initHighlightingOnLoad()
-
 showHide = (id) ->
   console.log 'In showHide'
   elt = document.getElementById(id).style

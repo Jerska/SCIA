@@ -1,0 +1,77 @@
+Auteur:
+**DUMONT Matthieu**
+
+$$\begin{array}{rl}
+  {X(p) \over U(p)} = & {K\_{ps} \over (T\_m^2 p^2 - 1) (T\_s p + 1)} \text{ avec } K\_{ps} = 6 \;\; T\_m = 2,3 . 10^{-2} \text{s} \;\; T\_s = 1,15 . 10^{-2}\text{s} \\\\
+  = & {6 \over (5,29 . 10^{-4} . p^2 - 1)(1,15.10^{-2} p + 1)} \\\\
+  = & {6 \over 6,08 . 10^{-6} . p^3 + 5,29 . 10^{-4} p^2 - 1,15 . 10^{-2} - 1}
+\end{array}$$
+
+# Question 1
+
+1. *Zéros*
+   Le dénominateur est égal à $K\_{ps} = 6$, cette fonction n'a pas de zeros.
+2. *Pôles*
+   On cherche :
+   $$
+   \left\\\{
+   \begin{array}{rl}
+     p^2 = & {10^4 \over 5,29}\\\\
+     \text{ ou} & \\\\
+     p = & {- 10^2 \over 1,15}
+   \end{array}
+   \right.
+   \iff
+   \left\\\{
+   \begin{array}{rl}
+     p^2 \simeq & 1890.36 \\\\
+     \text{ ou} & \\\\
+     p \simeq & -86,96
+   \end{array}
+   \right.
+   \iff
+   \left\\\{
+   \begin{array}{rl}
+     p \simeq & 43.48 \\\\
+     \text{ ou} & \\\\
+     p \simeq & -43.48 \\\\
+     \text{ ou} & \\\\
+     p \simeq & -86,96
+   \end{array}
+   \right.
+   $$
+
+  Impossile de le tracer, parce qu'on a un pôle à partie réelle positive.
+  Nous sommes dans un système instable.
+
+# Question 2
+
+Nous traçons le diagramme de Bode ainsi :
+
+    w = logspace(0, 4, 10^4);
+    bode(6, conv([5.29e-4 0 -1], [1.15e-2 1]), w);
+
+Ce qui nous permet grâce à l'outil `Data Cursor` de trouver $39,2 \text{rad}/\text{s}$ sur le diagramme suivant :
+![Figure 1](img/fig1_tp4.jpg)
+
+# Question 3
+
+On cherche la FTBF avec l'ajout d'un PID.
+
+$$\begin{array}{rl}
+  {Y(p) \over Y\_c(p)} = & {G(p) . C(p) \over 1 + G(p) . C(p)} \\\\
+  = & {1 \over 1 + {1 \over G(p)C(p)}} \\\\
+  G(p) . C(p) = & (K\_p + K\_d p + {K\_i \over p}){K\_{ps} \over (T\_m^2 p^2 - 1) (T\_s p + 1)}\\\\
+  = & K\_{ps} . {K\_d p^2 + K\_p p + K\_i \over p(T\_m^2 p^2 - 1) (T\_s p + 1) } \\\\
+  \iff {1 + {1 \over G(p)C(p)}} = & 1 + {p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
+  = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
+  = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
+  = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + T\_m^2 T\_s p^4 + T\_m^2 p^3 - T\_s p^2 - p \over K\_{ps}(K\_d p^2 + K\_p p + K\_{ps} K\_i)} \\\\
+  = & {T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i - 1 \over K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i} \\\\
+\iff {Y(p) \over Y\_c(p)} = & {K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i \over T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i - 1}
+\end{array}$$
+
+# Question 4
+
+Réponse à l'échelon pour différentes valeurs de `kd`.
+![Figure 2](img/fig2_tp4.jpg)

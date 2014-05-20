@@ -10,7 +10,6 @@ html
   head
     title= file.name + ' - SCIA'
     link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/highlightjs/styles/solarized_dark.css')
     != css('theme')
     script(type="text/x-mathjax-config").
       MathJax.Hub.Config({
@@ -25,6 +24,5 @@ html
       h5#toc-heading Table des matières
       ul#toc-ul
         mixin showToc(file.toc)
-    script(type='text/javascript', src='/highlightjs/highlight.pack.js')
     script(type='text/javascript', src="/MathJax/MathJax.js?config=TeX-AMS_HTML-full")
     != js('show')
