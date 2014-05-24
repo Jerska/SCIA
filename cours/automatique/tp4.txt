@@ -61,17 +61,94 @@ On cherche la FTBF avec l'ajout d'un PID.
 $$\begin{array}{rl}
   {Y(p) \over Y\_c(p)} = & {G(p) . C(p) \over 1 + G(p) . C(p)} \\\\
   = & {1 \over 1 + {1 \over G(p)C(p)}} \\\\
-  G(p) . C(p) = & (K\_p + K\_d p + {K\_i \over p}){K\_{ps} \over (T\_m^2 p^2 - 1) (T\_s p + 1)}\\\\
+  G(p) . C(p) = & (K\_p + K\_d p + {K\_i \over p}) . {K\_{ps} \over (T\_m^2 p^2 - 1) (T\_s p + 1)}\\\\
   = & K\_{ps} . {K\_d p^2 + K\_p p + K\_i \over p(T\_m^2 p^2 - 1) (T\_s p + 1) } \\\\
   \iff {1 + {1 \over G(p)C(p)}} = & 1 + {p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
   = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
   = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + p(T\_m^2 p^2 - 1) (T\_s p + 1) \over K\_{ps}(K\_d p^2 + K\_p p + K\_i)} \\\\
   = & {K\_{ps}(K\_d p^2 + K\_p p + K\_i) + T\_m^2 T\_s p^4 + T\_m^2 p^3 - T\_s p^2 - p \over K\_{ps}(K\_d p^2 + K\_p p + K\_{ps} K\_i)} \\\\
-  = & {T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i - 1 \over K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i} \\\\
-\iff {Y(p) \over Y\_c(p)} = & {K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i \over T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i - 1}
+  = & {T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i \over K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i} \\\\
+\iff {Y(p) \over Y\_c(p)} = & {K\_{ps} K\_d p^2 + K\_{ps} K\_p p + K\_{ps} K\_i \over T\_m^2 T\_s p^4 + T\_m^2 p^3 + (K\_{ps} K\_d - T\_s) p^2 + (K\_{ps}K\_p - 1) p + K\_{ps} K\_i}
 \end{array}$$
 
 # Question 4
 
 Réponse à l'échelon pour différentes valeurs de `kd`.
 ![Figure 2](img/fig2_tp4.jpg)
+
+| $K\_d $ | Fonction de transfert |
+|:--------|:-:|
+| $0,01$  | $$ 6 . 10^{-2} p^2 + 1,2 p  \over 6,08 . 10^{-6} p^4 + 5,29 . 10^{-4} p^3 + 4,85 . 10^{-2} p^2 + 0.2 p$$ |
+| $0,02$  | $$ 0,12 p^2 + 1,2 p  \over 6,08 . 10^{-6} p^4 + 5,29 . 10^{-4} p^3 + 0,11 p^2 + 0.2 p$$ |
+| $0,03$  | $$ 0,18 p^2 + 1,2 p  \over 6,08 . 10^{-6} p^4 + 5,29 . 10^{-4} p^3 + 0,17 p^2 + 0.2 p$$ |
+| $0,05$  | $$ 0,3 p^2 + 1,2 p  \over 6,08 . 10^{-6} p^4 + 5,29 . 10^{-4} p^3 + 0,29 p^2 + 0.2 p$$ |
+
+
+On obtient les pôles des différentes fonctions de tranfert via la fonction `pole` de `MATLAB` :
+
+    pole(tf(num, den))
+
+| $K\_d$        | 0.01                | 0.02                | 0.03                | 0.05                |
+|:--------------|:-------------------:|:-------------------:|:-------------------:|:-------------------:|
+| **Pôles**     | $0$                 | $0$                 | $0$                 | $0$                 |
+|               | $-4,32$             | $-1,86$             | $-1,19$             | $-0,69$             |
+|               | $-41,32 + 76,87i$   | $-42,55 + 125,96i$  | $-42,88 + 160,49i$  | $-43,13 + 213,31i$  |
+|               | $-41,32 - 76,87i$   | $-42,55 - 125,96i$  | $-42,88 - 160,49i$  | $-43,13 - 213,31i$  |
+
+Comme on peut le constater, elles ont toutes comme pôle $0$, qui est à partie réelle positive, les systèmes sont donc bien instables.
+
+On obtient les bandes passantes à -6db en traçant les diagrammes de bode de chacune de ces fonctions de transfert :
+
+    bode(tf(num, den))
+
+
+![Bode for kd=0.01](img/bode_kd_1_tp4.jpg)
+![Bode for kd=0.02](img/bode_kd_2_tp4.jpg)
+![Bode for kd=0.03](img/bode_kd_3_tp4.jpg)
+![Bode for kd=0.05](img/bode_kd_5_tp4.jpg)
+
+| $K\_d$                      | 0.01                | 0.02                | 0.03                | 0.05                |
+|:----------------------------|:-------------------:|:-------------------:|:-------------------:|:-------------------:|
+| **Bande-passante à $-6\text{ dB}$** | $8,73$              | $4,15$              | $3,21$              | $2,82$              |
+
+On constate que la bande-passante à $-6\text{ dB}$ décroît lorsque $K\_d$ croît.
+
+# Question 5
+
+$$\begin{array}{rl}
+C(p) = & K . {aTp + 1 \over Tp + 1} \;\;\; \text{ avec }\; K = 0,2 \;\; a = 10 \;\text{ et }\; T = \frac{1}{80\sqrt{10}} \\\\
+= & {0,2 . \frac{\sqrt{10}}{80}p + 0,2 \over \frac{1}{80\sqrt{10}}p + 1}
+\end{array}$$
+
+![Bode question 5](img/bode_q5_tp4.jpg)
+
+Comme on le voit clairement sur le diagramme de bode, nous avons un gain de phase.
+Ce correcteur est donc en avance de phase.
+
+# Question 6
+
+Voici la réponse à l'échelon :
+![Réponse à l'échelon](img/q6_rep_tp4.jpg)
+
+Effectuons la même méthode que pour la question 3 pour trouver la fonction de transfert correspondante :
+
+$$\begin{array}{rl}
+  {Y(p) \over Y\_c(p)}= & {1 \over 1 + {1 \over G(p)C(p)}} \\\\
+  G(p) . C(p) = & {aTK p + K \over Tp + 1} . {K\_{ps} \over (T\_m^2 p^2 - 1) (T\_s p + 1)}\\\\
+  = & {aTKK\_{ps} p + K K\_{ps} \over T\_m^2T\_sT p^4 + T\_m^2T p^3 - T\_sT p^2 - Tp + T\_m^2T\_s p^3 + T\_m^2 p^2 - T\_s p - 1} \\\\
+  = & {aTKK\_{ps} p + K K\_{ps} \over T\_m^2T\_sT p^4 + (T + T\_s)T\_m^2 p^3 + (T\_m^2 - T\_sT) p^2 - (T\_s + T)p - 1} \\\\
+  \iff {1 + {1 \over G(p)C(p)}} = & 1 + {T\_m^2T\_sT p^4 + (T + T\_s)T\_m^2 p^3 + (T\_m^2 - T\_sT) p^2 - (T\_s + T)p - 1 \over aTKK\_{ps} p + K K\_{ps}} \\\\
+  = & {aTKK\_{ps} p + K K\_{ps} + T\_m^2T\_sT p^4 + (T + T\_s)T\_m^2 p^3 + (T\_m^2 - T\_sT) p^2 - (T\_s + T)p - 1 \over aTKK\_{ps} p + K K\_{ps}} \\\\
+  = & {T\_m^2T\_sT p^4 + (T + T\_s)T\_m^2 p^3 + (T\_m^2 - T\_sT) p^2 + (aTKK\_{ps} - T\_s - T)p + K K\_{ps} - 1 \over aTKK\_{ps} p + K K\_{ps}} \\\\
+\iff {Y(p) \over Y\_c(p)} = & {aTKK\_{ps} p + K K\_{ps} \over T\_m^2T\_sT p^4 + (T + T\_s)T\_m^2 p^3 + (T\_m^2 - T\_sT) p^2 + (aTKK\_{ps} - T\_s - T)p + K K\_{ps} - 1}
+\end{array}$$
+
+
+Les pôles sont trouvés de la même manière que pour la question 4 :
+- $-6,89$
+- $-285,46$
+- $-23,79 + 60,52i$
+- $-23,79 - 60,52i$
+
+Les 4 pôles sont à partie réelle strictement négative, l'ajout de ce nouveau correcteur en avance de phase a donc permis de **stabiliser le système**.
+Cette affirmation est par ailleurs confirmée par le tracé de la réponse à l'échelon faite précédemment.
