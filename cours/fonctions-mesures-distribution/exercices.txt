@@ -1,0 +1,31 @@
+# Topologie
+
+>Une ** topologie ** sur $E$ est un ensemble $\mathcal{T}$ contenant des parties de $E$ vérifiant :
+>- *Éléments distincts* : $\varnothing \in \mathcal{T}$ et $E \in \mathcal{T}$
+>- *Stabilité par unions quelconques* : $\forall u\_i \in \mathcal{T}$ et $\bigcup\limits\_{i \in \mathcal{T}} u\_i \in \mathcal{T}$
+>- *Stabilité par intersections finies* : $ \forall(u\_i)\_{i \leq n} \in \mathcal{T}^n\text{, }\bigcap\limits^n\_{i = 1}u\_i \in \mathcal{T}$
+
+## Exercice 1
+
+>Soit $E$ un ensemble.
+>Montrer que les trois espaces suivants sont des espaces topologiques :
+
+1. $\mathcal{T} = \\\{ E, \varnothing \\\}$
+   - *Éléments distincts* : Trivial
+   - *Stabilitié par unions quelconques* : $\varnothing \cup E = E \in \mathcal{T}$
+   - *Stabilité par intersections finies* : $\varnothing \cap E = \varnothing \in \mathcal{T}$
+2. $\mathcal{T} = \mathcal{P}(E)$
+3. Soit $A \subset E$, $\mathcal{T} = \\\{ \varnothing, A, A^c, E \\\}$
+   - *Éléments distincts* : Trivial
+   - *Stabilitié par unions quelconques* :
+     - $\varnothing \cup A = A \in \mathcal{T}$
+     - $\varnothing \cup A^c = A^c \in \mathcal{T}$
+     - $\varnothing \cup E = E \in \mathcal{T}$
+     - $A \cup A^c = E \in \mathcal{T}$
+     - $A \cup E = E \in \mathcal{T}$
+     - $A^c \cup E = E \in \mathcal{T}$
+   - *Stabilité par intersection finies* :
+     - $\varnothing \cap ... = \varnothing \in \mathcal{T}$
+     - $A \cap A^c = \varnothing \in \mathcal{T}$
+     - $A \cap E = A \in \mathcal{T}$
+     - $A^c \cap E = A^c \in \mathcal{T}$

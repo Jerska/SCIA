@@ -1,0 +1,16 @@
+1. $C^5\_49$ 2€
+   $C^6\_49$ 12€
+
+   $C^5\_6 \star C^5\_49 = 6 \star 2$ Normal !
+
+2. $9 \star {8! \over 2! 3!}$
+   $= {9 . 8 . 7 . 6 . 5 . 4 . 3 . 2 \over 3 . 2 . 2}$
+
+3. $50! \over 20! 20! 10!$
+
+5. $\text{nb_reecritures} = \text{nb_chiffres}!$
+   $= (E(\text{log}(n)) + 10)$
+   On sait que quand $x > 10$, la croissance de la factorielle est supérieure à celle du nombre.
+   On ne cherche qu'une solution.
+   Avec une boucle for, on trouver $sol = 24$
+

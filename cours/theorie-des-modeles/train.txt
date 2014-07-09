@@ -1,0 +1,115 @@
+# IATM
+
+**Notation** : On note interprétation d'une indexation $\overline{...}$
+
+Prenons $n \neq 0$
+$\overline{\frac{n}{2}}^{\mathcal{N}} = f\_{\frac{n}{2}} : \mathbb{N}^{\frac{n}{2}} \longrightarrow \mathbb{N}$
+$\iff (x\_1, ..., x\_{\frac{n}{2}}) \longrightarrow \sum\limits\_{k = 1}^{\frac{n}{2}} x\_k$
+
+Prenons $k \neq 0$
+$\overline{\frac{2k + 1}{2}}^{\mathcal{N}} = R\_{k} \subset N$
+$R\_k = \\\{ (x\_1, ... , x\_k) \in \mathbb{N}^k / \bigwedge\limits\_{i \neq t} x\_i \neq x\_t \\\}$
+
+Une relation est différente de son interprétation.
+Un prédicat $\simeq$ symbole d'un prédicat.
+
+Un ensemble est un ancrage de la réalité.
+
+$\mathcal{N} = \left\lt \mathbb{N}; \left\lt 1, 2\right\gt ; \left\lt (x\_1, ... , x\_n) \longmapsto \sum\limits\_{i = 1}^{\frac{n}{2}} x\_i \right\gt\_{n \in \mathbb{N}^\star}; \left\lt \\\{ (x\_1, ... , x\_k) \in \mathbb{N}^k / \bigwedge\limits\_{i \neq t} x\_i \neq x\_t \\\} \right\gt\_{k \in \mathbb{N}^\star} \right\gt$
+
+Interprétation lexicographique des mots.
+
+$\overline{0}^D = \text{" "}$
+$\overline{1}^D = \text{"petit poney"}$
+$\overline{\frac{n}{2}}^D : (\omega\_1, ... , \omega\_n) \longmapsto \omega\_1 \star ... \star w\_{\frac{n}{2}}$ (Attention, on ne peut pas prendre un symbole de l'alphabet pour décrire l'alphabet)
+$\overline{2k + 1}^D : \text{DicoFR}^k$ Relation
+
+$=$ est une relation
+$x = y$ est une fonction
+Ce qu'on fait, c'est ça.
+
+On considère $\mathcal{T}$ la théorie égalitaire de langage $\mathcal{L} = \left\\\{ \Delta; \mathcal{P}; \alpha; \mathcal{F}, \equiv \right\\\}$
+Une théorie égalitaire : $\equiv$ est l'égalité.
+$A\_0 : \mathcal{P}\Delta \equiv \Delta$
+$A\_1 : \forall x \;\; \neg\mathcal{F}\mathcal{P}x$
+$A\_2 : \forall x \;\; \mathcal{F}x \implies \exists y \;\; y\alpha\mathcal{P}x$
+$A\_3 : \forall x \forall y \;\; (\mathcal{F}x \wedge \mathcal{F}y) \implies (x \alpha y \; \wedge \; y \alpha x)$
+$A\_4 : \forall x \; \Delta \alpha x$
+$A\_5 : \forall x \forall y \;\; (x \alpha y) \implies (\mathcal{P} x \alpha \mathcal{P} y)$
+
+0° Symboles :
+
+| Symbole          | Type                           | Déduit de |
+|:----------------:|:-------------------------------|:---------:|
+|**$\mathcal{P}$** | Fonction 1 argument            | $A\_0$    |
+|**$\Delta$**      | Symbole de constante           | $A\_0$    |
+|**$\mathcal{F}$** | Symbole relation 1 argument    | $A\_1$    |
+|**$\alpha$**      | Symbole relation 2 arguments   | $A\_4$    |
+
+1° Premiers trucs
+   $\forall x \;\; \Delta \alpha x \;\; \vdash \;\; \exists y \;\; y \alpha x$ ($A\_0$ et $A\_4$)
+   $\forall x \forall y (x \alpha y) \;\; \vdash \;\; \mathcal{P} x \alpha \mathcal{P} y$ ($A\_5$)
+
+   D'où
+   $\forall x \;\; \Delta \alpha x \;\; \vdash \;\; \exists y \;\; y \alpha \mathcal{P} x$
+   $\forall x \;\; \Delta \alpha x \wedge \mathcal{F} x \;\; \vdash \;\; y \alpha \mathcal{P} x$
+   $\forall x \;\; \Delta \alpha x \;\; \vdash \;\; \mathcal{F}x \implies \exists y \;\; \alpha \mathcal{P} x$
+
+   $\mathcal{T}\_{-2} \;\; \vdash \;\; \mathcal{F}x \implies \exists y \;\; y \alpha \mathcal{P} x$
+   $\mathcal{T}\_{-2} \;\; \vdash \;\; \forall x \;\; \mathcal{F}x \implies \exists y \;\; y \alpha \mathcal{P} x$
+
+2° $\varphi\_5 : \exists x\_1; \exists x\_2; \exists x\_3; \exists x\_4; \exists x\_5$
+   $\forall y \;\; (\bigvee\limits\_{i = 1}^5 y \equiv x\_i) \wedge (\bigwedge\_{i \neq j} \neg x\_i \equiv x\_j)$
+
+3° Le meilleur moyen de créer un modèle est de mettre les contraintes sur un graphe.
+   $\mathcal{M} = \left\lt \\\{ \delta; a; b; c; d \\\};
+   \left\lt \delta \right\gt;
+   \left\lt \delta \mapsto \delta; a \mapsto \delta; b \mapsto c; c \mapsto d; d \mapsto \delta \right\gt;
+   \left\lt \\\{ b \\\}; \\\{ (\delta; x); x \in M \\\} \right\gt
+   \right\gt$ ($M$ est le domaine observé par convention)
+
+4° $\varphi\_5$ est indécidable dans $\mathcal{T}$
+   $\mathcal{N} = \left\lt \\\{ \delta \\\}; \left\gt \delta \right\gt ; \left\lt \delta \mapsto \delta \right\gt ; \left\lt \varnothing, \\\{ (\delta, \delta) \\\} \right\gt \right\gt$
+   $\mathcal{N} \vDash \mathcal{T}$ et $\mathcal{N} \nvDash \varphi\_5$
+   $\mathcal{M} \vDash \mathcal{T}$ et $\mathcal{M} \vDash \varphi\_5$
+
+5° $\mathcal{A}$ n'est pas une $\mathcal{L}$-structure
+   $\mathcal{A} \not{\subset} \mathbb{N}^2 = F^2$
+   $\left[ \overline{\mathcal{R}}^{\mathcal{M}} \subset M^k \right]$
+
+   $B$ n'en est pas une.
+   $p(k) = 2^k + 1 \not{\in} \mathcal{P}$ en général ($k$ premier)
+   $p(3) = 2^3 + 1 = 9 \not{\in} E$
+
+  $C$ : $a = 0 \in \mathbb{R}$
+  $p : \mathbb{R} \longrightarrow \mathbb{R}$
+  $p : x \longmapsto x e^{-x^2}$
+  $I = \mathbb{R}\_- \subset \mathbb{R}$
+  $A = [0; 2\pi[ x \mathbb{R}\_+^\star \subset \mathbb{R}^2$
+  $\mathcal{C}$ est une $\mathcal{L}$-structure
+
+  $D$ : $[0; 1] x 2^{[0; 1]}$
+  $a = (0; \varnothing)$
+  $P(x; M) \longmapsto (\text{inf}M; {x})$
+  $\text{inf}\_D A = x \in D / \forall y \in A \;\; x \le y$
+  $\text{inf}\_{[0; 1]} = x$
+  $I = \underset{\subset [0; 1]}{\underline{(\mathcal{Q} \cap [0; 1])}} \; \star \; \underset{\subset 2^{[0; 1]}}{\underline{\mathbb{B}\_{[0; 1]}}} \subset E$
+  $A = \underset{\subset E}{\underline{A}} \; \star \; \left( \underset{\subset [0; 1]}{\underline{]0; 1[}} \star \underset{2^{[0;1]}}{\underline{\\\{ N \subset [0;1] / ... \\\}}} \right) \subset E^2$
+
+6° $\varepsilon : \;\; \parallel \neg \mathcal{F} \mathcal{P} x \parallel\_{\mathcal{F}^{\mathcal{C}}}$
+   $= "x e^{-x^2} \not{\in} \mathbb{R}\_-"$
+   $= "x e^{-x^2} \gt 0"$
+   Or, pour $x = -1$, on a
+   $-\mathcal{F}^{\mathcal{C}} (\mathcal{P}x = -e \lt 0)$
+   Donc $\varepsilon \nVdash A\_1$
+
+   $\mathcal{D}: \;\; \parallel \mathcal{P}\Delta \equiv \Delta \parallel\_{\mathcal{F}^{\mathcal{D}}}$
+   $= "(\text{inf}(\varnothing; \\\{ 0\\\})) = (0; \varnothing)"$
+   $= (1; \\\{ 0 \\\}) = (0; \varnothing)"
+   $= \text{Faux}$
+
+   Donc $\mathcal{D} \nVdash A\_0$
+
+7° On pose $\mathcal{M}\_k = \left\lt \\\{ \delta, 1, ..., k \\\}; \left\lt \delta \right\gt; \left\lt x \longmapsto \delta \right\gt; \left\lt {k}: \\\{ \delta \\\} \star M \right\gt \right\gt$
+   $\mathcal{M}\_k \vDash \mathcal{T}$ et $\mathcal{M} \vdash \varphi\_{k + 1}$
+   Donc $\mathcal{T}$ admet un modèle infini qui peut être dénombrable par $\mathcal{L}S$ décroissante.

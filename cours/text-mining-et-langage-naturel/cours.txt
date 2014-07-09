@@ -1,0 +1,42 @@
+# Text mining
+
+## Applications
+
+Vitesse de lecture :
+| Type    | IOPS              | Lat. (ms) |
+|:--------|:-----------------:|:---------:|
+| **HDD** | 100               | ~100      |
+| **SSD** | [0.2ms, 1$\mu$s   | [5k, 1M]  |
+| **RAM** | 100$\nano$s       |           |
+| **L1**  | 0,25$\nano$s      |           |
+| **L2**  | 0,1$\nano$s       |           |
+
+Objectif projet : Éviter les cache miss.
+
+Provider : **Digital Ocean** : **SSD**
+
+## Lecture du sujet
+
+/!\ Ne pas faire de struct au niveau de la mémoire, mais au niveau du fichier qu'on fait entrer.
+
+Premier binaire : Convertit la liste de mots en un format parfait pour le deuxième.
+Deuxième : Chope ce qui est sur disque, et se met chau patate pour répondre aux query.
+
+Pas une phrase par réponse, 1/4 des points sur les questions.
+
+Potentiellement plusieurs types de noeuds dans le dictionnaire.
+On struture, et on serialise sur disque.
+Puis `mmap` comme un bourrin.
+A regarder `fadvise`.
+
+`x86` Little Endian
+
+Checker les nombre d'allocation.
+
+Checker `TRIE` `Patricia - TRIE`, etc. Checker le plus perf.
+Parcours de Levenstein.
+
+A chaque noeud, on descend plusieurs fois (insertion, substitution, etc.). Attention, on peut opti en diminuant le nombre d'appels et en étant malin.
+
+Trier la liste des mots pour construire le TRIE
+

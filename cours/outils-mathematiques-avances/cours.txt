@@ -1,0 +1,111 @@
+# Dénombrement
+
+- $\Omega$ : Univers (Données à compter)
+- $\text{Card}$ : $\Omega \longmapsto \mathbb{N}$ nombre d'éléments de l'ensemble $\Omega$
+- $+\_{\mathbb{N}}$ : $\text{Card}(A \uplus B)$
+- $\times\_{\mathbb{N}}$ : Combinaisons de types $\text{Card}(\Omega\_1 \times \Omega\_2)$
+- Cas particuliers :
+  - $\prod\limits\_{i = 1}^{n} \Omega\_i \overset{\text{Card}}{\longmapsto} \prod\limits\_{i = 1}^{n} k\_i$
+    ($k\_i = \text{Card}(\Omega\_i)$)
+  - Combinaisons de listes ordonnées
+    $\Omega^n = \Omega \times ... \times \Omega$
+    Dénombrememnt : $\Big[\text{Card}(\Omega)\Big]^n = k^n$
+    $\Omega$ : Symboles
+    $\omega \in \Omega^n \iff \omega = (\omega\_1, ... , \omega\_n) \simeq \omega\_1 \omega\_2 ... \omega\_n$ (Concatenation)
+    Nombre de mots d'un alphabet $\Omega$ à $k$ caractères composés de $n$ lettres.
+  - **Factorielle**
+    Réorganisation ordonnée de $n$ éléments distincts : $n!$
+    Ordonner $\Omega$ revient à résoudre : Bijection de $\Omega$ dans $\text{Card}((\Omega)^[|1, n|])$
+    $\sigma \longmapsto [| 1, n |] $
+    $\sigma \longleftarrow S\_n$ (Permutations)
+    $Card(S\_n) = n!$
+  - Nombre de sous-parties
+    $\text{Card}(\mathcal{P}(\Omega)) = 2^{\text{Card}(\Omega)}$
+    $\mathcal{P}(E) = [|0, 1|]^\Omega = 2^\Omega$
+  - Puissances d'ensembles : $A^B = \\\{f : B \longmapsto A \\\}$
+    $\text{Card}(A^B) = (\text{Card}(A))^{\text{Card}(B)}$
+
+## Définition
+
+On appelle **arrangement** $A\_k^n$ le nombre de façons de répartir $k$ objets ordonnées dans $n$ emplacements.
+Revient à compter les injections d'un ensemble de cardinal $k$ dans un ensemble de cardinal $n$.
+**Condition** : $k \le n$
+
+$$A\_k^n = n \times (n - 1) \times ... \times (n - k + 1) = {n! \over (n - k)!}$$
+
+On retiendra qu'organiser correspond à mutliplier par $n!$, désorganiser, c'est diviser par $n!$.
+
+## Définition
+
+On appelle combinaison $C^k\_n$ ou ${n \choose k}$ le nombre de sous ensemble à exactement $k$ éléments d'un ensemble de $n$ éléments.
+$$ \text{Card}\left( \mathcal{P}(\Omega) \right) $$
+
+## Propriété
+
+$C^k\_n = {n! \over k!(n-k)!}$
+Ca se démontre en organisant et désorganisant en deux groupes $k$ et $n - k$.
+
+## Propriété
+
+$\sum\limits\_{k = 0}^{n} C^k\_n = 2^n$
+
+**Démonstration :** $\mathcal{P}(\Omega) = \biguplus\limits\_{k = 0}^n \mathcal{P}\_k(\Omega) \iff 2^n = \sum\limits\_{k = 0}^n C^k\_n$
+
+### Exemples
+- 15 chevaux au départ
+  - Tiercé : $A\_3^{15}$
+  - Quinté : $A\_5^{15}$
+- Damier  8x8 - 16 jetons blancs
+  - Tout mis au pif : $C^{16}\_{64}$
+  - Tout mis au pif mais que sur les blancs: $C^{16}\_{32}$
+  - Idem qu'au dessus mais avec 16 noirs aussi mais toujours que sur les cases blanches : $C^{16}\_{32}$
+    Car coder avec le vide ou avec un jeton noir, c'est la même chose.
+- 27 étudiants - 36 chaises
+  $A^36\_27$
+- Anagrammes
+  - d'EPITA : $A^5\_1 = 5!$
+  - d'anagrammes : $10! \over 3! 2!$
+  - le nombre de flushs (même couleur) au poker $ 4 . C^5\_{13} $ - avec les jokers : $4. C^5\_{15}$
+  - nombre de mains qui sont des doubles paires, mais qui ne sont pas des full $ $
+  - soit $f$ un symbole de fonction à trois arguments, $m$ un ensemble à 36 éléments, trouver le nombre d'interprétations dans $M$ de $f$ : $\sharp?\overline{f}^{\mathcal{M}}$
+
+** Rappels de combinatoire **
+
+$C^k\_n + C^{k + 1}\_n = C^{k + 1}\_{n + 1}$
+$C^k\_n = C^{n - k}\_n$
+$(a + b)^n$ = \sum\limits\_{i = 0}^n C^k\_n a^k b^{n - k}$
+
+(13 * C^2\_4)^2 * 48 - (13 \times 5 C^1\_50) - (13 C^2\_4 \times 12 C^3\_4)
+
+## Théorème
+
+Le problème des ressources se ramène à celui du nombre de suites croissantes à valuers dans $[|0, n |]$ avec $\mathcal{U}\_k = n$
+
+**Cas strict**
+On note qu'alors $\mathcal{U}$ définie sur $[|1, k - 1|]$ est injective.
+
+**Rappel**
+Les arrangements forment les injections.
+$A\_{k-1}^n$ maisici on impose l'ordre des images, soit $(k - 1)!$ d'organiser les images.
+
+$\text{nb}(u\_i)$ croissante au sens strict $= A^n\_{k - 1} \over (k - 1)!$ $= C^{k - 1}\_n$
+
+**Cas sens large**
+On peut ramener la suite $(u\_i)$ croissante au sens large à une suite $v\_i = u\_i + k - 1$ croissante au sens strict.
+D'où $nb(vi) = C^{k - 1}\_{n + k - 1}$.
+
+**Exemple** :
+- *EuroMillions* : 50 numéros / 11 étoiles.
+  Cocher 5 numéros, 2 étoiles.
+  Combien de grilles ?
+  Sans remise.
+  $= C^5\_{50} * C^2\_{11}$
+- Nombre de codes INSEE.
+  $4 * 100 * 12 * 100 * 990 * 999$
+- Problème des tournois.
+  32 équipes : Nombre d'agencements pour un tournoi.
+  /!\ $\neq$ nombre d'historiques de tournois.
+- Nombre d'interprétations d'un symbole $M$ d'arité $n$ dans un ensemble d'éléments.
+- Quelle est la dimension de l'espace des matrices symétriques de $\matchal{M}\_n(\mathbb{R})$
+- Nombre de polynômes de degré $n$ à coeff $F\_p$
+

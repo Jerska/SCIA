@@ -249,3 +249,106 @@ L'idée de la méthode de Newton est de converger vers $0$.
      - $\mu \le 0 \iff c - \lambda A^T \ge 0$
      - $\lambda \in \mathbb{R}^n \iff (x > 0 \implies \mu = 0)$
      - $\mu\_i . (- x\_i) = 0$ ($i \in [1, n]$) $ \iff (\mu \lt 0 \implies x = 0)$
+
+4. - **Qu'est-ce qu'un point singulier d'une fonction $f: \mathbb{R}^n \; \longmapsto \; \mathbb{R}$**
+     Un point où la différentielle de la fonction s'annule.
+   - **À quoi ça sert ?**
+     Ça sert à trouver des optimums locaux. (**Attention !** tous les points singuliers ne sont pas des optimums locaux)
+   - **Étudier en fonction de $\alpha \in \mathbb{R}$ ceux de $f\_{\alpha}(x, y, z) \longmapsto \alpha x^2 + y^2 + z^2 - 10 xy$**
+     $$\begin{array}{rl}
+      f\_{\alpha}(x, y, z) \longmapsto & \alpha x^2 + y^2 + z^2 - 10 xy \\\\
+      \triangledown f\_{\alpha}(x, y, z) = & \begin{pmatrix}
+      2 \alpha x - 10y \\\\
+      2y - 10x \\\\
+      2z
+      \end{pmatrix} \\\\
+      \text{On cherche } \;\; \triangledown f\_{\alpha}(x, y, z) = & \begin{pmatrix}
+      0 \\\\
+      0 \\\\
+      0 \\\\
+      \end{pmatrix} \\\\
+      \iff & \left\\\{ \begin{array}{}
+      2 \alpha x - 10y = 0\\\\
+      2y - 10x = 0\\\\
+      2z = 0
+      \end{array}\right. \\\\
+      \iff & \left\\\{ \begin{array}{}
+      x = {1 \over \alpha - 25}\\\\
+      y = 5x\\\\
+      z = 0
+      \end{array}\right. \;\;\; \text{On a donc } \alpha \ne 25 \\\\
+      \iff & \left\\\{ \begin{array}{}
+      x = {1 \over \alpha - 25} \\\\
+      y = {5 \over \alpha - 25} \\\\
+      z = 0
+      \end{array}\right. \\\\
+      \triangledown^2 f\_{\alpha}(x, y, z) = & \begin{pmatrix}
+      2\alpha & -10 & 0 \\\\
+      -10 & 2 & 0 \\\\
+      0 & 0 & 2
+      \end{pmatrix} \\\\
+      \Pi (\lambda) = & (2 - \lambda).((2\alpha - \lambda)(2 - \lambda) - 100) \\\\
+      = & (2 - \lambda)(\lambda^2 - 2 . (\alpha + 1) \lambda + 4 \alpha - 100) \\\\
+      \Delta = & - 4\alpha^2 - 8\alpha - 4 - 8 \alpha - 800 \\\\
+      \text{Valeurs propres de } \Pi (\lambda) = & \left\\\{ \begin{array}{}
+      \Pi\_1 = 2 \\\\
+      \Pi\_2 = \\\\
+      \Pi\_3 = 
+      \end{array} \right.
+     \end{array}$$
+     Si les valeurs propres de la matrice hessienne sont toutes positives/négatives, alors la matrice est définie positive / négative, d'où le point singulier est un minimum / maximum.
+     Si l'une des valeurs propres est nulle ou qu'elles n'ont pas toute le même signe, la matrice n'est pas définie, donc on ne peux pas conclure.
+     **Attention !** Si on a un 0 sur la diagonale, on a pas une valeur propre.
+4. - **Écrire les condition d'optimalité de :**
+     $$x \in \mathbb{R}^n \text{min }f(x) x\_i \le 0$$
+     $$\left\\\{ \begin{array}{}
+      \triangledown f(x) = \mu \\\\
+      \mu\_i x\_i = 0 \\\\
+      \mu\_i \le 0
+     \end{array}\right. $$
+   - **Écrire les condition d'optimalité de :**
+     $$\text{min }f(x) - p . \ln(-x)$$
+     $$\left\\\{ \begin{array}{}
+      \triangledown f(x) -p . {1 \over \sum\limits\_i x\_i} . e = 0\\\\
+     \end{array}\right. $$
+     On peut en fait passer de l'une à l'autre :
+     $$\begin{array}{rl}
+      & \left\\\{ \begin{array}{}
+       \text{min } f(x) \\\\
+       g(x) \le 0
+      \end{array}\right. \\\\
+      & \left\\\{ \begin{array}{}
+       \triangledown f(x) = \mu \triangledown g(x) \\\\
+       \mu g(x) = 0 \\\\
+       \mu \le 0
+      \end{array}\right. \\\\
+      \text{On passe en réels} &
+      \left\\\{ \begin{array}{}
+       f^\prime (x) = \mu g^\prime(x) \\\\
+       \mu g(x) = 0 \implies \mu g(x) \ge 0 \\\\
+       \mu \le 0
+      \end{array}\right. \\\\
+      & \left\\\{ \begin{array}{}
+       f^\prime (x) = \mu g^\prime(x) \\\\
+       \mu g(x) = p \:\:\; p \ge 0 \\\\
+       \mu \le 0
+      \end{array}\right. \\\\
+      & \left\\\{ \begin{array}{}
+       f^\prime (x) - p {g^\prime(x) \over g(x)} = 0 \\\\
+       p \le 0
+      \end{array}\right.
+     \end{array}$$
+
+     **Cours :**
+     On a une fonction $\text{min } f(x)$ avec des contraintes d'inégalité $g(x) \le 0 \;\forall i \in I$
+     On ajoute $(\mu\_i) \forall i \in I$
+     Ce qui donne :
+     $$\left \\\{ \begin{array}{}
+     \triangledown f(x) = \sum\limits\_{i \in I} \mu\_i \triangledown g\_i (x) \\\\
+     \mu\_i g\_i (x) = 0 \\\\
+     \mu\_i \le 0
+     \end{array} \right.$$
+     Rajouter des contraintes d'égalite provoque ce changement : $\triangledown f(x) = \sum\limits\_{i \in I} \mu\_i \triangledown g\_i (x) + \sum\limits\_{j \in E} \lambda\_j \triangledown h\_i (x)$
+   - **Étudier le cas où $p \longrightarrow 0$**
+     Ça revient à s'apporcher des points singuliers.
+

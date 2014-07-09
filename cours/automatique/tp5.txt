@@ -1,0 +1,40 @@
+# TP 4.5
+
+Pour chacune des questions, la première figure correspond à l'appel à `margin` du système étudié et la deuxième à l'appel à `step`.
+
+## 1<sup>ère</sup> question
+
+On étudie uniquement $G(p)$.
+
+![Margin 1](img/tp4_5_margin_1.jpg)
+![Step 1](img/tp4_5_step_1.jpg)
+
+## 2<sup>ème</sup> question
+
+On étudie ici $G(p)$ avec un correcteur $K\_c = 2$.
+
+![Margin 2](img/tp4_5_margin_2.jpg)
+![Step 2](img/tp4_5_step_2.jpg)
+
+## 3<sup>ème</sup> question
+
+On étudie ici $G(p)$ avec un correcteur $K{aTp + 1 \over Tp + 1}$ avec $K = 0.2$, $a = 10$ et $T = {1 \over 80 \sqrt{10}}$.
+
+![Margin 3](img/tp4_5_margin_3.jpg)
+![Step 3](img/tp4_5_step_3.jpg)
+
+# TP 5
+
+## Question 1
+
+![Step 1](img/tp5_tr1.jpg)
+![Step 2](img/tp5_tr2.jpg)
+![Step 3](img/tp5_tr3.jpg)
+![Step 4](img/tp5_tr4.jpg)
+
+| $K$                             | $0,5$  | $1$    | $10$   | $100$  |
+|:--------------------------------|:------:|:------:|:------:|:------:|
+| **Erreur statique**             | $0$    | $0$    | $0$    | $0$    |
+| **Amplitude du dépassement**    | $1,02$ | $1,12$ | $1,57$ | $1,84$ |
+| **Temps du dépassement**        | $1,5$  | $0,85$ | $0,22$ | $0,07$ |
+| **Temps de réponse à 5%**       | $1,06$ | $1,2$  | $1,17$ | $1,19$ |
