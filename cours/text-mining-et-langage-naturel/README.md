@@ -432,14 +432,14 @@ We are are here discussing on a quad-core machine performance.
 We played a lot with the constants and got two scenarios :
 
 Get the same performance boost for all distances (`~ -75%` vs ref) :
-  - `NB_THREADS = 2`
-  - `BUF_SCALE = 24`
-  - `Estimated maximum total memory usage = ~350M`
+- `NB_THREADS = 2`
+- `BUF_SCALE = 24`
+- `Estimated maximum total memory usage = ~350M`
 
 Improve the gain on distance `>= 1` (`~ -65%` dist 0, `~ -85%` dist 1/2) :
-  - `NB_THREADS = 3`
-  - `BUF_SCALE = 24`
-  - `Estimated maximum total memory usage = ~455M`
+- `NB_THREADS = 3`
+- `BUF_SCALE = 24`
+- `Estimated maximum total memory usage = ~455M`
 
 A direct result we got through our experiments is that having more threads
 than 2 is a boost for distances `>= 1`, but it's the contrary for distance 0.
