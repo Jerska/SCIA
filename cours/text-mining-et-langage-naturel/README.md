@@ -338,6 +338,10 @@ but to be sure it would compile, we stuck with `gcc`.
 
 ## Threading
 
+### Usage
+
+To use them, just uncomment `#define USE_THREADS` in `src/app/main.c`
+
 ### Presentation
 
 We did (even if actually not required and not evaluated) parallelize our
