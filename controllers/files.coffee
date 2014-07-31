@@ -14,7 +14,7 @@ renderer.heading = (text, level, raw) ->
   toc.push {name: text, anchor: "#{toc.length}", level: level} if level <= 3
   "<h#{level} id=\"#{this.options.headerPrefix}#{toc.length - 1}\">#{text}</h#{level}>\n"
 
-marked.setOptions gfm: true, tables: true, breaks: true, smartLists: true, smartypants: true, renderer: renderer
+marked.setOptions gfm: false, tables: true, breaks: true, smartLists: true, smartypants: true, renderer: renderer
 
 parseToc = ->
   res = {name: "", anchor: "", level: 0, next: {}}
