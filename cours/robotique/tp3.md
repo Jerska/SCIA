@@ -100,3 +100,20 @@ $$
 $$
 
 On a donc $\psi = \theta\_4 - \theta\_2 - \theta\_1 \iff \theta\_4 = \psi + \theta\_1 + \theta\_2$.
+
+## Question 3
+
+Voici le code de notre fonction `Scara_Geoinv` :
+
+	function [t1, t2, d3, t4] = Scara_Geoinv(x, y, z, psi)
+		t2 = [acosd((x^2+y^2 - 2)/2), -acosd((x^2+y^2 - 2)/2)];
+		t1 = [atan2d(y,x) - atan2d(sind(t2(1)), 1 + cosd(t2(1))), atan2d(y,x) - atan2d(sind(t2(2)), 1 + cosd(t2(2)))];
+		d3 = 0.9 - z;
+		t4 = [psi + t2(1) + t1(1), psi + t2(2) + t1(2)];
+
+		t1 = t1(1);
+		t2 = t2(1);
+		t4 = t4(1);
+	end
+
+On pourra remarquer que nous gardons initialement les deux valeurs possibles, puis choisissons (dans cet exemple, mais dans la vraie vie, ce serait différent) seulement la première des deux valeurs pour les trois angles.
