@@ -2,7 +2,7 @@
 **DUMONT Matthieu**  
 **COHEN Alexandre**
 
-# TP3
+# TD1 : Étude du robot SCARA
 
 *Disclaimer : Dans ce rapport, les réponses seront volontairement concises, notre travail ayant été perdu à cause de la synchronisation d'une sauvegarde de ce dernier avec un crash de la machine. Nous irons donc droit au but.*
 
