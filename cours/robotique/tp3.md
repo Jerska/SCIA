@@ -52,11 +52,27 @@ Le **modèle géométrique en position** correspond à la sous-matrice $((1, 4),
 $$
 \text{MGD}\_{\text{pos}} =
 \begin{pmatrix}
-a\_1 \cos (\theta 1) + a\_2 \cos (\theta\_1 + \theta\_2)\\\\
-a\_2 \sin (\theta\_1 + \theta\_2) \\\\
+\cos (\theta\_1) + \cos (\theta\_1 + \theta\_2) \\\\
+\sin (\theta\_1) + \sin (\theta\_1 + \theta\_2) \\\\
 \frac{9}{10} - d\_3
 \end{pmatrix}
 $$
 
+*Rappelons que $a\_1$ et $a\_2$ valent $1$, d'où la simplification.*
+
 ## Question 2
+
+Nous cherchons l'inverse du modèle géométrique en position, c'est-à-dire exprimer $\theta\_1$, $\theta\_2$ et $d\_3$ en fonction de $x$, $y$ et $z$.
+
+Tout d'abord, on identifie :
+
+$$
+\left\\\{
+\begin{array}{rl}
+x = &\cos (\theta\_1) + \cos (\theta\_1 + \theta\_2) \\\\
+y = &\sin (\theta\_1) + \sin (\theta\_1 + \theta\_2) \\\\
+z = & \frac{9}{10} - d\_3
+\end{array}
+\right.
+$$
 
