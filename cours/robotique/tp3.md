@@ -117,3 +117,19 @@ Voici le code de notre fonction `Scara_Geoinv` :
 	end
 
 On pourra remarquer que nous gardons initialement les deux valeurs possibles, puis choisissons (dans cet exemple, mais dans la vraie vie, ce serait différent) seulement la première des deux valeurs pour les trois angles.
+
+## Question 4
+
+Dans le cas d'un déplacement d'une position initiale vers une position finale, on à six données d'entrées (positions, vitesses et accélérations initiales et finales), ce qui nous permet d'avoir un spline d'ordre 5.
+En effet, nous avons six équations donc nous pouvons déterminer six coefficients.
+
+$$q(t) = a\_0 + a\_1t + a\_2t^2 + a\_3t^3 + a\_4t^4 + a\_5t^5$$
+
+est l'équation pour la position. La vitesse et l'accéleration étant réspectivement les dérivées premières et secondes de cette fonction, on les déduit directement.
+N'oublions pas que ces fonctions sont continues. Par conséquent, en position initiale (et finale), la position étant constante avant (et après), les dérivées de cette fonction sont nécéssairement nulles en ces points.
+
+L'algorithme, plutôt simple en pratique, est un peu dur à détailler.
+On prend la matrice des six fonctions privées des coefficients que l'on cherche à déterminer.
+Puis on multiplie son inverse par un vecteur colonne des données connues (positions, vitesses et accélérations), ce qui nous donne un vecteur des coefficients recherchés.
+
+En pratique :
