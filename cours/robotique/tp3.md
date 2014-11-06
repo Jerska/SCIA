@@ -87,3 +87,16 @@ d\_3 = & \frac{9}{10} - z \\\\
 \end{array}
 \right.
 $$
+
+Profitons-en pour exprimer $\theta\_4$ en fonction de $\psi$, ce qui est fait de manière triviale via la matrice d'orientation du MGD.
+En effet, celle-ci est identifiable ainsi :
+
+$$
+\begin{pmatrix}
+\cos\psi & -\sin\psi & 0 \\\\
+-\sin\psi & -\cos\psi & 0 \\\\
+0 & 0 & -1
+\end{pmatrix}
+$$
+
+On a donc $\psi = \theta\_4 - \theta\_2 - \theta\_1 \iff \theta\_4 = \psi + \theta\_1 + \theta\_2$.
