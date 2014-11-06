@@ -133,3 +133,147 @@ On prend la matrice des six fonctions privées des coefficients que l'on cherche
 Puis on multiplie son inverse par un vecteur colonne des données connues (positions, vitesses et accélérations), ce qui nous donne un vecteur des coefficients recherchés.
 
 En pratique :
+
+$$
+A = 
+\begin{pmatrix}
+1 & t\_i & t\_i^2 & t\_i^3 & t\_i^4 & t\_i^5 \\\\
+0 & 1 & 2 t\_i & 3 t\_i^2 & 4 t\_i^3 & 5 t\_i^4 \\\\
+0 & 0 & 2 & 6 t\_i & 12 t\_i^2 & 20 t\_i^3 \\\\
+1 & t\_f & t\_f^2 & t\_f^3 & t\_f^4 & t\_f^5 \\\\
+0 & 1 & 2 t\_f & 3 t\_f^2 & 4 t\_f^3 & 5 t\_f^4 \\\\
+0 & 0 & 2 & 6 t\_f & 12 t\_f^2 & 20 t\_f^3
+\end{pmatrix}
+$$
+
+$$
+B =(q\_i, v\_o, a\_o, q\_f, v\_f, a\_f)
+$$
+
+$$
+C = inv(A) \* B
+$$
+
+## Question 5
+
+Nous avons modifié deux fichiers afin de dessiner le mouvement.
+
+`Dessiner_SCARA.m`:
+
+	function Dessiner_SCARA(T1, a1, d1, T2, a2, d2, Zi, d4)
+
+	X_1=a1*cosd(T1);
+	Y_1=a1*sind(T1);
+
+	X_2=a1*cosd(T1) + a2*cosd(T1+T2);
+	Y_2=a1*sind(T1) + a2*sind(T1+T2);
+
+	plot3([0 X_1],[0 Y_1],[d1 d1],'blue','linewidth',7)
+	plot3([X_1 X_2],[Y_1 Y_2], [d1 d1],'green','linewidth',7)
+	plot3([X_2 X_2],[Y_2 Y_2], [Zi d4],'red','linewidth',7)
+
+	axis([-(a1) (a1) -(a1) (a1) 0 d1])
+	hold off
+	
+
+`Trajectory_PLaning_prg.m`:
+
+	a1=1;      % longueur bras
+	d1=1;      % hauteur base souhaitée (pour faire du 3D)
+
+	a2 = 1;
+	d2 = 0;
+
+	d3 = 0.9;
+	a3 = 0;
+
+	a4 = 0;
+	d4 = 0.1;
+
+	...
+
+	A=[1,to,((to)^2),((to)^3),((to)^4),((to)^5);
+		0,1,2*to,3*((to)^2),4*((to)^3),5*((to)^4);
+		0,0,2,6*to,12*((to)^2),20*((to)^3);
+		1,tf,((tf)^2),((tf)^3),((tf)^4),((tf)^5);
+		0,1,2*tf,3*((tf)^2),4*((tf)^3),5*((tf)^4);
+		0,0,2,6*tf,12*((tf)^2),20*((tf)^3)];
+
+	B1=[q1i;Vo;ao;q1f;Vf;af];
+	B2=[q2i;Vo;ao;q2f;Vf;af];
+	B4=[q4i;Vo;ao;q4f;Vf;af];
+
+	C1=inv(A)*B1;
+	C2=inv(A)*B2;
+	C4=inv(A)*B4;
+
+
+	T=[];      % tableau temps
+	X=[];      % tableau x
+	Y=[];      % tableau y
+
+	Q1=[];     % tableau vecteur arti q1
+	Q2=[];     % tableau vecteur arti q2
+	Q4=[];     % tableau vecteur arti q4
+
+	V1=[];     % tableau des vitesses arti 1
+	V2=[];     % tableau des vitesses arti 2
+	V4=[];     % tableau des vitesses arti 4
+
+	AC1=[];    % tableau des acceleration arti 1
+	AC2=[];    % tableau des acceleration arti 2
+	AC4=[];    % tableau des acceleration arti 4
+
+
+	for t=to:.01:tf-.01
+		q1=C1(1,1)+C1(2,1)*t+C1(3,1)*t^2+ C1(4,1)*t^3+C1(5,1)*t^4+C1(6,1)*t^5;
+		v1=C1(2,1)+(2*C1(3,1)*t)+ (3*C1(4,1)*t^2)+(4*C1(5,1)*t^3)+(5*C1(6,1)*t^4);
+		ac1=(2*C1(3,1))+ (6*C1(4,1)*t)+(12*C1(5,1)*t^2)+(20*C1(6,1)*t^3);
+		
+		q2=C2(1,1)+C2(2,1)*t+C2(3,1)*t^2+ C2(4,1)*t^3+C2(5,1)*t^4+C2(6,1)*t^5;
+		v2=C2(2,1)+(2*C2(3,1)*t)+ (3*C2(4,1)*t^2)+(4*C2(5,1)*t^3)+(5*C2(6,1)*t^4);
+		ac2=(2*C2(3,1))+ (6*C2(4,1)*t)+(12*C2(5,1)*t^2)+(20*C2(6,1)*t^3);
+		
+		q4=C4(1,1)+C4(2,1)*t+C4(3,1)*t^2+ C4(4,1)*t^3+C4(5,1)*t^4+C4(6,1)*t^5;
+		v4=C4(2,1)+(2*C4(3,1)*t)+ (3*C4(4,1)*t^2)+(4*C4(5,1)*t^3)+(5*C4(6,1)*t^4);
+		ac4=(2*C4(3,1))+ (6*C4(4,1)*t)+(12*C4(5,1)*t^2)+(20*C4(6,1)*t^3);
+		
+		x=a1*cosd(q1) + a2*cosd(q1+q2);
+		y=a1*sind(q1) + a2*sind(q1+q2);
+		
+		X=[X x];
+		Y=[Y y];
+		
+		Q1=[Q1,q1];
+		V1=[V1 v1];
+		AC1=[AC1 ac1];
+		
+		Q2=[Q2,q2];
+		V2=[V2 v2];
+		AC2=[AC2 ac2];
+		
+		Q4=[Q4,q4];
+		V2=[V4 v4];
+		AC4=[AC4 ac4];
+		
+		T=[T t];
+	end
+
+	...
+
+	%Boucle d'animation
+	for i=1:1:length(Q1)
+		plot3([0 0],[0  0],[0 Zi],'red','linewidth',1)
+		xlabel('x')
+		ylabel('y')
+		zlabel('z')
+		grid
+		hold on
+		plot3([Xi Xf],[Yi  Yf],[d4 d4],'red','linewidth',2)
+		hold on
+		plot3(X,Y,Z,'blue','linewidth',2)
+		hold on
+		Dessiner_SCARA(Q1(i), a1, d1, Q2(i), a2, d2, Zi, d4)
+		pause(.01)
+		hold off
+	end
