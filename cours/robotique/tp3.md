@@ -76,3 +76,14 @@ z = & \frac{9}{10} - d\_3
 \right.
 $$
 
+$d\_3$ est trivial. Pour $\theta\_1$ et $\theta\_2$, on utilise la méthode vu dans le cours (Passage au carré).
+
+$$
+\left\\\{
+\begin{array}{rl}
+d\_3 = & \frac{9}{10} - z \\\\
+\theta\_2 = & \pm \arccos \left[ {{x^2 + y^2 - 2} \over 2}\right] \\\\
+\theta\_1 = & \arctan\_2(y, x) - \arctan\_2(k\_2, k\_1) \;\;\;\; \text{ avec } \left\\\{ \begin{array}{rl} k\_1 = & 1 + \cos (\theta\_2) \\\\ k\_2 = & \sin (\theta\_2) \end{array} \right.
+\end{array}
+\right.
+$$
