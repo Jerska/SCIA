@@ -27,10 +27,36 @@ $$
 D'où :
 
 $$
-H =
+H\_0^4 =
+\begin{pmatrix}
+\cos(\theta\_4 - \theta\_1 - \theta\_2) & -\sin(\theta\_4 - \theta\_1 - \theta\_2) & 0 & a\_1 \cos (\theta 1) + a\_2 \cos (\theta\_1 + \theta\_2)\\\\
+-\sin(\theta\_4 - \theta\_1 - \theta\_2) & -\cos(\theta\_4 - \theta\_1 - \theta\_2) & 0 & a\_1 \sin (\theta 1) + a\_2 \sin (\theta\_1 + \theta\_2) \\\\
+0 & 0 & -1 & \frac{9}{10} - d\_3 \\\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+Le **modèle géométrique en orientation** correspond à la sous-matrice $((1, 1), (3, 3))$ de $H\_0^4$ :
+
+$$
+\text{MGD}\_{\text{orient}} =
 \begin{pmatrix}
 \cos(\theta\_4 - \theta\_1 - \theta\_2) & -\sin(\theta\_4 - \theta\_1 - \theta\_2) & 0 \\\\
 -\sin(\theta\_4 - \theta\_1 - \theta\_2) & -\cos(\theta\_4 - \theta\_1 - \theta\_2) & 0 \\\\
 0 & 0 & -1
 \end{pmatrix}
 $$
+
+Le **modèle géométrique en position** correspond à la sous-matrice $((1, 4), (3, 4))$ de $H\_0^4$ :
+
+$$
+\text{MGD}\_{\text{pos}} =
+\begin{pmatrix}
+a\_1 \cos (\theta 1) + a\_2 \cos (\theta\_1 + \theta\_2)\\\\
+a\_2 \sin (\theta\_1 + \theta\_2) \\\\
+\frac{9}{10} - d\_3
+\end{pmatrix}
+$$
+
+## Question 2
+
